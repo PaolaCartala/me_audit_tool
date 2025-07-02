@@ -1,0 +1,10 @@
+{
+  "scriptFile": "../excel_export.py",
+  "bindings": [
+    {
+      "name": "results",
+      "type": "activityTrigger",
+      "direction": "in"
+    }
+  ]
+}

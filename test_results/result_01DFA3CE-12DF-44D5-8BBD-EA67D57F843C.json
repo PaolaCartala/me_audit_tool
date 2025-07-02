@@ -1,0 +1,40 @@
+{
+  "document_id": "01DFA3CE-12DF-44D5-8BBD-EA67D57F843C",
+  "date_of_service": "2024-01-01",
+  "provider": "Dr. Sample Provider",
+  "original_text_length": 3077,
+  "original_text_preview": "Office: Southfield\nAddress: 29275 Northwestern Hwy Ste 207\nPhone: (248) 355-4000\nFax:\nCONFIDENTIAL\nMEDICAL/PROGRESS REPORT\nPATIENT NAME:\nPrime, Fred #251419\n \nDATE OF BIRTH:\nNovember 09, 1997\n \nDATE OF SERVICE:\nJune 24, 2025\nHISTORY:\nPatient presents today with his father over lingering left great toe joint pain. Patient is unsure of exact timeframe but has noticed over the\nlast several months pain to his left great toe joint. Patient admits to being very active in athletics over a good period o...",
+  "enhancement_agent": {
+    "assigned_code": "99214",
+    "justification": "The documentation supports a level 4 established patient visit (99214) based on 2024 AMA guidelines. History is detailed: Chief complaint is clearly stated; HPI is extended (several months, athletic activity, prior urgent care visit, exacerbation details, pain quality and intensity); ROS is limited but PFSH is addressed (active in athletics, no known PMHx or medications, no allergies). Examination is detailed, including vital signs and focused musculoskeletal/vascular exam. Medical Decision Making is of moderate complexity: chronic problem (hallux rigidus) with progression/exacerbation, radiographic interpretation, and moderate risk due to discussion of surgical vs. conservative options, trauma history, and management of a chronic disease with potential for surgical interventions. Thorough counseling and coordination of care discussed.",
+    "code_recommendations": {
+      "code_99212": "Would require minimal documentation: brief HPI, problem-focused exam, straightforward MDM such as advice on OTC pain control or self-care for musculoskeletal pain without imaging or discussion of surgery.",
+      "code_99213": "To justify 99213, history could be less detailed (brief HPI, 1-2 ROS), exam could be less extensive (1-2 organ systems), and MDM should be low (stable chronic issue or acute uncomplicated injury, simple data review, minimal risk, no discussion of surgery or imaging interpretation).",
+      "code_99214": "Current documentation meets 99214; maintain detailed HPI, comprehensive musculoskeletal exam, and moderate MDM including review of radiographs, discussion of surgical vs. conservative management, and assessment of risk.",
+      "code_99215": "To justify 99215, documentation would need to be even more comprehensive: complete ROS and PFSH, comprehensive multi-system exam, and high MDM (multiple management options considered, more complex comorbidities, extensive data review/multispecialty coordination, decision about major surgery, or patient at high risk of morbidity/mortality)."
+    }
+  },
+  "auditor_agent": {
+    "final_assigned_code": "99214",
+    "final_justification": "The progress note supports 99214 under 2024 E/M guidelines. The history is sufficiently detailed with chief complaint, extended HPI, and documentation of PFSH elements. ROS is not separately listed but may be inferred through the narrative. The physical exam is focused and appropriate for the presenting problem. MDM is moderate, justified by the evaluation of a chronic condition with progression, review and interpretation of imaging, detailed discussion of treatment options including surgical intervention, and assignment of moderate risk. Documentation quality is sufficient; minor improvements could be made for compliance but no upcoding risk noted.",
+    "audit_flags": [
+      "ROS is not explicitly documented, which may impact the support for a comprehensive history but does not preclude 99214 under 2024 guidelines if MDM justifies it.",
+      "PFSH elements are mentioned but could be more clearly separated (e.g., social history limited to activity, no family history documented).",
+      "Statement of moderate risk is somewhat templated; supporting details are present, but explicit linking of risk to documented findings should be clear.",
+      "No discussion of time spent in counseling or coordination of care—relevant if billing based on time, but MDM appears adequately documented."
+    ],
+    "billing_ready_note": "Office: Southfield\nAddress: 29275 Northwestern Hwy Ste 207\nPhone: (248) 355-4000\n\nPATIENT NAME: Prime, Fred #251419\nDATE OF BIRTH: November 09, 1997\nDATE OF SERVICE: June 24, 2025\n\nCHIEF COMPLAINT: Left great toe joint pain.\n\nHISTORY OF PRESENT ILLNESS:\nThe patient presents with his father due to lingering left great toe joint pain. The onset is unclear but symptoms have persisted for several months. The pain is described as an aching sensation, rated 3/10, exacerbated by flexing and bending the toe. The patient is very active in athletics. He recalls an urgent care visit in November 2024, where a possible fracture was considered. No other complaints reported.\n\nPAST MEDICAL HISTORY: No medical issues.\n\nSOCIAL HISTORY: Patient is active in athletics.\n\nMEDICATIONS: None.\n\nALLERGIES: No known drug allergies.\n\nPHYSICAL EXAMINATION:\n- Alert and oriented x3, no acute distress.\n- Height: 69 inches, Weight: 190 lbs, BMI: 28.1\n- Vascular: Pedal pulses 2/4 DP, 2/4 PT bilaterally. Capillary refill immediate. No edema. Positive hair growth.\n- Musculoskeletal: Palpable dorsal bony hypertrophy at left first metatarsal head. Reduced range of motion of the left great toe. Negative grind test. \n\nIMAGING:\nLeft foot radiographs, 3 views:\n- AP: Medial joint space narrowing of the great toe; squaring of the first metatarsal head.\n- Lateral: Dorsal bone spurring.\n\nASSESSMENT:\n- Hallux rigidus, left foot\n\nPLAN:\n- Initial consultation and diagnostic imaging performed.\n- Discussed arthritic progression likely related to athletic history and prior trauma.\n- Counseled on non-surgical treatments including structured shoes, orthotics, and anti-inflammatory medications.\n- Discussed surgical options: dorsal cheilectomy/decompression osteotomy recommended for preserved cartilage; fusion if cartilage erosion progresses.\n- Patient advised to retain disc images for future review, given out-of-state residence.\n- Moderate risk due to progressive chronic condition with consideration of surgical management.\n- Return as needed.\n\nElectronically signed by Randy Leff, DPM on 06/25/2025 at 13:59.",
+    "final_code_recommendations": {
+      "code_99212": "Would require greatly reduced documentation: only brief HPI, minimal exam, and straightforward MDM (i.e., advice on self-management, no imaging or surgical discussion). Current note exceeds this level.",
+      "code_99213": "Documentation would need to be less detailed and complex: brief HPI, limited exam (1-2 organ systems), low complexity MDM (stable chronic or acute uncomplicated issue, no imaging review, no significant management changes). Current note exceeds this level.",
+      "code_99214": "Continue to provide thorough HPI, focused exam, and moderate complexity MDM (imaging review, discussion of surgical and conservative management options). Explicitly document ROS if possible. Consider separating social and family history elements for clarity.",
+      "code_99215": "To meet 99215, documentation should include comprehensive ROS and PFSH, multi-system exam, and high-complexity MDM (multiple co-morbidities, decisions about major surgery, extensive data/records review, or high risk of morbidity/mortality). Current note does not meet these requirements."
+    }
+  },
+  "timestamp": "2025-07-02T09:52:48.508035",
+  "processing_metadata": {
+    "enhancement_agent_model": "Azure OpenAI GPT-4.1",
+    "auditor_agent_model": "Azure OpenAI GPT-4.1",
+    "processing_time": "2025-07-02T09:52:48.508044"
+  }
+}

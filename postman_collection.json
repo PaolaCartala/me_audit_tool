@@ -1,0 +1,105 @@
+{
+  "info": {
+    "name": "E/M Coding API - Updated",
+    "description": "Collection for testing E/M Coding Service with real progress notes",
+    "version": "3.0.0"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Single Document - Foot Trauma Case",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"document_id\": \"FOOT-243735\",\n  \"date_of_service\": \"June 27, 2025\",\n  \"provider\": \"Dr. Orthopedic\",\n  \"text\": \"MEDICAL/PROGRESS REPORT\\nPATIENT NAME: Finley, Yvonne #243735\\nDATE OF BIRTH: February 11, 1950\\nDATE OF SERVICE: June 27, 2025\\nHISTORY:\\nPatient presents today for reevaluation of right foot status post possible fracture/sprain. Patient notes significant improvement with use of surgical shoe and is and minimal discomfort day-to-day.\\nPHYSICAL EXAMINATION:\\nMuch improved local pain and swelling. Patient does have some soreness at the base of the fourth metatarsal but is much improved from previous visit.\\nIMPRESSIONS:\\nImprovement of right foot trauma\\nPLAN:\\nSubsequent office visit. Consultation regarding positive progression and hopeful transition from surgical shoe back to athletic shoes without problems. Patient is encouraged to make that transition slowly and carefully. Her pain is much diminished and she seems to be healing uneventfully. At this time to return as needed.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/em_coding",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "em_coding"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Single Document - Neck Pain Case",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"document_id\": \"NECK-9440\",\n  \"date_of_service\": \"June 27, 2025\",\n  \"provider\": \"Dr. Pain Management\",\n  \"text\": \"MEDICAL/PROGRESS REPORT\\nPATIENT NAME: Eifler, Raymond #9440\\nDATE OF BIRTH: April 18, 1964\\nDATE OF SERVICE: June 27, 2025\\nHISTORY:\\nThe patient is a 61-year-old gentleman who has a history of right sided neck pain. He also reported that he fell down stairs over a decade ago and suffered a compression fracture of a thoracic vertebral body. He continues to have pain in this region. In terms of the neck pain he has undergone cervical medial branch blocks with steroid which have provided prolonged relief of the symptoms. An injection procedure performed February 17, 2023 lasted until this February which would be 2 years. He has constant 3/10 pain in the neck area on the right. The pain is in the lower cervical area on the right. He also, at times, develops shoulder pain especially with certain movements of the head and neck. He has been seen by the spine surgeon, Dr. Varghese.\\nPAST MEDICAL HISTORY:\\nHypertension\\nMEDICATIONS:\\nLovastatin and Prilosec\\nALLERGIES:\\nNo known drug allergies\\nPHYSICAL EXAMINATION:\\nHeight 6 feet 2 inches, 200 lbs, respirations regular and unlabored. The patient is alert and oriented x3 with appropriate mood and affect. Patient has no noted focal neurologic deficits on exam today. Neurovascular exam is stable. The patient has good strength in the arms and legs. He has tenderness over the cervical paraspinal muscles on the right. He has pain with lateral rotation of the head and neck to the left. Deep tendon reflexes are unremarkable.\\nIMAGING:\\nA cervical spine MRI scan performed June 2, 2025 is visualized. There is no evidence of canal narrowing or spinal cord compression. Neuroforaminal narrowing is seen at multiple levels including C4-C5, especially on the left and C5-C6 on the left\\nIMPRESSIONS:\\n1. Cervical spondylosis\\n2. Cervical radiculopathy\\n3. Neck pain\\n4. Thoracic compression fracture\\n5. Thoracic back pain\\n6. Hypertension\\nPLAN:\\nThe patient is a 61-year-old gentleman with right-sided neck pain. He has benefited in the past from cervical medial branch blocks using steroid. I recommended cervical facet injections of steroid and local anesthetic on the right side. He understands the potential risks including infection, bleeding and nerve damage. I will see him for follow-up after the injection procedure has been performed.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/em_coding",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "em_coding"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Batch Processing - Multiple Cases",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"documents\": [\n    {\n      \"document_id\": \"FOOT-243735\",\n      \"date_of_service\": \"June 27, 2025\",\n      \"provider\": \"Dr. Orthopedic\",\n      \"text\": \"MEDICAL/PROGRESS REPORT\\nPATIENT NAME: Finley, Yvonne #243735\\nDATE OF BIRTH: February 11, 1950\\nDATE OF SERVICE: June 27, 2025\\nHISTORY:\\nPatient presents today for reevaluation of right foot status post possible fracture/sprain. Patient notes significant improvement with use of surgical shoe and is and minimal discomfort day-to-day.\\nPHYSICAL EXAMINATION:\\nMuch improved local pain and swelling. Patient does have some soreness at the base of the fourth metatarsal but is much improved from previous visit.\\nIMPRESSIONS:\\nImprovement of right foot trauma\\nPLAN:\\nSubsequent office visit. Consultation regarding positive progression and hopeful transition from surgical shoe back to athletic shoes without problems. Patient is encouraged to make that transition slowly and carefully. Her pain is much diminished and she seems to be healing uneventfully. At this time to return as needed.\"\n    },\n    {\n      \"document_id\": \"NECK-9440\",\n      \"date_of_service\": \"June 27, 2025\",\n      \"provider\": \"Dr. Pain Management\",\n      \"text\": \"MEDICAL/PROGRESS REPORT\\nPATIENT NAME: Eifler, Raymond #9440\\nDATE OF BIRTH: April 18, 1964\\nDATE OF SERVICE: June 27, 2025\\nHISTORY:\\nThe patient is a 61-year-old gentleman who has a history of right sided neck pain. He also reported that he fell down stairs over a decade ago and suffered a compression fracture of a thoracic vertebral body. He continues to have pain in this region. In terms of the neck pain he has undergone cervical medial branch blocks with steroid which have provided prolonged relief of the symptoms. An injection procedure performed February 17, 2023 lasted until this February which would be 2 years. He has constant 3/10 pain in the neck area on the right. The pain is in the lower cervical area on the right. He also, at times, develops shoulder pain especially with certain movements of the head and neck. He has been seen by the spine surgeon, Dr. Varghese.\\nPAST MEDICAL HISTORY:\\nHypertension\\nMEDICATIONS:\\nLovastatin and Prilosec\\nALLERGIES:\\nNo known drug allergies\\nPHYSICAL EXAMINATION:\\nHeight 6 feet 2 inches, 200 lbs, respirations regular and unlabored. The patient is alert and oriented x3 with appropriate mood and affect. Patient has no noted focal neurologic deficits on exam today. Neurovascular exam is stable. The patient has good strength in the arms and legs. He has tenderness over the cervical paraspinal muscles on the right. He has pain with lateral rotation of the head and neck to the left. Deep tendon reflexes are unremarkable.\\nIMAGING:\\nA cervical spine MRI scan performed June 2, 2025 is visualized. There is no evidence of canal narrowing or spinal cord compression. Neuroforaminal narrowing is seen at multiple levels including C4-C5, especially on the left and C5-C6 on the left\\nIMPRESSIONS:\\n1. Cervical spondylosis\\n2. Cervical radiculopathy\\n3. Neck pain\\n4. Thoracic compression fracture\\n5. Thoracic back pain\\n6. Hypertension\\nPLAN:\\nThe patient is a 61-year-old gentleman with right-sided neck pain. He has benefited in the past from cervical medial branch blocks using steroid. I recommended cervical facet injections of steroid and local anesthetic on the right side. He understands the potential risks including infection, bleeding and nerve damage. I will see him for follow-up after the injection procedure has been performed.\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/batch_em_coding",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "batch_em_coding"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Sample PDFs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/test_samples?limit=2",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "test_samples"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    }\n  ],\n  \"variable\": [\n    {\n      \"key\": \"baseUrl\",\n      \"value\": \"http://localhost:7071\"\n    }\n  ]\n}"
