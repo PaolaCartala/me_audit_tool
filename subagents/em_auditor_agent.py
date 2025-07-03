@@ -20,13 +20,14 @@ async def main(input_payload: dict) -> dict:
         # Parse input from Stage D
         data = EMEnhancementOutput(**input_payload)
         
-        logger.info(f"🕵️ Auditor Agent: Starting audit for {data.document_id}")
-        logger.info(f"📊 Auditor Agent: Enhancement agent assigned code {data.assigned_code}")
+        logger.debug(f"🕵️ Auditor Agent: Starting audit for {data.document_id}")
+        logger.debug(f"📊 Auditor Agent: Enhancement agent assigned code {data.assigned_code}")
         
         # Prepare context for the AI agent
         user_prompt = f"""
         ORIGINAL PROGRESS NOTE:
         Document ID: {data.document_id}
+        Text: {data.text}
         
         ENHANCEMENT AGENT RESULTS:
         Assigned E/M Code: {data.assigned_code}
@@ -39,47 +40,48 @@ async def main(input_payload: dict) -> dict:
         - 99215: {data.code_recommendations.code_99215}
         
         AUDIT REQUIREMENTS:
-        Please audit this E/M coding assignment and recommendations for compliance and accuracy.
+        Please evaluate this E/M coding assignment and recommendations for compliance and accuracy.
         Provide final code assignment, refined recommendations, and any compliance flags.
         """
         
-        logger.info(f"🧠 Auditor Agent: Sending audit request to AI model...")
-        logger.info(f"📝 Auditor Agent: Prompt preview: {user_prompt[:200]}...")
+        logger.debug(f"🧠 Auditor Agent: Sending audit request to AI model...")
+        logger.debug(f"📝 Auditor Agent: Prompt preview: {user_prompt[:200]}...")
         
         # Run the PydanticAI agent
         result = await em_auditor_agent.run(user_prompt)
         
-        logger.info(f"✅ Auditor Agent: Received audit response from AI model")
-        logger.info(f"🎯 Auditor Agent: Final assigned code {result.data.final_assigned_code}")
-        logger.info(f"🚨 Auditor Agent: Found {len(result.data.audit_flags)} audit flags")
-        logger.info(f"💰 Auditor Agent: Billing note length: {len(result.data.billing_ready_note)} characters")
+        logger.debug(f"✅ Auditor Agent: Received audit response from AI model")
+        logger.debug(f"🎯 Auditor Agent: Final assigned code {result.output.final_assigned_code}")
+        logger.debug(f"🚨 Auditor Agent: Found {len(result.output.audit_flags)} audit flags")
+        logger.debug(f"💰 Auditor Agent: Billing note length: {len(result.output.billing_ready_note)} characters")
         
         # Log audit flags if any
-        if result.data.audit_flags:
-            logger.info(f"🚩 Auditor Agent: Audit flags detected:")
-            for i, flag in enumerate(result.data.audit_flags, 1):
-                logger.info(f"  {i}. {flag}")
+        if result.output.audit_flags:
+            logger.debug(f"🚩 Auditor Agent: Audit flags detected:")
+            for i, flag in enumerate(result.output.audit_flags, 1):
+                logger.debug(f"  {i}. {flag}")
         else:
-            logger.info(f"✅ Auditor Agent: No compliance issues found")
+            logger.debug(f"✅ Auditor Agent: No compliance issues found")
         
-        # Log final code recommendations
-        logger.info(f"📊 Auditor Agent: Final code recommendations:")
-        logger.info(f"  • 99212: {result.data.final_code_recommendations.code_99212[:100]}...")
-        logger.info(f"  • 99213: {result.data.final_code_recommendations.code_99213[:100]}...")
-        logger.info(f"  • 99214: {result.data.final_code_recommendations.code_99214[:100]}...")
-        logger.info(f"  • 99215: {result.data.final_code_recommendations.code_99215[:100]}...")
+        # Log code evaluations
+        logger.debug(f"📊 Auditor Agent: Code evaluations:")
+        logger.debug(f"  • 99212: {result.output.code_evaluations.code_99212_evaluation[:100]}...")
+        logger.debug(f"  • 99213: {result.output.code_evaluations.code_99213_evaluation[:100]}...")
+        logger.debug(f"  • 99214: {result.output.code_evaluations.code_99214_evaluation[:100]}...")
+        logger.debug(f"  • 99215: {result.output.code_evaluations.code_99215_evaluation[:100]}...")
         
         # Return structured response
         response = EMAuditOutput(
             document_id=data.document_id,
-            audit_flags=result.data.audit_flags,
-            final_assigned_code=result.data.final_assigned_code,
-            final_justification=result.data.final_justification,
-            final_code_recommendations=result.data.final_code_recommendations,
-            billing_ready_note=result.data.billing_ready_note
+            text=data.text,
+            audit_flags=result.output.audit_flags,
+            final_assigned_code=result.output.final_assigned_code,
+            final_justification=result.output.final_justification,
+            code_evaluations=result.output.code_evaluations,
+            billing_ready_note=result.output.billing_ready_note
         ).model_dump()
         
-        logger.info(f"🎉 Auditor Agent: Successfully completed audit for {data.document_id}")
+        logger.debug(f"🎉 Auditor Agent: Successfully completed audit for {data.document_id}")
         return response
         
     except Exception as e:

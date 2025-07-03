@@ -1,9 +1,9 @@
 """
 Quick Test Script for E/M Coding Agents
-Tests with 2 sample PDFs to validate the setup
 """
 import asyncio
 import json
+import shutil
 from datetime import datetime
 from pathlib import Path
 from typing import List
@@ -19,7 +19,7 @@ load_dotenv()
 
 
 async def test_quick():
-    """Quick test with 2 PDFs"""
+    """Quick test"""
     logger.info("🚀 Starting Quick E/M Coding Test")
     
     # Initialize PDF processor
@@ -27,14 +27,20 @@ async def test_quick():
     pdf_processor = PDFProcessor(use_form_recognizer=False)
     
     # Get sample directory
-    sample_dir = Path("data/samples")
+    sample_dir = Path("data/35_test")
     if not sample_dir.exists():
         logger.error(f"❌ Sample directory not found: {sample_dir}")
         return
     
+    # Create completed directory if it doesn't exist
+    completed_dir = Path("data/completed")
+    completed_dir.mkdir(exist_ok=True)
+    logger.debug(f"📁 Completed directory ready: {completed_dir}")
+    
     # Process only 10 PDFs for quick test
-    logger.debug("📄 Processing 10 sample PDFs...")
-    em_inputs = pdf_processor.process_sample_pdfs(str(sample_dir), limit=10)
+    logger.debug("📄 Processing sample PDFs...")
+    em_inputs = pdf_processor.process_sample_pdfs(str(sample_dir), limit=35)
+    # em_inputs = pdf_processor.process_sample_pdfs(str(sample_dir), limit=3)
     
     if not em_inputs:
         logger.error("❌ No PDFs were successfully processed")
@@ -51,7 +57,7 @@ async def test_quick():
         
         try:
             # Stage 1: Enhancement Agent
-            logger.info("🤖 Running Enhancement Agent...")
+            logger.debug("🤖 Running Enhancement Agent...")
             
             enhancement_prompt = f"""
             Document ID: {em_input.document_id}
@@ -68,8 +74,8 @@ async def test_quick():
             enhancement_result = await em_enhancement_agent.run(enhancement_prompt)
             
             logger.debug("✅ Enhancement Agent completed!")
-            logger.info(f"🎯 Assigned Code: {enhancement_result.output.assigned_code}")
-            logger.info(f"📋 Justification: {enhancement_result.output.justification[:100]}...")
+            logger.debug(f"🎯 Assigned Code: {enhancement_result.output.assigned_code}")
+            logger.debug(f"📋 Justification: {enhancement_result.output.justification[:100]}...")
             
             logger.debug("📊 Code Recommendations:")
             logger.debug(f"  • 99212: {enhancement_result.output.code_recommendations.code_99212[:50]}...")
@@ -78,7 +84,7 @@ async def test_quick():
             logger.debug(f"  • 99215: {enhancement_result.output.code_recommendations.code_99215[:50]}...")
             
             # Stage 2: Auditor Agent
-            logger.info("\n🕵️ Running Auditor Agent...")
+            logger.debug("\n🕵️ Running Auditor Agent...")
             
             auditor_prompt = f"""
             Original Progress Note:
@@ -100,9 +106,9 @@ async def test_quick():
             auditor_result = await em_auditor_agent.run(auditor_prompt)
             
             logger.debug("✅ Auditor Agent completed!")
-            logger.info(f"🎯 Final Code: {auditor_result.output.final_assigned_code}")
-            logger.info(f"🚨 Audit Flags: {len(auditor_result.output.audit_flags)} flags")
-            logger.info(f"� Final Justification: {auditor_result.output.final_justification[:100]}...")
+            logger.debug(f"🎯 Final Code: {auditor_result.output.final_assigned_code}")
+            logger.debug(f"🚨 Audit Flags: {len(auditor_result.output.audit_flags)} flags")
+            logger.debug(f"� Final Justification: {auditor_result.output.final_justification[:100]}...")
             
             # Create JSON output for this document
             document_result = {
@@ -110,7 +116,7 @@ async def test_quick():
                 "date_of_service": em_input.date_of_service,
                 "provider": em_input.provider,
                 "original_text_length": len(em_input.text),
-                "original_text_preview": em_input.text[:500] + "..." if len(em_input.text) > 500 else em_input.text,
+                "original_text_preview": em_input.text,
                 "enhancement_agent": {
                     "assigned_code": enhancement_result.output.assigned_code,
                     "justification": enhancement_result.output.justification,
@@ -126,11 +132,11 @@ async def test_quick():
                     "final_justification": auditor_result.output.final_justification,
                     "audit_flags": auditor_result.output.audit_flags,
                     "billing_ready_note": auditor_result.output.billing_ready_note,
-                    "final_code_recommendations": {
-                        "code_99212": auditor_result.output.final_code_recommendations.code_99212,
-                        "code_99213": auditor_result.output.final_code_recommendations.code_99213,
-                        "code_99214": auditor_result.output.final_code_recommendations.code_99214,
-                        "code_99215": auditor_result.output.final_code_recommendations.code_99215,
+                    "code_evaluations": {
+                        "code_99212_evaluation": auditor_result.output.code_evaluations.code_99212_evaluation,
+                        "code_99213_evaluation": auditor_result.output.code_evaluations.code_99213_evaluation,
+                        "code_99214_evaluation": auditor_result.output.code_evaluations.code_99214_evaluation,
+                        "code_99215_evaluation": auditor_result.output.code_evaluations.code_99215_evaluation,
                     }
                 },
                 "timestamp": datetime.now().isoformat(),
@@ -146,11 +152,27 @@ async def test_quick():
             with open(f'test_results/{output_filename}', "w", encoding="utf-8") as f:
                 json.dump(document_result, f, indent=2, ensure_ascii=False)
             
-            logger.info(f"💾 Document result saved to: {output_filename}")
+            logger.debug(f"💾 Document result saved to: {output_filename}")
             
-            # Add to consolidated results
+            # Move processed file to completed directory
+            # if em_input.document_id and Path(f"data/samples/{em_input.document_id}.pdf").exists():
+            #     try:
+            #         source_file = Path(f"data/samples/{em_input.document_id}.pdf")
+            #         destination_file = completed_dir / source_file.name
+            #         if destination_file.exists():
+            #             stem = destination_file.stem
+            #             suffix = destination_file.suffix
+            #             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            #             destination_file = completed_dir / f"{stem}_{timestamp}{suffix}"
+                    
+            #         shutil.move(str(source_file), str(destination_file))
+            #         logger.debug(f"📁 File moved to: {destination_file}")
+            #     except Exception as move_error:
+            #         logger.warning(f"⚠️ Could not move file {em_input.document_id}: {str(move_error)}")
+            # else:
+            #     logger.debug(f"📄 No file path available for {em_input.document_id}, skipping file move")
+            
             all_results.append(document_result)
-            
             logger.debug(f"✅ Document {i}/{len(em_inputs)} completed successfully!")
             logger.debug("-" * 60)
             
@@ -176,7 +198,7 @@ async def test_quick():
             "successful_documents": len([r for r in all_results if "error" not in r]),
             "failed_documents": len([r for r in all_results if "error" in r]),
             "test_timestamp": datetime.now().isoformat(),
-            "test_type": "quick_test_multiple_documents"
+            "test_type": "test_multiple_documents"
         },
         "results": all_results
     }
@@ -201,21 +223,21 @@ async def test_quick():
         sample_result = all_results[0].copy()
         # Truncate long fields for display
         if "original_text_preview" in sample_result:
-            sample_result["original_text_preview"] = sample_result["original_text_preview"][:200] + "..."
+            sample_result["original_text_preview"] = sample_result["original_text_preview"]
         for agent in ["enhancement_agent", "auditor_agent"]:
             if agent in sample_result:
                 if "justification" in sample_result[agent]:
-                    sample_result[agent]["justification"] = sample_result[agent]["justification"][:100] + "..."
+                    sample_result[agent]["justification"] = sample_result[agent]["justification"]
                 if "final_justification" in sample_result[agent]:
-                    sample_result[agent]["final_justification"] = sample_result[agent]["final_justification"][:100] + "..."
+                    sample_result[agent]["final_justification"] = sample_result[agent]["final_justification"]
                 if "billing_ready_note" in sample_result[agent]:
-                    sample_result[agent]["billing_ready_note"] = sample_result[agent]["billing_ready_note"][:100] + "..."
+                    sample_result[agent]["billing_ready_note"] = sample_result[agent]["billing_ready_note"]
                 if "code_recommendations" in sample_result[agent]:
                     for code in sample_result[agent]["code_recommendations"]:
-                        sample_result[agent]["code_recommendations"][code] = sample_result[agent]["code_recommendations"][code][:50] + "..."
-                if "final_code_recommendations" in sample_result[agent]:
-                    for code in sample_result[agent]["final_code_recommendations"]:
-                        sample_result[agent]["final_code_recommendations"][code] = sample_result[agent]["final_code_recommendations"][code][:50] + "..."
+                        sample_result[agent]["code_recommendations"][code] = sample_result[agent]["code_recommendations"][code]
+                if "code_evaluations" in sample_result[agent]:
+                    for code in sample_result[agent]["code_evaluations"]:
+                        sample_result[agent]["code_evaluations"][code] = sample_result[agent]["code_evaluations"][code]
         
         logger.debug(json.dumps(sample_result, indent=2, ensure_ascii=False))
         logger.debug("=" * 80)
@@ -228,7 +250,7 @@ def main():
     try:
         asyncio.run(test_quick())
     except KeyboardInterrupt:
-        logger.info("⏹️ Test interrupted by user")
+        logger.error("⏹️ Test interrupted by user")
     except Exception as e:
         logger.error(f"💥 Test failed with error: {str(e)}")
 

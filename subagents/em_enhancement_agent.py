@@ -20,8 +20,8 @@ async def main(input_payload: dict) -> dict:
         # Parse input
         data = EMInput(**input_payload)
         
-        logger.info(f"🤖 Enhancement Agent: Starting analysis for {data.document_id}")
-        logger.info(f"📄 Document text length: {len(data.text)} characters")
+        logger.debug(f"🤖 Enhancement Agent: Starting analysis for {data.document_id}")
+        logger.debug(f"📄 Document text length: {len(data.text)} characters")
         
         # Prepare context for the AI agent
         user_prompt = f"""
@@ -39,32 +39,33 @@ async def main(input_payload: dict) -> dict:
         
         Please analyze this medical progress note comprehensively."""
         
-        logger.info(f"🧠 Enhancement Agent: Sending prompt to AI model...")
-        logger.info(f"📝 Prompt preview: {user_prompt[:200]}...")
+        logger.debug(f"🧠 Enhancement Agent: Sending prompt to AI model...")
+        logger.debug(f"📝 Prompt preview: {user_prompt[:200]}...")
         
         # Run the PydanticAI agent
         result = await em_enhancement_agent.run(user_prompt)
         
-        logger.info(f"✅ Enhancement Agent: Received response from AI model")
-        logger.info(f"🎯 Enhancement Agent: Assigned code {result.data.assigned_code}")
-        logger.info(f"📋 Enhancement Agent: Justification length: {len(result.data.justification)} characters")
+        logger.debug(f"✅ Enhancement Agent: Received response from AI model")
+        logger.debug(f"🎯 Enhancement Agent: Assigned code {result.output.assigned_code}")
+        logger.debug(f"📋 Enhancement Agent: Justification length: {len(result.output.justification)} characters")
         
         # Log code recommendations
-        logger.info(f"📊 Enhancement Agent: Code recommendations generated:")
-        logger.info(f"  • 99212: {result.data.code_recommendations.code_99212[:100]}...")
-        logger.info(f"  • 99213: {result.data.code_recommendations.code_99213[:100]}...")
-        logger.info(f"  • 99214: {result.data.code_recommendations.code_99214[:100]}...")
-        logger.info(f"  • 99215: {result.data.code_recommendations.code_99215[:100]}...")
+        logger.debug(f"📊 Enhancement Agent: Code recommendations generated:")
+        logger.debug(f"  • 99212: {result.output.code_recommendations.code_99212[:100]}...")
+        logger.debug(f"  • 99213: {result.output.code_recommendations.code_99213[:100]}...")
+        logger.debug(f"  • 99214: {result.output.code_recommendations.code_99214[:100]}...")
+        logger.debug(f"  • 99215: {result.output.code_recommendations.code_99215[:100]}...")
         
         # Return structured response
         response = EMEnhancementOutput(
             document_id=data.document_id,
-            assigned_code=result.data.assigned_code,
-            justification=result.data.justification,
-            code_recommendations=result.data.code_recommendations
+            text=data.text,
+            assigned_code=result.output.assigned_code,
+            justification=result.output.justification,
+            code_recommendations=result.output.code_recommendations
         ).model_dump()
         
-        logger.info(f"🎉 Enhancement Agent: Successfully completed analysis for {data.document_id}")
+        logger.debug(f"🎉 Enhancement Agent: Successfully completed analysis for {data.document_id}")
         return response
         
     except Exception as e:

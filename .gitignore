@@ -12,7 +12,7 @@ Publish
 project.lock.json
 
 /packages
-/TestResults
+test_results/
 
 /tools/NuGet.exe
 /App_Data
