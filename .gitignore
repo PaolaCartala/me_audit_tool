@@ -12,12 +12,16 @@ Publish
 project.lock.json
 
 /packages
-test_results/
+run_tests/
 
 /tools/NuGet.exe
 /App_Data
 /secrets
-/data
+/data/35_test/
+/data/500_run_0707/
+/data/completed/
+/data/samples/
+/data/500_data/
 .secrets
 appsettings.json
 local.settings.json
@@ -28,13 +32,12 @@ dist
 # Local python packages
 .python_packages/
 .env
-__init__.py
 
 # Python Environments
 .env
-.venv
+.venv*
 env/
-.venv/
+.venv/*
 ENV/
 env.bak/
 venv.bak/

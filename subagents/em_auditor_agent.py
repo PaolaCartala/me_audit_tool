@@ -39,13 +39,11 @@ async def main(input_payload: dict) -> dict:
         - 99214: {data.code_recommendations.code_99214}
         - 99215: {data.code_recommendations.code_99215}
         
-        AUDIT REQUIREMENTS:
-        Please evaluate this E/M coding assignment and recommendations for compliance and accuracy.
-        Provide final code assignment, refined recommendations, and any compliance flags.
+        TASK: Audit coding assignment for compliance and accuracy. Provide final code assignment and any compliance flags.
         """
         
-        logger.debug(f"🧠 Auditor Agent: Sending audit request to AI model...")
-        logger.debug(f"📝 Auditor Agent: Prompt preview: {user_prompt[:200]}...")
+        logger.debug(f"🧠 Auditor Agent: Sending optimized audit request to AI model...")
+        logger.debug(f"📝 Auditor Agent: Optimized prompt length: {len(user_prompt)} characters")
         
         # Run the PydanticAI agent
         result = await em_auditor_agent.run(user_prompt)
@@ -54,6 +52,14 @@ async def main(input_payload: dict) -> dict:
         logger.debug(f"🎯 Auditor Agent: Final assigned code {result.output.final_assigned_code}")
         logger.debug(f"🚨 Auditor Agent: Found {len(result.output.audit_flags)} audit flags")
         logger.debug(f"💰 Auditor Agent: Billing note length: {len(result.output.billing_ready_note)} characters")
+        logger.debug(f"📊 Auditor Agent: Confidence - Score: {result.output.confidence.score}%, Tier: {result.output.confidence.tier}")
+        logger.debug(f"🧠 Auditor Agent: Confidence reasoning: {result.output.confidence.reasoning[:150]}...")
+        
+        # Log score deductions if any
+        if result.output.confidence.score_deductions:
+            logger.debug(f"⚠️ Auditor Agent: Score deductions:")
+            for deduction in result.output.confidence.score_deductions:
+                logger.debug(f"  {deduction}")
         
         # Log audit flags if any
         if result.output.audit_flags:
@@ -78,7 +84,8 @@ async def main(input_payload: dict) -> dict:
             final_assigned_code=result.output.final_assigned_code,
             final_justification=result.output.final_justification,
             code_evaluations=result.output.code_evaluations,
-            billing_ready_note=result.output.billing_ready_note
+            billing_ready_note=result.output.billing_ready_note,
+            confidence=result.output.confidence
         ).model_dump()
         
         logger.debug(f"🎉 Auditor Agent: Successfully completed audit for {data.document_id}")

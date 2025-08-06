@@ -2,16 +2,15 @@ import logging
 
 import structlog
 
-# logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(message)s'
-)
-
-# Configure structlog
-logging.getLogger().addHandler(logging.StreamHandler())
-
-logging.getLogger().setLevel(logging.INFO)
+# Configure logging only once and avoid duplicate handlers
+if not logging.getLogger().handlers:
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+else:
+    # If handlers already exist, just set the level
+    logging.getLogger().setLevel(logging.INFO)
 
 # Configure structlog to use the standard library's logging system
 structlog.configure(
@@ -27,7 +26,7 @@ structlog.configure(
     wrapper_class=structlog.make_filtering_bound_logger(logging.INFO),
     context_class=dict,
     logger_factory=structlog.stdlib.LoggerFactory(),
-    cache_logger_on_first_use=False,
+    cache_logger_on_first_use=True,
 )
 
 logger = structlog.get_logger()

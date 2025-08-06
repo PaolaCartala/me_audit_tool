@@ -5,20 +5,42 @@ import azure.functions as func
 from dotenv import load_dotenv
 
 from models.pydantic_models import EMInput, EMEnhancementOutput, em_enhancement_agent
+from utils.html_processor import parse_payload_to_eminput
 from settings import logger
+from pydantic_ai.mcp import MCPServerSSE, MCPServerStreamableHTTP, MCPServerStdio
+import json
 
 # Load environment variables
 load_dotenv()
 
 
-async def main(input_payload: dict) -> dict:
+async def main(input_payload) -> dict:
     """
     E/M Enhancement Agent - Stage D
     Analyzes medical progress notes and assigns appropriate E/M codes with justifications
     """
     try:
         # Parse input
-        data = EMInput(**input_payload)
+        # server = MCPServerSSE(url=os.getenv("MCP_API_URL"), headers={"X-API-Key": os.getenv("MCP_API_KEY")})
+        # async with server:
+        #     tools = await server.list_tools()
+        #     logger.info(f"🔧 Available tools: {tools}")
+        #     response = await server.call_tool(tool_name="appointment-progressnote", arguments={"documentId": input_payload})
+            #response = await server.call_tool(tool_name="appointment-dictation", arguments={"appointmentId": "563543C8-23FF-481B-93DE-1D2C93959DE8"})
+        
+        response = parse_payload_to_eminput(input_payload)
+
+        logger.info(f"Received document for analysis: {response['document']}")
+
+        # Parse the response into json
+        data = EMInput(
+            document_id=response['document']['id'],
+            date_of_service=response['document']['dateOfService'],
+            provider=response['document']['provider'],
+            patient_name= response['document']['patientName'],
+            text=response['document']['fileContent']['data'],
+            patient_id=response['document']['patientId'],
+        )
         
         logger.debug(f"🤖 Enhancement Agent: Starting analysis for {data.document_id}")
         logger.debug(f"📄 Document text length: {len(data.text)} characters")
@@ -32,15 +54,12 @@ async def main(input_payload: dict) -> dict:
         Medical Progress Note:
         {data.text}
         
-        ANALYSIS REQUIRED:
-        1. Assign the most appropriate E/M code (99212, 99213, 99214, or 99215)
-        2. Provide detailed justification for the assigned code
-        3. For ALL codes (99212, 99213, 99214, 99215), specify what additional information would be needed to justify each level
+        TASK: Assign appropriate E/M code (99212-99215) with justification.
+        For each code level, specify what additional documentation would be needed.
+        """
         
-        Please analyze this medical progress note comprehensively."""
-        
-        logger.debug(f"🧠 Enhancement Agent: Sending prompt to AI model...")
-        logger.debug(f"📝 Prompt preview: {user_prompt[:200]}...")
+        logger.debug(f"🧠 Enhancement Agent: Sending optimized prompt to AI model...")
+        logger.debug(f"📝 Optimized prompt length: {len(user_prompt)} characters")
         
         # Run the PydanticAI agent
         result = await em_enhancement_agent.run(user_prompt)

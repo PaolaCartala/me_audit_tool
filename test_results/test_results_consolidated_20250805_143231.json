@@ -1,0 +1,64 @@
+{
+  "test_summary": {
+    "total_documents": 1,
+    "successful_documents": 1,
+    "failed_documents": 0,
+    "test_timestamp": "2025-08-05T14:32:31.561960",
+    "test_type": "test_sequential_embedded_guidelines",
+    "total_processing_time_seconds": 88.28731346130371,
+    "average_time_per_document": 88.28731346130371
+  },
+  "results": [
+    {
+      "document_id": "AUDIT_FLAGS_20250805_143103",
+      "patient_name": "Williams, Sarah",
+      "patient_id": "2FB4C95F-E296-4266-95C9-CB549E2B9491",
+      "date_of_service": "2025-01-20 14:15:00.000",
+      "provider": "Dr. Jennifer Johnson",
+      "original_text_length": 1427,
+      "original_text_preview": "CONFIDENTIAL\nMEDICAL/PROGRESS REPORT\nPATIENT NAME:\nWilliams, Sarah #987654321\nDATE OF BIRTH:\nJune 8, 1980\nDATE OF SERVICE:\nJanuary 20, 2025\nCHIEF COMPLAINT:\nPatient here for follow-up. Some issues with medications.\nHISTORY OF PRESENT ILLNESS:\nPatient is doing okay. Has some complaints. Taking medications most of the time. Blood pressure seems fine. Sugar levels variable. Had some tests done recently but results not available yet. Patient reports feeling tired sometimes. No major complaints today.\nPAST MEDICAL HISTORY:\nDiabetes and high blood pressure. Maybe some other things.\nMEDICATIONS:\nPatient takes several medications. Details not available at this time.\nALLERGIES:\nPatient mentions something about allergies but not sure what exactly.\nSOCIAL HISTORY:\nOccasional smoker. Social drinking.\nPHYSICAL EXAMINATION:\nVital Signs:\nBP elevated, other vitals stable\nGeneral:\nPatient appears well\nOther systems:\nExamination largely normal\nASSESSMENT:\n1. Diabetes - continue management\n2. Hypertension - adjust as needed\n3. Patient education provided\nPLAN:\nContinue current medications. Follow up as needed. Patient to call if problems. Will review test results when available.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+      "enhancement_agent": {
+        "assigned_code": "99213",
+        "justification": "Based on the AMA 2025 guidelines, the most appropriate code for this encounter is 99213. The visit involves two stable chronic illnesses (diabetes and hypertension). There is no indication of an acute exacerbation, progression, or complications. The data reviewed is limited, as the provider notes that recent test results are not available yet. Risk is low: the patient's chronic conditions are being continued without changes to the management plan today, despite mention that blood pressure is elevated and sugars are variable. The plan is for ongoing management and patient education, with follow-up as needed. There is no documentation of medication changes, new tests ordered, or moderate/high-risk interventions. The documented MDM elements (Number/Complexity of Problems: 2 stable chronic illnesses; Data: limited, as recent test results not yet available; Risk: low, no significant changes or new interventions) meet criteria for low MDM, which supports 99213. There is also no mention of total time spent, so time-based coding is not supported here.",
+        "code_recommendations": {
+          "code_99212": "- Focus documentation on only one minor/self-limited problem being addressed.\n- Minimize data reviewed or ordered (e.g., no new labs, no significant record review).\n- Document only minimal risk interventions (reassurance, OTC recommendations, no prescription management or chronic disease follow-up).\n- Ensure no new prescriptions, changes in management, or data interpretation is documented.",
+          "code_99213": "- Clearly state both diabetes and hypertension are stable (no concern for progression or side effects).\n- Note all management decisions are routine and low risk (e.g., continuing current medications without changes, no new tests ordered).\n- There should be no additional data reviewed beyond standard labs, and no moderate risk interventions.\n- Clearly document that patient education is routine and related to stable, chronic issues.",
+          "code_99214": "- Document evidence of at least moderate complexity, e.g., an exacerbation or complication of diabetes or hypertension (e.g., hypoglycemic event, hypertensive crisis, or significant medication side effect).\n- Note review and independent interpretation of lab/imaging results or communication with another physician about the management.\n- Indicate a moderate risk action taken: prescription drug management changes, new medication started, or a clear change in management approach.\n- Include more detail about functional impact and justification for enhanced monitoring or intervention.",
+          "code_99215": "- Document severe exacerbation or progression of a chronic problem or evidence of an acute condition posing a threat to life or limb (e.g., severe hypoglycemia, hypertensive emergency, diabetic ketoacidosis, or suspicion thereof).\n- Detail extensive data review (e.g., independent review of test data, discussion/coordination of care with multiple specialists, or review/coordination requiring significant provider time).\n- Note a high-risk intervention: decision for hospital admission, major surgery, or immediate/urgent high-risk treatment.\n- Clearly record total time if exceeding 40 minutes, including high-complexity care coordination and management activities."
+        }
+      },
+      "auditor_agent": {
+        "final_assigned_code": "99213",
+        "final_justification": "Per AMA 2025 guidelines, CPT 99213 (low MDM) is supported. This visit addresses two stable chronic illnesses (diabetes and hypertension) with no documentation of exacerbation, progression, or side effects. No new tests/orders or medication adjustments are made. The plan involves continuing current management and routine education. Data review is limited, since labs were not available for review on the encounter date. Risk is low, as there is no prescription change, no new diagnosis, and management is stable. Time is not documented sufficiently for time-based coding. All required code components for 99213 MDM are met: problems (2 stable chronic illnesses), data (limited—pending labs), risk (no changes, stable mgmt).",
+        "audit_flags": [
+          "Past medical, medication, and allergy documentation is vague; specific medication details are lacking, which is a documentation quality risk but not a direct compliance violation for E/M level assignment under 2025 guidelines.",
+          "Test results are referenced but not reviewed/analyzed on this date, so data complexity is appropriately low. This should be clarified for future audits.",
+          "No specific medication change or new management action is documented, which helps verify appropriate low-risk MDM, but provider should clarify if any medication review was performed."
+        ],
+        "billing_ready_note": "Patient Name: Williams, Sarah    Date of Service: 2025-01-20    Provider: Dr. Jennifer Johnson\n\nChief Complaint:\nPatient here for follow-up of chronic conditions. Reports some issues with medications.\n\nHistory of Present Illness:\nPatient has established diagnoses of diabetes and hypertension. Both conditions currently appear stable, though blood pressure noted as elevated during today’s visit and patient reports variable blood sugar at home. No acute complaints reported. Patient continues to take prescribed medications as directed most of the time; specific medication details are not available at this visit. Recent laboratory tests were performed, but results are not yet available and were not reviewed today. Patient reports feeling tired occasionally, but no acute symptoms or complications.\n\nPast Medical History:\n1. Diabetes mellitus (stable, following chronic management plan)\n2. Hypertension (stable, ongoing management)\n\nMedications:\nOngoing, exact list not available at this visit.\n\nAllergies:\nNot clearly documented; to be clarified at next visit.\n\nSocial History:\nOccasional tobacco; social alcohol use.\n\nPhysical Examination:\nBP elevated; other vitals WNL; general appearance well; exams otherwise unremarkable.\n\nAssessment:\n1. Diabetes mellitus – continue management\n2. Hypertension – monitor, continue current treatment. BP will be re-evaluated on follow-up after labs are reviewed.\n\nPlan:\n- Continue current medication regimen\n- Routine patient education provided regarding disease control\n- Await pending lab results (to be reviewed at next visit)\n- Follow-up PRN or as scheduled, sooner for any new or worsening symptoms\n\nProvider attestation: This note was prepared using dictation software and reviewed for completeness and accuracy.\n\nMDM Level: Low complexity (99213 supported by two stable chronic illnesses, no acute exacerbations or management changes, and limited data review). Time criteria not documented for time-based coding.\n\nPatient acknowledged understanding of plan and instructions. Encounter completed without complication.\n\n[Provider signature line] Dr. Jennifer Johnson, MD",
+        "confidence": {
+          "score": 87,
+          "tier": "High",
+          "reasoning": "FACTORS INCREASING CONFIDENCE:\n- Both chronic conditions explicitly documented as stable without evidence of exacerbation or new complications\n- No prescription changes or new data reviewed, supporting low risk per AMA 2025\n- No time-based coding claimed, so level assignment is on clear MDM elements\n\nFACTORS DECREASING CONFIDENCE:\n- Medication details not specified; future documentation should include explicit prescription list for optimal clarity\n- Allergies/PMH incomplete; comprehensive ROS/history would further strengthen code defense\n- No specific mention of whether any medication review/discussion occurred during encounter\n- Test results not reviewed today could introduce ambiguity if in future this changes MDM",
+          "score_deductions": [
+            "- Score reduced by 7 points: Medication list/details and allergy documentation are vague or missing, which can impact audit robustness."
+          ]
+        },
+        "code_evaluations": {
+          "code_99212_evaluation": "The recommendations correctly highlight that 99212 is only justified if documentation is limited to one minor/self-limited problem without evidence of prescription or chronic disease management. This note clearly exceeds those criteria due to the active management of two chronic diseases.",
+          "code_99213_evaluation": "The recommendations accurately match the presented documentation. The elements of low MDM—two stable chronic illnesses, limited data review, low risk (no management changes, routine follow-up)—are all satisfied. The recommendations are complete, appropriate, and aligned with the AMA 2025 guidelines.",
+          "code_99214_evaluation": "The recommendations correctly state additional requirements for moderate complexity (exacerbation/progression, significant data review, or management change). These are not present in the provided note, so 99214 is not supported. Directions are appropriate and reinforce what's lacking for a higher code.",
+          "code_99215_evaluation": "The recommendations properly specify high complexity triggers (severe exacerbation, high-risk management, significant time/data review). The note does not contain such evidence, and the guidance is accurate about what would be needed for this level."
+        }
+      },
+      "timestamp": "2025-08-05T14:32:31.538642",
+      "processing_metadata": {
+        "enhancement_agent_model": "Azure OpenAI GPT-4.1 (embedded guidelines)",
+        "auditor_agent_model": "Azure OpenAI GPT-4.1 (embedded guidelines)",
+        "processing_time": "2025-08-05T14:32:31.538653",
+        "guidelines_method": "embedded_in_prompt",
+        "tools_used": false
+      }
+    }
+  ]
+}

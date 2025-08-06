@@ -1,9 +1,45 @@
 import os
 import glob
 import json
+import re
 
 import pandas as pd
 from datetime import datetime
+
+
+def clean_text_for_excel(text):
+    """
+    Clean text to remove characters that Excel cannot handle
+    """
+    if not isinstance(text, str):
+        return text
+    
+    # Remove or replace illegal XML characters that Excel can't handle
+    # Excel uses XML internally and these characters cause issues
+    illegal_chars = [
+        '\x00', '\x01', '\x02', '\x03', '\x04', '\x05', '\x06', '\x07', '\x08',
+        '\x0B', '\x0C', '\x0E', '\x0F', '\x10', '\x11', '\x12', '\x13', '\x14',
+        '\x15', '\x16', '\x17', '\x18', '\x19', '\x1A', '\x1B', '\x1C', '\x1D',
+        '\x1E', '\x1F'
+    ]
+    
+    # Remove illegal characters
+    for char in illegal_chars:
+        text = text.replace(char, '')
+    
+    # Replace some common problematic characters
+    text = text.replace('\x0B', ' ')  # Vertical tab
+    text = text.replace('\x0C', ' ')  # Form feed
+    text = text.replace('\x1F', ' ')  # Unit separator
+    
+    # Remove any remaining control characters (except \n, \r, \t)
+    text = re.sub(r'[\x00-\x08\x0B-\x0C\x0E-\x1F\x7F]', '', text)
+    
+    # Limit cell content length (Excel has a limit of ~32,767 characters per cell)
+    if len(text) > 32000:
+        text = text[:32000] + "... [truncated]"
+    
+    return text
 
 
 # folder = 'data/completed/35_test/test_results_jsons_new'
@@ -31,23 +67,26 @@ for path in json_paths:
         flags_text = '\n'.join([f"  {flag}" for flag in audit_flags])
         evaluation_parts.append(f"Audit flags:\n{flags_text}")
     rec = {
-        'Document ID': data.get('document_id'),
-        'Date of Service': data.get('date_of_service'),
-        'Provider': data.get('provider'),
-        'Assigned Code': data.get('enhancement_agent', {}).get('assigned_code', ''),
-        'E&M Code evaluation': '\n\n'.join(evaluation_parts)
+        'Document ID': clean_text_for_excel(data.get('document_id')),
+        'Patient Name': clean_text_for_excel(data.get('patient_name', 'Unknown Patient')),
+        'Patient ID': clean_text_for_excel(data.get('patient_id', '0000')),
+        'Date of Service': clean_text_for_excel(data.get('date_of_service')),
+        'Provider': clean_text_for_excel(data.get('provider')),
+        'Assigned Code': clean_text_for_excel(data.get('enhancement_agent', {}).get('assigned_code', '')),
+        'E&M Code Justification': clean_text_for_excel(data.get('enhancement_agent', {}).get('justification', '')),
+        'E&M Code Evaluation': clean_text_for_excel('\n\n'.join(evaluation_parts))
     }
     for code in ['99212', '99213', '99214', '99215']:
         enh_key = f'code_{code}'
         eval_key = f'code_{code}_evaluation'
         
-        # Get enhancement recommendations
+        # enhancement recommendations
         enh_text = data.get('enhancement_agent', {}) \
                        .get('code_recommendations', {}) \
                        .get(enh_key, '')
-        rec[f'E&M Code {code}'] = enh_text
+        rec[f'E&M Code {code}'] = clean_text_for_excel(enh_text)
         
-        # Get auditor evaluations
+        # auditor evaluations
         eval_text = data.get('auditor_agent', {}) \
                         .get('code_evaluations', {}) \
                         .get(eval_key, '')

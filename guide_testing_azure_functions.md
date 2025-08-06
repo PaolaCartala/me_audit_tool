@@ -1,5 +1,29 @@
 # Testing Guide - EM Audit Tool Azure Durable Functions
 
+## 🆕 New Features (August 2025)
+
+### Enhanced Auditor Agent with Advanced Confidence Scoring System
+
+#### 🎯 Confidence Assessment Object
+The auditor agent now returns a comprehensive confidence assessment with:
+- **Score**: Integer from 0-100 indicating auditor certainty
+- **Tier**: Confidence level label (Very High, High, Moderate, Low, Very Low)
+- **Reasoning**: Bulleted explanation of confidence factors
+- **Score Deductions**: Specific reasons why score is not 100 (if applicable)
+
+#### 📊 Confidence Tiers
+- **90-100 (Very High)**: Clear, unambiguous documentation fully supports the assigned code
+- **70-89 (High)**: Good documentation supports the code with minor gaps or ambiguities  
+- **50-69 (Moderate)**: Reasonable support for the code but some uncertainties or missing elements
+- **30-49 (Low)**: Limited support, significant gaps, or borderline between codes
+- **0-29 (Very Low)**: Poor documentation, major gaps, or conflicting evidence
+
+#### 🔧 Enhanced Features
+- **Structured Reasoning**: Bulleted lists showing factors that increase/decrease confidence
+- **Explicit Deductions**: Specific point deductions with explanations
+- **UI-Ready Labels**: Tier labels for frontend display
+- **Compliance Focus**: More thorough audit flags and documentation gaps detection
+
 ## Available URLs
 - **Health Check**: `https://audit-tool-emdvhafpa6h6h5fj.eastus2-01.azurewebsites.net/api/health`
 - **Start Orchestration from Samples**: `https://audit-tool-emdvhafpa6h6h5fj.eastus2-01.azurewebsites.net/api/orchestrations/from-samples`
@@ -85,6 +109,11 @@ Replace `{instance_id}` with the ID obtained in step 2.
 - Date of Service
 - Provider
 - Assigned Code
+- Confidence Score (0-100)
+- Confidence Tier (Very High/High/Moderate/Low/Very Low)
+- Confidence Reasoning (Bulleted explanation)
+- Score Deductions (Specific point reductions)
+- Audit Flags Count
 - E&M Code 99212
 - E&M Code 99212 evaluation
 - E&M Code 99213
@@ -137,11 +166,20 @@ GET https://audit-tool-emdvhafpa6h6h5fj.eastus2-01.azurewebsites.net/api/reports
                 "final_justification": "...",
                 "audit_flags": [],
                 "billing_ready_note": "...",
-                "final_code_recommendations": {
-                    "code_99212": "...",
-                    "code_99213": "...",
-                    "code_99214": "...",
-                    "code_99215": "..."
+                "confidence": {
+                    "score": 85,
+                    "tier": "High",
+                    "reasoning": "FACTORS INCREASING CONFIDENCE:\n- Comprehensive documentation of chronic conditions\n- Clear medical decision making elements\n- Well-documented physical examination\n- Appropriate time documentation\n\nFACTORS DECREASING CONFIDENCE:\n- External data review not explicitly documented\n- Some laboratory values mentioned but not detailed",
+                    "score_deductions": [
+                        "- Score reduced by 10 points: External data review not explicitly documented",
+                        "- Score reduced by 5 points: Laboratory results mentioned but values not specified"
+                    ]
+                },
+                "code_evaluations": {
+                    "code_99212_evaluation": "...",
+                    "code_99213_evaluation": "...",
+                    "code_99214_evaluation": "...",
+                    "code_99215_evaluation": "..."
                 }
             },
             "timestamp": "2025-07-03T...",
@@ -204,4 +242,27 @@ Processing time depends on:
 - Document length
 - Complexity of medical content
 - Azure OpenAI service load
+
+## 🚀 Deployment Commands
+
+### Azure login
+```bash
+az login
+```
+
+### Reset Deployment (Clean Start)
+```bash
+az functionapp restart --name audit-tool --resource-group AppliedAI
+```
+
+### Publish/Deploy
+```bash
+func azure functionapp publish audit-tool --force
+```
+
+### Verify Deployment
+After deployment, test the health endpoint:
+```bash
+curl https://audit-tool-g0bvdmfwgqc7gagu.eastus-01.azurewebsites.net/api/health
+```
 

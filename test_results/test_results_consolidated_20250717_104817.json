@@ -1,0 +1,57 @@
+{
+  "test_summary": {
+    "total_documents": 1,
+    "successful_documents": 1,
+    "failed_documents": 0,
+    "test_timestamp": "2025-07-17T10:48:17.433645",
+    "test_type": "test_sequential_embedded_guidelines",
+    "total_processing_time_seconds": 24.876476526260376,
+    "average_time_per_document": 24.876476526260376
+  },
+  "results": [
+    {
+      "document_id": "FDE075FB-4FE4-4915-9631-748E3E3698E5",
+      "patient_name": "_Test _2Patient",
+      "patient_id": "1EB3B84E-D185-4155-84B8-BA439D1A8380",
+      "date_of_service": "2023-06-19 11:02:00.000",
+      "provider": "Anna Bates",
+      "original_text_length": 784,
+      "original_text_preview": "CONFIDENTIAL\nMEDICAL/PROGRESS REPORT\nPATIENT NAME:\n_2Patient, _Test #123456789\nDATE OF BIRTH:\nFebruary 02, 1992\nDATE OF SERVICE:\nApril 20, 2023\nACUPUNCTURE NOTE:\nToday we did another acupuncture treatment. A total of 25 minutes were done with electrical stimulation and infrared. The patient tolerated this well. We will see them back then in follow up for the next acupuncture session and see what kind of relief they are getting moving forward.\nI did a kidney, heart and bladder energy movement treatment as well as a PENS treatment\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+      "enhancement_agent": {
+        "assigned_code": "99212",
+        "justification": "Per AMA 2025 E/M guidelines, code 99212 (established patient, straightforward MDM or 10-19 minutes) is the most appropriate selection based on the provided documentation. The note describes continued acupuncture therapy, but gives minimal detail on medical decision making: no significant new or worsening symptoms are presented, and clinical assessment is not provided. There is limited to no documentation regarding problems addressed, data reviewed/analyzed, or risk. Total time on the encounter is referenced as 25 minutes, but this appears related to the procedure (acupuncture) itself, not direct E/M time as defined by CPT for office visits. There is no documentation regarding history, examination findings, or clinical assessment. This supports only minimal or straightforward medical decision making. Consequently, the note does not meet requirements for 99213 or above. Coding for E/M should not be based solely on procedural time in this context unless accurately describing physician or QHP involvement. If a separate, billable E/M service was intended, additional history, examination, MDM details, or time spent by the provider would need to be clearly documented. Based on the data available, 99212 is the highest justifiable E/M code.",
+        "code_recommendations": {
+          "code_99212": "- Specify the problem addressed as minimal or self-limited and clarify that the encounter required minimal medical decision making.\n- Document that there were no major changes in the patient's condition, medication, or management plan.\n- Note that no significant data was reviewed or analyzed, and the risk is minimal.\n- If using time, clarify that 10–19 minutes were spent on medically appropriate E/M activities, separate from procedural time, by the provider.",
+          "code_99213": "- Document at least one stable chronic illness or an acute uncomplicated issue addressed during the encounter.\n- Include more detail on assessment, impression, and management planning to show low MDM complexity.\n- Specify if any diagnostic data (e.g., lab review, imaging) was reviewed or ordered.\n- If using time, indicate that 20–29 minutes were spent by the provider on E/M activities, separate from procedure.",
+          "code_99214": "- Clearly document a chronic condition with exacerbation, complication, or side effects, or an acute complicated injury/illness.\n- Provide details on additional data reviewed (e.g., diagnostic tests, imaging, communication with other providers).\n- Note moderate risk interventions (such as prescription drug management or decisions for further diagnostic tests).\n- If using time, document 30–39 minutes of total E/M time on the date of the encounter, specifying the provider's activities.",
+          "code_99215": "- Show management of a severe exacerbation, progression, or new high-risk problem (e.g., a condition posing a threat to life or bodily function).\n- Include extensive data review (multiple test interpretations, review of external records, discussions with other QHPs).\n- Clearly document a decision for high-risk interventions (e.g., major surgery, hospital admission).\n- If time-based, document 40–54 minutes of total qualifying E/M activities, detailing the physician/QHP’s contribution."
+        }
+      },
+      "auditor_agent": {
+        "final_assigned_code": "99212",
+        "final_justification": "Per the AMA 2025 E/M guidelines, code 99212 is appropriate when documentation supports only straightforward MDM: minimal or self-limited problems, little or no data reviewed, and minimal risk. The provided note solely addresses routine acupuncture with no new findings, no clinical assessment, no reported changes in patient condition, and no review of diagnostic data. The only time mentioned is 25 minutes for the procedure, which does not count toward E/M unless separately documented. No elements support higher levels of MDM or time criteria for 99213 and above. Therefore, 99212 is the correct code under current guidelines.",
+        "audit_flags": [
+          "No clear separation of E/M services from procedural acupuncture time; E/M time cannot be inferred from procedure duration per AMA CPT 2025 guidelines.",
+          "Lack of explicit problem statement, clinical assessment, history, or examination – documentation is insufficient for higher code levels (99213+).",
+          "Medical Decision Making (MDM) is not demonstrated beyond minimal, per embedded guidelines – no new or worsened problems, no significant management decisions, no data review/analysis.",
+          "The note lacks stated medical necessity for the E/M component; no acute changes, no complication management, and no documentation of new findings."
+        ],
+        "billing_ready_note": "CONFIDENTIAL\nMEDICAL/PROGRESS REPORT\nPATIENT NAME: _2Patient, _Test #123456789\nDATE OF BIRTH: February 02, 1992\nDATE OF SERVICE: April 20, 2023\nPROVIDER: Anna Bates\n\nAcupuncture Session Note:\nThe patient presented for a scheduled acupuncture session. A total of 25 minutes of acupuncture was performed using electrical stimulation and infrared therapy, including a kidney, heart, and bladder energy movement and PENS treatment. The patient tolerated the procedure well. No significant changes in symptoms or new problems were reported today. There were no changes in medical history, current assessment, or care plan, and no new diagnostic data was reviewed. The encounter did not involve additional evaluation or management outside of the scheduled procedure. The patient will return for follow-up acupuncture to assess ongoing relief.\n\nThis dictation was prepared using Dragon Medical voice recognition software; some errors may persist despite correction.",
+        "code_evaluations": {
+          "code_99212_evaluation": "The enhancement agent's recommendation for 99212 is correct and appropriately justified. The analysis correctly identifies that the existing documentation only supports minimal, straightforward MDM and that procedural time does not equate to E/M time as defined by CPT. There is no separated or detailed E/M component, so 99212 is the only defensible code given the record.",
+          "code_99213_evaluation": "The enhancement agent properly outlines that to code 99213, there must be documentation of a stable chronic problem, acute uncomplicated issue, or low-level data review/risk. The note lacks any such supporting details. Their recommendation to enhance documentation is appropriate and accurate per the 2025 AMA guidelines.",
+          "code_99214_evaluation": "The enhancement agent correctly notes that 99214 requires evidence of exacerbation, progression, or management of a moderate complexity problem, plus supporting data review or risk. Those are not present here. The guidance to enhance documentation aligns with CPT and AMA standards.",
+          "code_99215_evaluation": "The agent precisely states that 99215 requires documentation of high severity problems or risks, extensive data, and high-risk decision-making, none of which are currently documented. Their feedback is factually correct and supports compliance."
+        }
+      },
+      "timestamp": "2025-07-17T10:48:17.432356",
+      "processing_metadata": {
+        "enhancement_agent_model": "Azure OpenAI GPT-4 (embedded guidelines)",
+        "auditor_agent_model": "Azure OpenAI GPT-4 (embedded guidelines)",
+        "processing_time": "2025-07-17T10:48:17.432368",
+        "guidelines_method": "embedded_in_prompt",
+        "tools_used": false
+      }
+    }
+  ]
+}
