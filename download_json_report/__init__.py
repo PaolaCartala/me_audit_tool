@@ -23,22 +23,17 @@ async def main(req: func.HttpRequest, client: df.DurableOrchestrationClient) -> 
         )
 
     try:
-        # Use the test_summary and results from the orchestrator output
-        orchestrator_output = status.output
-        test_summary = orchestrator_output.get("test_summary", {})
-        results = orchestrator_output.get("results", [])
+        results = status.output.get("results", [])
         
-        # Create consolidated JSON exactly like test_quick.py
+        # Create consolidated JSON similar to test_quick.py
         consolidated_result = {
             "test_summary": {
-                "total_documents": test_summary.get("total_documents", len(results)),
-                "successful_documents": test_summary.get("successful_documents", len([r for r in results if "error" not in r])),
-                "failed_documents": test_summary.get("failed_documents", len([r for r in results if "error" in r])),
-                "test_timestamp": test_summary.get("test_timestamp", datetime.now().isoformat()),
-                "test_type": test_summary.get("test_type", "azure_durable_functions_processing"),
-                "instance_id": instance_id,
-                "total_processing_time_seconds": "N/A",
-                "average_time_per_document": "N/A"
+                "total_documents": len(results),
+                "successful_documents": len([r for r in results if "error" not in r]),
+                "failed_documents": len([r for r in results if "error" in r]),
+                "test_timestamp": datetime.now().isoformat(),
+                "test_type": "azure_durable_functions_processing",
+                "instance_id": instance_id
             },
             "results": results
         }

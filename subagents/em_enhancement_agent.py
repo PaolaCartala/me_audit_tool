@@ -5,7 +5,6 @@ import azure.functions as func
 from dotenv import load_dotenv
 
 from models.pydantic_models import EMInput, EMEnhancementOutput, em_enhancement_agent
-from utils.html_processor import parse_payload_to_eminput
 from settings import logger
 from pydantic_ai.mcp import MCPServerSSE, MCPServerStreamableHTTP, MCPServerStdio
 import json
@@ -21,18 +20,16 @@ async def main(input_payload) -> dict:
     """
     try:
         # Parse input
-        # server = MCPServerSSE(url=os.getenv("MCP_API_URL"), headers={"X-API-Key": os.getenv("MCP_API_KEY")})
-        # async with server:
-        #     tools = await server.list_tools()
-        #     logger.info(f"🔧 Available tools: {tools}")
-        #     response = await server.call_tool(tool_name="appointment-progressnote", arguments={"documentId": input_payload})
+        server = MCPServerSSE(url=os.getenv("MCP_API_URL"), headers={"X-API-Key": os.getenv("MCP_API_KEY")})
+        async with server:
+            tools = await server.list_tools()
+            logger.info(f"🔧 Available tools: {tools}")
+            response = await server.call_tool(tool_name="appointment-progressnote", arguments={"documentId": input_payload})
             #response = await server.call_tool(tool_name="appointment-dictation", arguments={"appointmentId": "563543C8-23FF-481B-93DE-1D2C93959DE8"})
-        
-        response = parse_payload_to_eminput(input_payload)
 
         logger.info(f"Received document for analysis: {response['document']}")
-
         # Parse the response into json
+        
         data = EMInput(
             document_id=response['document']['id'],
             date_of_service=response['document']['dateOfService'],

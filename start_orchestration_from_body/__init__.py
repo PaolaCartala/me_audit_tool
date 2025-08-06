@@ -9,34 +9,9 @@ import azure.durable_functions as df
 async def main(req: func.HttpRequest, client: df.DurableOrchestrationClient) -> func.HttpResponse:
     logging.info("Orchestration start from request body received.")
     try:
-        # Get the complete payload from the request body
-        try:
-            payload = req.get_json()
-            if not payload:
-                return func.HttpResponse(
-                    json.dumps({"error": "Request body is required with document payload"}),
-                    status_code=HTTPStatus.BAD_REQUEST,
-                    mimetype="application/json"
-                )
-        except ValueError as e:
-            return func.HttpResponse(
-                json.dumps({"error": "Invalid JSON in request body", "details": str(e)}),
-                status_code=HTTPStatus.BAD_REQUEST,
-                mimetype="application/json"
-            )
+        document_id = req.params.get("document_id")
 
-        # Validate payload structure
-        if "document" not in payload:
-            return func.HttpResponse(
-                json.dumps({"error": "Payload must contain 'document' field"}),
-                status_code=HTTPStatus.BAD_REQUEST,
-                mimetype="application/json"
-            )
-
-        logging.info(f"Starting orchestration for document: {payload['document'].get('id', 'N/A')}")
-        
-        # Start orchestration with the complete payload
-        instance_id = await client.start_new("em_coding_orchestrator", client_input=payload)
+        instance_id = await client.start_new("em_coding_orchestrator", client_input=document_id)
         logging.info(f"Orchestration started with ID: {instance_id}")
         return client.create_check_status_response(req, instance_id)
 
