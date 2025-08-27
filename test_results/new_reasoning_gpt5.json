@@ -1,0 +1,192 @@
+{
+    "test_summary": {
+        "total_documents": 1,
+        "successful_documents": 1,
+        "failed_documents": 0,
+        "test_timestamp": "2025-08-12T17:07:57.723364",
+        "test_type": "azure_durable_functions_processing",
+        "instance_id": "f1b6075e2ea7449297d38c21543bc139"
+    },
+    "results": [
+        {
+            "enhancement_agent": {
+                "document_id": "175ac3cb-e718-40c7-805a-5306dcadee8a",
+                "text": "## HISTORY\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  Patient states that she has been dealing with this pain for the past several weeks to months.  She states that it was excruciating 10 out of 10 low back pain with radiation of bilateral buttocks however no numbness tingling weakness in the bilateral lower extremities.  She even had a seek some injections and medications which provided only minimal relief now it is a 4 or 5 out of 10.  Patient states that her pain occurs a lot while she is sitting or when she is rising from sitting to standing and moving.\n\n## PAST MEDICAL HISTORY\nHep B complicating pregnancy.\n\n## MEDICATIONS\nMotrin and vitamin D\n\n## ALLERGIES\nNo known drug allergies\n\n## PHYSICAL EXAMINATION\nGeneral: Awake alert oriented, no acute distress.\nHEENT: Normocephalic atraumatic extract muscles intact\nPulmonary: No EXTR\nAbdomen: Obese female with a BMI of 45.\nNeurological: 5-5 strength throughout, sensation intact light touch throughout, negative Hoffmann's bilaterally, reflexes 2 out of 4 throughout, negative straight leg raise bilaterally.  Normal gait.\nMSK: Nontender palpation of cervical thoracic or lumbar spine or bilateral PSIS.\n\n## IMAGING\nMRI of the lumbar spine shows disc herniations at L3-L4 L4-L5 and L5-S1.  X-rays of the lumbar spine show no evidence of scoliosis however there is disc collapse particularly at L3-L4 and L4-L5.  There is evidence of spondylolisthesis at L3-L4.\n\n## IMPRESSIONS\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  I believe there is a component of discogenic and mechanical back pain involved with disc herniations at L3-L4 with spondylolisthesis at this level, L4-L5 and L5-S1.\n\n## PLAN\n1.  I discussed with this patient weight loss.\n2.  Physical therapy\n3.  Pain management referral\n4.  Pain medication with meloxicam she was explained it is a stronger version ibuprofen and is to be taken instead of her current ibuprofen.\n5.  Referral to Dr. Hares for abdominal access for anterior lumbar interbody fusion.\n6.  I discussed with the patient that if she feels conservative management she would be a candidate for anterior lumbar interbody fusion with posterior instrumentation and fusion from L3-S1.\n7.  Follow-up in 2 weeks, patient states that she will be in Romania for the next 3 or so weeks and will follow-up in approximately 3 to 4 weeks.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+                "assigned_code": "99214",
+                "justification": "Per AMA 2025 guidelines, this encounter supports CPT 99214, based on moderate MDM:\n\n**Problems Addressed**: The patient has multiple significant findings—multilevel lumbar disc herniations and spondylolisthesis—representing an acute complicated injury/chronic illness with exacerbation. Surgical consideration (ALIF from L3-S1) if conservative therapy fails indicates complexity beyond low MDM.\n\n**Data Reviewed/Analyzed**: Provider personally reviewed MRI and X-rays (unique tests), ordered/referral to pain management, referral to Dr. Hares for surgical access, and discussed surgical management options—meeting moderate data criteria (Category 1: review of results of >2 unique tests + ordering; Category 3: discussion of management with external physician—anticipated for surgical referral).\n\n**Risk**: Moderate risk is present given prescription drug management (meloxicam) and decision regarding potential major surgery (ALIF with posterior instrumentation and fusion) if conservative care fails.\n\n**Time**: Time not documented, but MDM is sufficient for 99214 selection.\n\nTherefore, the visit meets 2 of 3 MDM elements at the moderate level, supporting 99214.",
+                "code_recommendations": {
+                    "code_99212": "- Limit problems addressed to one self-limited or minor issue (e.g., simple back strain without imaging abnormalities)\n- Minimal or no data review beyond basic history and exam\n- No imaging review or ordering; no referrals\n- Low-intensity management such as advice on stretching, OTC medications\n- Minimal risk with no prescription drug management or surgery discussion\n- Document total time 10-19 minutes if not using MDM",
+                    "code_99213": "- Document problem scope as a stable chronic condition (e.g., mild osteoarthritis) or acute uncomplicated injury\n- Limit imaging review to one or two tests without extensive correlation or surgical planning\n- Low risk management: PT referral, OTC management, simple brace, no prescription drug management with notable side effects\n- No major surgery discussed; no high-level inter-provider coordination\n- If coding by time, document total time 20-29 minutes",
+                    "code_99214": "- Clearly document imaging findings and their clinical significance\n- Include at least 3 data elements: e.g., review MRI, review X-ray, order PT or labs, or discussion of case with another physician\n- Document prescription drug details and instructions\n- Describe surgical risk/benefit conversation if applicable, even if conditional\n- If using time, document total time 30-39 minutes",
+                    "code_99215": "- Document severe exacerbation or progression of illness posing threat to function (e.g., acute cauda equina signs, severe neuro deficits)\n- Review extensive external records and multiple test results from different sources\n- Note independent interpretation of imaging and detailed discussion with multiple external specialists\n- Document high risk decision-making: immediate decision for major surgery, hospitalization, or intensive drug monitoring\n- If time-based, document 40-54 minutes spent on date of encounter"
+                },
+                "performance_metrics": {
+                    "session_id": "enhancement_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "total_execution_time": 13.93,
+                    "breakdown": {
+                        "ai_inference_time": 10.64,
+                        "ai_inference_percentage": "76.37%",
+                        "mcp_operations_time": 1.26,
+                        "mcp_operations_percentage": "9.01%",
+                        "data_processing_time": 0.0,
+                        "agent_init_time": 1.06
+                    },
+                    "bottleneck_analysis": {
+                        "primary_bottleneck": "ai_model_inference"
+                    },
+                    "measured_at": "2025-08-12T17:06:46.437098"
+                }
+            },
+            "auditor_agent": {
+                "document_id": "175ac3cb-e718-40c7-805a-5306dcadee8a",
+                "text": "## HISTORY\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  Patient states that she has been dealing with this pain for the past several weeks to months.  She states that it was excruciating 10 out of 10 low back pain with radiation of bilateral buttocks however no numbness tingling weakness in the bilateral lower extremities.  She even had a seek some injections and medications which provided only minimal relief now it is a 4 or 5 out of 10.  Patient states that her pain occurs a lot while she is sitting or when she is rising from sitting to standing and moving.\n\n## PAST MEDICAL HISTORY\nHep B complicating pregnancy.\n\n## MEDICATIONS\nMotrin and vitamin D\n\n## ALLERGIES\nNo known drug allergies\n\n## PHYSICAL EXAMINATION\nGeneral: Awake alert oriented, no acute distress.\nHEENT: Normocephalic atraumatic extract muscles intact\nPulmonary: No EXTR\nAbdomen: Obese female with a BMI of 45.\nNeurological: 5-5 strength throughout, sensation intact light touch throughout, negative Hoffmann's bilaterally, reflexes 2 out of 4 throughout, negative straight leg raise bilaterally.  Normal gait.\nMSK: Nontender palpation of cervical thoracic or lumbar spine or bilateral PSIS.\n\n## IMAGING\nMRI of the lumbar spine shows disc herniations at L3-L4 L4-L5 and L5-S1.  X-rays of the lumbar spine show no evidence of scoliosis however there is disc collapse particularly at L3-L4 and L4-L5.  There is evidence of spondylolisthesis at L3-L4.\n\n## IMPRESSIONS\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  I believe there is a component of discogenic and mechanical back pain involved with disc herniations at L3-L4 with spondylolisthesis at this level, L4-L5 and L5-S1.\n\n## PLAN\n1.  I discussed with this patient weight loss.\n2.  Physical therapy\n3.  Pain management referral\n4.  Pain medication with meloxicam she was explained it is a stronger version ibuprofen and is to be taken instead of her current ibuprofen.\n5.  Referral to Dr. Hares for abdominal access for anterior lumbar interbody fusion.\n6.  I discussed with the patient that if she feels conservative management she would be a candidate for anterior lumbar interbody fusion with posterior instrumentation and fusion from L3-S1.\n7.  Follow-up in 2 weeks, patient states that she will be in Romania for the next 3 or so weeks and will follow-up in approximately 3 to 4 weeks.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+                "audit_flags": [
+                    "Time-based coding not supported—no time documented, so only MDM eligible for code selection.",
+                    "Potential upcoding risk flagged if provider's surgical discussion is purely hypothetical without sufficient detail; however, there is clear prescription medication management meeting moderate risk criteria.",
+                    "Data review meets moderate criteria through documented personal review of MRI and X-ray results plus multiple orders/referrals."
+                ],
+                "final_assigned_code": "99214",
+                "final_justification": {
+                    "supportedBy": "Supported by moderate MDM per AMA 2025 E/M guidelines.",
+                    "documentationSummary": [
+                        "Patient with multilevel lumbar disc herniations and L3-L4 spondylolisthesis causing exacerbated low back pain over several weeks to months.",
+                        "Reviewed MRI and X-rays performed, with detailed findings documented.",
+                        "Ordered new course of meloxicam (prescription drug management) and stopped OTC ibuprofen.",
+                        "Provided referrals to pain management and surgical specialist (Dr. Hares) for possible ALIF.",
+                        "Discussed potential future major surgery (L3–S1 ALIF with posterior instrumentation) if conservative treatment fails.",
+                        "Management plan included physical therapy, weight loss counseling, and follow-up."
+                    ],
+                    "mdmConsiderations": [
+                        "Problems Addressed: Multilevel disc herniations and spondylolisthesis—acute complicated injury/chronic illness with exacerbation, meeting moderate problem criteria.",
+                        "Data Reviewed/Analyzed: Met Category 1 (review of >2 unique tests and ordering referrals) and anticipated Category 3 discussion for potential surgery.",
+                        "Risk: Prescription drug management and decision regarding possible major surgery meet moderate risk criteria."
+                    ],
+                    "complianceAlerts": [
+                        "Ensure documentation supports that surgical referral is clinically indicated at this stage—avoid implying immediate high-risk decision if only exploratory discussion occurred."
+                    ]
+                },
+                "code_evaluations": {
+                    "code_99212_evaluation": {
+                        "mdmAssignmentReason": [
+                            "Would require only 1 self-limited or minor problem with minimal or no data review.",
+                            "Only OTC medication and simple advice—no prescription drug management or surgery discussion.",
+                            "Minimal risk management."
+                        ],
+                        "documentationEnhancementOpportunities": [
+                            "Clearly document that the encounter addressed only one simple problem if aiming for this level.",
+                            "Remove imaging reviews, multiple referrals, and surgical planning to remain compliant with straightforward MDM."
+                        ],
+                        "scoring_impact": "- -40 points: Multiple significant diagnoses documented, with advanced imaging and prescription drug management\n- -30 points: Surgical planning discussion elevates risk beyond minimal",
+                        "quick_tip": "99212 applies only to very uncomplicated follow-ups or minor acute issues with simple management—this case exceeds that."
+                    },
+                    "code_99213_evaluation": {
+                        "mdmAssignmentReason": [
+                            "Would require low MDM: stable chronic illness or acute uncomplicated injury.",
+                            "Limited data review (usually one or two tests) and low risk interventions like PT referral or OTC meds.",
+                            "No discussion of potential major surgery."
+                        ],
+                        "documentationEnhancementOpportunities": [
+                            "Limit imaging review to 1–2 tests without surgical referral to remain in low MDM.",
+                            "Remove prescription drug management with notable side effects."
+                        ],
+                        "scoring_impact": "- -25 points: Prescription drug management elevates risk to moderate\n- -25 points: Multiple imaging studies and referrals elevate data complexity",
+                        "quick_tip": "Once you add potentially risky prescription management or major surgery discussion, you move into moderate MDM territory."
+                    },
+                    "code_99214_evaluation": {
+                        "mdmAssignmentReason": [
+                            "Multiple significant spinal pathologies documented—disc herniations and spondylolisthesis.",
+                            "Reviewed MRI and X-ray results personally.",
+                            "Ordered prescription NSAID and referred to multiple specialists.",
+                            "Discussed possible major surgery if conservative measures fail (moderate risk)."
+                        ],
+                        "documentationEnhancementOpportunities": [
+                            "Clarify surgical risk/benefit discussion—document if patient is not yet committed or if surgery is contingent on failure of conservative care.",
+                            "Document discussions with referral providers to strengthen Category 3 data.",
+                            "Consider explicit statement of MDM reasoning for clarity."
+                        ],
+                        "scoring_impact": "- -10 points: Surgical discussion was conditional, not immediate—clear documentation needed to remove doubt",
+                        "quick_tip": "Explicitly tie imaging results and symptoms to your treatment plan—this strengthens compliance and coding accuracy."
+                    },
+                    "code_99215_evaluation": {
+                        "mdmAssignmentReason": [
+                            "Would require high MDM: severe exacerbation or threat to bodily function.",
+                            "Extensive data from multiple external sources and high risk interventions decided upon immediately.",
+                            "Immediate decision for major surgery, hospitalization, or intensive monitoring."
+                        ],
+                        "documentationEnhancementOpportunities": [
+                            "To meet 99215, document immediate need for major surgery and multiple external consultations/interventions.",
+                            "Include high-risk findings like severe neuro deficits or cauda equina signs."
+                        ],
+                        "scoring_impact": "- -35 points: No immediate high-risk decision documented\n- -35 points: Data review not extensive enough for high criteria",
+                        "quick_tip": "Reserve 99215 for the most complex, urgent cases requiring immediate high-level decision-making affecting life or bodily function."
+                    }
+                },
+                "billing_ready_note": "53-year-old Caucasian female presents with several weeks to months of worsening low back pain, previously excruciating (10/10) with radiation to bilateral buttocks, now 4–5/10 after minimal relief from injections and medications. Pain is worse with sitting or transitioning from sitting to standing.\n\n**Past Medical History:** Hepatitis B complicating pregnancy.\n**Medications:** Motrin, Vitamin D.\n**Allergies:** NKDA.\n\n**Physical Exam:** Alert and oriented, no acute distress. Normocephalic, atraumatic. Normal extraocular muscle movements. Lungs clear, abdomen obese (BMI 45). Neurological exam: 5/5 strength, intact light touch sensation, negative Hoffmann’s, reflexes 2+, negative straight leg raise, normal gait. Musculoskeletal: Non-tender spine and PSIS.\n\n**Imaging:** MRI lumbar spine: Disc herniations at L3–L4, L4–L5, L5–S1. X-ray lumbar spine: Disc collapse at L3–L4 and L4–L5, spondylolisthesis at L3–L4, no scoliosis.\n\n**Impression:** Multilevel lumbar disc herniations with spondylolisthesis at L3–L4; component of discogenic and mechanical back pain.\n\n**Plan:**\n1. Counsel on weight loss.\n2. Start physical therapy.\n3. Refer to pain management.\n4. Start meloxicam prescription in place of ibuprofen; counsel on use and risks.\n5. Refer to Dr. Hares for abdominal access evaluation for potential ALIF.\n6. Discuss possible ALIF with posterior instrumentation and fusion L3–S1 if conservative care fails.\n7. Follow-up in ~3–4 weeks after return from travel.\n\n**MDM:** Moderate complexity—multiple significant spinal pathologies with reviewed MRI and X-ray, prescription drug management, multiple referrals, and conditional discussion of possible major surgery. Meets 2 of 3 elements for moderate MDM per AMA 2025 guidelines.\n\n**E/M Code:** 99214 (MDM-based).",
+                "confidence": {
+                    "score": 92,
+                    "tier": "Very High",
+                    "score_deductions": [
+                        "- Score reduced by 8 points: Conditional nature of surgery discussion could be misinterpreted if not clearly stated as contingent on conservative care failure."
+                    ],
+                    "quick_tip": "When discussing possible surgery, clearly state whether it is being actively planned or just a potential future option—this prevents confusion in MDM risk assessment."
+                },
+                "performance_metrics": {
+                    "session_id": "auditor_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "total_execution_time": 16.46,
+                    "breakdown": {
+                        "ai_inference_time": 16.45,
+                        "ai_inference_percentage": "99.95%",
+                        "data_processing_time": 0.0,
+                        "data_processing_percentage": "0.0%",
+                        "agent_init_time": 0.01,
+                        "agent_init_percentage": "0.05%"
+                    },
+                    "bottleneck_analysis": {
+                        "primary_bottleneck": "ai_model_inference"
+                    },
+                    "measured_at": "2025-08-12T17:07:03.036559"
+                }
+            },
+            "timestamp": "2025-08-12T17:07:03.036582",
+            "processing_metadata": {
+                "enhancement_agent_model": "Azure OpenAI GPT-5",
+                "auditor_agent_model": "Azure OpenAI GPT-5",
+                "processing_time": "2025-08-12T17:07:03.036583"
+            },
+            "consolidated_performance": {
+                "total_execution_time": 30.39,
+                "activity_wrapper_time": 16.46,
+                "activity_session_id": "activity_auditor_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                "performance_breakdown": {
+                    "ai_processing": {
+                        "total_ai_time": 27.09,
+                        "ai_percentage": "89.14%",
+                        "enhancement_ai_time": 10.64,
+                        "auditor_ai_time": 16.45
+                    },
+                    "data_processing": {
+                        "total_data_time": 0.0,
+                        "data_percentage": "0.0%",
+                        "enhancement_data_time": 0.0,
+                        "auditor_data_time": 0.0
+                    },
+                    "phase_breakdown": {
+                        "enhancement_phase": {
+                            "duration": 13.93,
+                            "percentage": "45.84%"
+                        },
+                        "audit_phase": {
+                            "duration": 16.46,
+                            "percentage": "54.16%"
+                        }
+                    }
+                },
+                "bottleneck_analysis": {
+                    "primary_bottleneck": "ai_processing",
+                    "phase_bottleneck": "audit_phase"
+                },
+                "measured_at": "2025-08-12T17:07:03.036597"
+            }
+        }
+    ]
+}

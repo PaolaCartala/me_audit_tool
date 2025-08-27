@@ -124,55 +124,74 @@ This script now includes confidence score testing and validation.
 
 ## 🚀 Deployment
 
-### Reset and Clean Deployment
+## Environment-Based Deployment
 
-1. **Reset Azure Functions**:
-   ```bash
-   func azure functionapp delete <function-app-name> --resource-group <resource-group-name>
-   ```
+This project includes automated deployment scripts for different environments using Make and Bash.
 
-2. **Create new Function App**:
-   ```bash
-   az functionapp create \
-     --resource-group <resource-group-name> \
-     --consumption-plan-location <location> \
-     --runtime python \
-     --runtime-version 3.10 \
-     --functions-version 4 \
-     --name <function-app-name> \
-     --storage-account <storage-account-name>
-   ```
+### Environment Configuration
 
-### Publish to Azure
+The project supports two environments:
 
-1. **Build and deploy**:
-   ```bash
-   func azure functionapp publish <function-app-name> --python
-   ```
+- **Development Environment** (`.env.development`)
+- **Production Environment** (`.env.production`)
 
-2. **Configure application settings**:
-   ```bash
-   az functionapp config appsettings set \
-     --name <function-app-name> \
-     --resource-group <resource-group-name> \
-     --settings \
-     AZURE_OPENAI_ENDPOINT="https://your-instance.openai.azure.com/" \
-     AZURE_OPENAI_KEY="your-api-key" \
-     AZURE_OPENAI_DEPLOYMENT_NAME="your-deployment-name" \
-     AZURE_OPENAI_API_VERSION="2024-02-15-preview"
-   ```
+### Deployment Commands
 
-### Deployment Commands Summary
+#### Quick Deployment
 
+Deploy to **Development**:
 ```bash
-# Reset deployment (optional)
-func azure functionapp delete <function-app-name> --resource-group <resource-group-name>
-
-# Publish/Deploy
-func azure functionapp publish <function-app-name> --python
+make dev
 ```
 
-## 📊 API Endpoints
+Deploy to **Production**:
+```bash
+make prod
+```
+
+#### Manual Environment Setup
+
+Set up development environment:
+```bash
+make setup-dev
+# or
+./setup-env.sh dev
+```
+
+Set up production environment:
+```bash
+make setup-prod
+# or
+./setup-env.sh prod
+```
+
+#### Available Make Commands
+
+```bash
+make help        # Show all available commands
+make dev         # Deploy to development (audit-tool-dev)
+make prod        # Deploy to production (audit-tool)
+make setup-dev   # Setup dev environment only (no deploy)
+make setup-prod  # Setup prod environment only (no deploy)
+```
+
+### Deployment Process
+
+Each deployment command automatically:
+
+1. **Checks Azure Login**: Verifies if you're logged into Azure CLI (runs `az login` if needed)
+2. **Environment Setup**: Copies the appropriate `.env` file (development or production)
+3. **Function App Restart**: Restarts the target Azure Function App
+4. **Code Deployment**: Publishes the latest code using Azure Functions Core Tools
+
+### Prerequisites for Deployment
+
+- Azure CLI installed and configured
+- Azure Functions Core Tools v4
+- Proper permissions for the target resource group (`AppliedAI`)
+- Access to both function apps (`audit-tool` and `audit-tool-dev`)
+
+## �📊 API Endpoints
 
 ### Health Check
 ```http
@@ -244,25 +263,89 @@ For complete confidence system documentation, see [CONFIDENCE_TIERS.md](CONFIDEN
 
 ```
 em_audit_tool/
-├── auditor_agent_activity/          # Auditor agent Azure Function
+├── __init__.py                     # Package initialization
+├── constants.py                    # Application constants
+├── function_app.py                 # Main Azure Functions app configuration
+├── host.json                       # Azure Functions host configuration
+├── settings.py                     # Application settings and logger config
+├── requirements.txt                # Python dependencies
+├── local.settings.json             # Local development settings
+├── LICENSE                         # Project license
+├── README.md                       # Project documentation
+├── Makefile                        # Deployment automation
+├── setup-env.sh                    # Environment setup script
+├── .env.development                # Development environment variables
+├── .env.production                 # Production environment variables
+├── agents/                         # AI agent implementations
+│   ├── __init__.py
+│   ├── em_auditor_agent.py         # Core auditor agent
+│   ├── em_enhancement_agent.py     # Enhancement agent
+│   ├── em_progress_note_agent.py   # Progress note agent
+│   ├── optimized_em_auditor_agent.py    # Optimized auditor version
+│   ├── optimized_em_enhancement_agent.py # Optimized enhancement version
+│   ├── models/                     # Agent data models
+│   └── prompts/                    # Agent prompt templates
 ├── data/                           # Sample data and test files
-├── download_json_report/           # JSON report download function
-├── download_report/                # Excel report download function
-├── em_coding_orchestrator/         # Main orchestrator function
-├── enhancement_agent_activity/     # Enhancement agent Azure Function
-├── excel_export_activity/          # Excel export activity
+│   ├── __init__.py
+│   ├── pdf_processor.py            # PDF processing utilities
+│   ├── patient_intake.json         # Sample patient data
+│   ├── checkoutsheet_*.json        # Sample checkout sheets
+│   ├── dictation_success_*.json    # Sample dictation data
+│   ├── 35_test/                    # Test dataset (35 samples)
+│   ├── 500_data/                   # Large test dataset (500 samples)
+│   ├── 500_run_0707/              # Test run results
+│   ├── completed/                  # Processed samples
+│   └── samples/                    # Sample input files
+├── docs/                           # Documentation
+│   ├── CONFIDENCE_TIERS.md         # Confidence scoring documentation
+│   ├── guide_testing_azure_functions.md # Testing guide
+│   └── user_feedback_system.md     # User feedback system docs
+├── durable_functions/              # Azure Durable Functions
+│   ├── __init__.py
+│   ├── auditor_agent_activity/     # Auditor agent activity function
+│   ├── download_json_report/       # JSON report download function
+│   ├── download_report/            # Excel report download function
+│   ├── em_coding_orchestrator/     # Main orchestrator function
+│   ├── em_progress_note_orchestrator/ # Progress note orchestrator
+│   ├── enhancement_agent_activity/ # Enhancement agent activity
+│   ├── excel_export_activity/      # Excel export activity
+│   ├── get_feedback_analytics/     # Feedback analytics function
+│   ├── health/                     # Health check function
+│   ├── progress_note_agent_activity/ # Progress note agent activity
+│   ├── start_orchestration_from_body/ # Start orchestration from request body
+│   ├── start_orchestration_from_samples/ # Start orchestration from samples
+│   ├── progress_note_from_id/      # Start progress note processing
+│   └── submit_feedback/            # User feedback submission
 ├── guidelines/                     # Medical coding guidelines
-├── health/                        # Health check function
-├── models/                        # Pydantic models and AI agents
-├── run_tests/                     # Test results and reports
-├── start_orchestration_from_samples/ # Orchestration starter
-├── subagents/                     # Core agent implementations
-├── test_results/                  # Test output directory
-├── utils/                         # Utility functions
-├── function_app.py                # Main function app configuration
-├── host.json                      # Azure Functions host configuration
-├── requirements.txt               # Python dependencies
-└── local.settings.json            # Local development settings
+│   ├── ama_em_guideline.pdf        # AMA E/M guidelines (PDF)
+│   └── em_guideline.md             # E/M guidelines (Markdown)
+├── run_tests/                      # Test execution and results
+│   ├── 500_run.zip                 # Archived test runs
+│   ├── combined_results_*.xlsx     # Combined test results
+│   ├── test_results_*.json         # JSON test results
+│   └── 500_run/                    # Individual test run data
+├── services/                       # Business logic services
+│   ├── __init__.py
+│   └── feedback_service.py         # User feedback service
+├── test/                           # Test scripts and utilities
+│   ├── __init__.py
+│   ├── diagnose_mcp.py             # MCP diagnostic tools
+│   ├── get_headers.py              # HTTP header testing
+│   ├── json_to_excel_converter.py  # Data conversion utilities
+│   ├── test_agent.py               # Agent testing
+│   ├── test_enhacement_new.py      # Enhancement testing
+│   ├── test_feedback_endpoints.py  # Feedback API testing
+│   ├── test_latency.py             # Performance testing
+│   ├── test_optimized_agents.py    # Optimized agent testing
+│   └── test_quick.py               # Quick testing script
+├── test_results/                   # Test output and results
+│   ├── gpt5_result*.json           # GPT-5 test results
+│   ├── new_confidence.json         # Confidence system results
+│   ├── new_reasoning_*.json        # Reasoning test results
+│   ├── optimized_prompts.json      # Prompt optimization results
+│   └── result_*.json               # Various test results
+└── utils/                          # Utility functions and helpers
+    └── ...                         # Utility modules
 ```
 
 ## 🔧 Configuration

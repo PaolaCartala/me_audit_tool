@@ -1,5 +1,6 @@
-from models.pydantic_models import EMInput 
 from bs4 import BeautifulSoup
+
+from agents.models.pydantic_models import EMInput 
 from settings import logger
 
 

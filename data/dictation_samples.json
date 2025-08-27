@@ -1,0 +1,53 @@
+[
+  {
+    "dictation": {
+      "patientName": "Margaret Thompson",
+      "patientId": "615A29B6-5E42-4FCB-9E61-071C6A83AFB6",
+      "provider": "Dr. Arakelian Carol",
+      "dateOfService": "06/15/2025",
+      "createdBy": "Dr. Arakelian Carol",
+      "creationDate": "2025-06-15T14:30:00.000+00:00",
+      "dictationTypeName": "Progress Note",
+      "isNewPatient": false,
+      "fileType": "text",
+      "fileContent": {
+        "encoding": "text",
+        "data": "## PROGRESS NOTE - FOLLOW-UP VISIT\r\n\r\n67-year-old female returns for routine follow-up of Type 1 diabetes mellitus, hypertension, and atrial fibrillation.\n\n## INTERVAL HISTORY\r\n\r\nPatient reports stable glucose control with recent HbA1c of 7.2%. Blood pressure has been well-controlled on current regimen. Denies chest pain, palpitations, or shortness of breath. Atrial fibrillation remains in normal sinus rhythm on current medication. No episodes of hypoglycemia. Compliant with medications and monitoring.\n\n## CURRENT MEDICATIONS\r\n\r\nEliquis 2.5mg BID for anticoagulation, Metformin extended release, Insulin glargine 24 units at bedtime, Insulin lispro sliding scale with meals, Lisinopril 10mg daily\n\n## PHYSICAL EXAMINATION\r\n\r\nVitals: BP 128/78, HR 72 regular, T 98.2F, O2 sat 98% RA\nGeneral: Well-appearing female in no acute distress\nHeart: Regular rate and rhythm, no murmurs\nLungs: Clear to auscultation bilaterally\nExtremities: No peripheral edema, pulses intact bilaterally\nSkin: No diabetic lesions noted\n\n## LABORATORY RESULTS\r\n\r\nHbA1c: 7.2% (goal <7.5%), BUN/Creatinine: 18/1.1 (stable), INR: 2.1 (therapeutic)\n\n## ASSESSMENT AND PLAN\r\n\r\n67-year-old female with stable Type 1 DM, hypertension, and atrial fibrillation.\n\n1. Diabetes: Continue current insulin regimen, excellent control\n2. Hypertension: Continue Lisinopril, BP at goal\n3. Atrial fibrillation: Continue Eliquis, INR therapeutic\n4. Return in 3 months for routine follow-up\n5. Annual ophthalmology exam scheduled\n6. Continue home glucose monitoring"
+      }
+    }
+  },
+  {
+    "dictation": {
+      "patientName": "Margaret Thompson",
+      "patientId": "615A29B6-5E42-4FCB-9E61-071C6A83AFB6",
+      "provider": "Dr. Arakelian Carol",
+      "dateOfService": "04/22/2025",
+      "createdBy": "Dr. Arakelian Carol",
+      "creationDate": "2025-04-22T10:15:00.000+00:00",
+      "dictationTypeName": "Progress Note",
+      "isNewPatient": false,
+      "fileType": "text",
+      "fileContent": {
+        "encoding": "text",
+        "data": "## PROGRESS NOTE - ORTHOPEDIC FOLLOW-UP\r\n\r\n67-year-old female returns 2 weeks post-operatively from left total knee replacement surgery.\n\n## INTERVAL HISTORY\r\n\r\nPatient underwent left total knee replacement 2 weeks ago by Dr. Jeff. Post-operative course has been uncomplicated. Pain is well-controlled with prescribed medications. Physical therapy started last week with good progress. No signs of infection at surgical site. Some expected swelling and stiffness remain. Wound healing appropriately.\n\n## CURRENT MEDICATIONS\r\n\r\nPost-surgical regimen: Eliquis 2.5mg BID (resumed post-op), Hydrocodone-Acetaminophen 5mg-325mg PRN pain, Cyclobenzaprine 10mg for muscle spasms, Senna for constipation prevention, continues baseline diabetes medications\n\n## PHYSICAL EXAMINATION\r\n\r\nVitals: BP 132/80, HR 78, T 98.6F\nGeneral: Well-appearing female, ambulating with walker\nLeft Knee: Incision clean, dry, intact. No erythema or drainage. Mild swelling expected for post-op period. Range of motion 0-85 degrees (improving)\nExtremities: No signs of DVT, good circulation\n\n## ASSESSMENT AND PLAN\r\n\r\n67-year-old female 2 weeks post left total knee replacement with good recovery.\n\n1. Continue physical therapy 3x per week\n2. Pain management: Continue current regimen, wean as tolerated\n3. Anticoagulation: Continue Eliquis for DVT prophylaxis\n4. Wound care: Keep incision clean and dry\n5. Weight-bearing as tolerated with assistive device\n6. Follow-up with orthopedic surgeon in 2 weeks\n7. Return to clinic PRN or for any concerning symptoms"
+      }
+    }
+  },
+  {
+    "dictation": {
+      "patientName": "Margaret Thompson",
+      "patientId": "615A29B6-5E42-4FCB-9E61-071C6A83AFB6",
+      "provider": "Dr. Arakelian Carol",
+      "dateOfService": "02/10/2025",
+      "createdBy": "Dr. Arakelian Carol",
+      "creationDate": "2025-02-10T11:45:00.000+00:00",
+      "dictationTypeName": "Progress Note",
+      "isNewPatient": false,
+      "fileType": "text",
+      "fileContent": {
+        "encoding": "text",
+        "data": "## PROGRESS NOTE - VASCULAR FOLLOW-UP\r\n\r\n67-year-old female with history of bilateral pulmonary embolism returns for follow-up of left calf pain and concern for possible DVT.\n\n## INTERVAL HISTORY\r\n\r\nPatient presents with 2-week history of left calf pain, described as dull and throbbing, intensity 5/10. Pain worsened with movement and improved with rest and warm showers. Given history of bilateral pulmonary embolism 6 years ago, patient concerned about recurrent clot. No shortness of breath, chest pain, or leg swelling noted. Currently on anticoagulation therapy.\n\n## PAST MEDICAL HISTORY\r\n\r\nSignificant for bilateral pulmonary embolism (2019), Type 1 diabetes mellitus, hypertension, atrial fibrillation, recent left knee arthroscopy 6 months ago\n\n## CURRENT MEDICATIONS\r\n\r\nEliquis 2.5mg BID, Metformin, insulin regimen, Lisinopril\n\n## PHYSICAL EXAMINATION\r\n\r\nVitals: BP 125/75, HR 75, T 98.4F\nGeneral: Well-appearing female, mild anxiety\nExtremities: Left calf tender to palpation, no visible swelling, no erythema, negative Homan's sign, pulses intact\nRespiratory: Clear to auscultation, no evidence of respiratory distress\n\n## DIAGNOSTIC STUDIES\r\n\r\nDuplex ultrasound left lower extremity ordered to rule out DVT\n\n## ASSESSMENT AND PLAN\r\n\r\n67-year-old female with left calf pain, rule out DVT given history of PE.\n\n1. Duplex ultrasound left leg to rule out DVT\n2. Continue current anticoagulation\n3. Symptomatic care with rest, elevation, warm compresses\n4. Return immediately if worsening pain, swelling, or respiratory symptoms\n5. Follow-up in 1 week or when ultrasound results available\n6. Consider PT evaluation if no DVT found"
+      }
+    }
+  }
+]

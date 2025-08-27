@@ -1,0 +1,91 @@
+{
+    "test_summary": {
+        "total_documents": 1,
+        "successful_documents": 1,
+        "failed_documents": 0,
+        "test_timestamp": "2025-08-13T17:49:41.882825",
+        "test_type": "azure_durable_functions_processing",
+        "instance_id": "de902b372df74a77a9d04373b7d9ff00"
+    },
+    "results": [
+        {
+            "enhancement_agent": {
+                "document_id": "175ac3cb-e718-40c7-805a-5306dcadee8a",
+                "text": "## HISTORY\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  Patient states that she has been dealing with this pain for the past several weeks to months.  She states that it was excruciating 10 out of 10 low back pain with radiation of bilateral buttocks however no numbness tingling weakness in the bilateral lower extremities.  She even had a seek some injections and medications which provided only minimal relief now it is a 4 or 5 out of 10.  Patient states that her pain occurs a lot while she is sitting or when she is rising from sitting to standing and moving.\n\n## PAST MEDICAL HISTORY\nHep B complicating pregnancy.\n\n## MEDICATIONS\nMotrin and vitamin D\n\n## ALLERGIES\nNo known drug allergies\n\n## PHYSICAL EXAMINATION\nGeneral: Awake alert oriented, no acute distress.\nHEENT: Normocephalic atraumatic extract muscles intact\nPulmonary: No EXTR\nAbdomen: Obese female with a BMI of 45.\nNeurological: 5-5 strength throughout, sensation intact light touch throughout, negative Hoffmann's bilaterally, reflexes 2 out of 4 throughout, negative straight leg raise bilaterally.  Normal gait.\nMSK: Nontender palpation of cervical thoracic or lumbar spine or bilateral PSIS.\n\n## IMAGING\nMRI of the lumbar spine shows disc herniations at L3-L4 L4-L5 and L5-S1.  X-rays of the lumbar spine show no evidence of scoliosis however there is disc collapse particularly at L3-L4 and L4-L5.  There is evidence of spondylolisthesis at L3-L4.\n\n## IMPRESSIONS\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  I believe there is a component of discogenic and mechanical back pain involved with disc herniations at L3-L4 with spondylolisthesis at this level, L4-L5 and L5-S1.\n\n## PLAN\n1.  I discussed with this patient weight loss.\n2.  Physical therapy\n3.  Pain management referral\n4.  Pain medication with meloxicam she was explained it is a stronger version ibuprofen and is to be taken instead of her current ibuprofen.\n5.  Referral to Dr. Hares for abdominal access for anterior lumbar interbody fusion.\n6.  I discussed with the patient that if she feels conservative management she would be a candidate for anterior lumbar interbody fusion with posterior instrumentation and fusion from L3-S1.\n7.  Follow-up in 2 weeks, patient states that she will be in Romania for the next 3 or so weeks and will follow-up in approximately 3 to 4 weeks.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+                "assigned_code": "99214",
+                "justification": "The patient presents with an acute complicated orthopedic problem: multiple lumbar disc herniations with spondylolisthesis, significant functional symptoms, and consideration of major surgery (ALIF with posterior instrumentation) if conservative measures fail. Data reviewed included MRI and X-rays with interpretation. Management included prescription drug management (meloxicam), referrals for PT, pain management, and surgical consultation, along with surgical risk/benefit discussion. This meets **moderate MDM** criteria: (1) Problem—acute complicated injury; (2) Data—review of multiple imaging studies; (3) Risk—moderate due to prescription medication and discussion/consideration of major surgery. Thus, 99214 is supported.",
+                "performance_metrics": {
+                    "session_id": "opt_enhancement_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "total_execution_time": 4.55,
+                    "execution_breakdown": {
+                        "mcp_server_connection": 0.0,
+                        "progress_note_api_call": 0.689,
+                        "json_parsing": 0.0,
+                        "agent_initialization": 0.037,
+                        "prompt_preparation": 0.0,
+                        "ai_model_inference": 3.283,
+                        "response_formatting": 0.0
+                    }
+                }
+            },
+            "auditor_agent": {
+                "document_id": "175ac3cb-e718-40c7-805a-5306dcadee8a",
+                "text": "## HISTORY\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  Patient states that she has been dealing with this pain for the past several weeks to months.  She states that it was excruciating 10 out of 10 low back pain with radiation of bilateral buttocks however no numbness tingling weakness in the bilateral lower extremities.  She even had a seek some injections and medications which provided only minimal relief now it is a 4 or 5 out of 10.  Patient states that her pain occurs a lot while she is sitting or when she is rising from sitting to standing and moving.\n\n## PAST MEDICAL HISTORY\nHep B complicating pregnancy.\n\n## MEDICATIONS\nMotrin and vitamin D\n\n## ALLERGIES\nNo known drug allergies\n\n## PHYSICAL EXAMINATION\nGeneral: Awake alert oriented, no acute distress.\nHEENT: Normocephalic atraumatic extract muscles intact\nPulmonary: No EXTR\nAbdomen: Obese female with a BMI of 45.\nNeurological: 5-5 strength throughout, sensation intact light touch throughout, negative Hoffmann's bilaterally, reflexes 2 out of 4 throughout, negative straight leg raise bilaterally.  Normal gait.\nMSK: Nontender palpation of cervical thoracic or lumbar spine or bilateral PSIS.\n\n## IMAGING\nMRI of the lumbar spine shows disc herniations at L3-L4 L4-L5 and L5-S1.  X-rays of the lumbar spine show no evidence of scoliosis however there is disc collapse particularly at L3-L4 and L4-L5.  There is evidence of spondylolisthesis at L3-L4.\n\n## IMPRESSIONS\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  I believe there is a component of discogenic and mechanical back pain involved with disc herniations at L3-L4 with spondylolisthesis at this level, L4-L5 and L5-S1.\n\n## PLAN\n1.  I discussed with this patient weight loss.\n2.  Physical therapy\n3.  Pain management referral\n4.  Pain medication with meloxicam she was explained it is a stronger version ibuprofen and is to be taken instead of her current ibuprofen.\n5.  Referral to Dr. Hares for abdominal access for anterior lumbar interbody fusion.\n6.  I discussed with the patient that if she feels conservative management she would be a candidate for anterior lumbar interbody fusion with posterior instrumentation and fusion from L3-S1.\n7.  Follow-up in 2 weeks, patient states that she will be in Romania for the next 3 or so weeks and will follow-up in approximately 3 to 4 weeks.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+                "audit_flags": [
+                    "Risk level may warrant upgrade consideration — discussion and consideration of major surgery (ALIF with instrumentation) can rise to high risk per AMA 2025 guidelines if clearly documented as part of management, not just mentioned as a possible future option.",
+                    "Current documentation lacks explicit independent interpretation statement for imaging (review noted but must clarify if interpretation was done beyond report review).",
+                    "Prescription drug management is documented, but no detail on prior NSAID use failure or risk-benefit counseling documentation for meloxicam.",
+                    "Data element marginally meets 'moderate' threshold — reviewed MRI and X-rays, but source and independent interpretation should be clarified for stronger support."
+                ],
+                "final_assigned_code": "99214",
+                "final_justification": {
+                    "supportedBy": "Supported by moderate MDM per AMA 2025 E/M guidelines.",
+                    "documentationSummary": [
+                        "Established patient with multi-level lumbar disc herniations and L3-L4 spondylolisthesis causing severe functional pain.",
+                        "Data reviewed included MRI and lumbar X-ray results with interpretation noted in the documentation.",
+                        "Management plan included starting prescription NSAID (meloxicam), physical therapy referral, pain management referral, and discussion of potential future ALIF with posterior instrumentation if conservative treatment fails."
+                    ],
+                    "mdmConsiderations": [
+                        "Number/Complexity of Problems: One acute complicated injury/illness — multi-level disc herniations with associated spondylolisthesis.",
+                        "Data Review/Analysis: Reviewed and documented MRI and X-ray findings; independent interpretation implied but not fully explicit.",
+                        "Risk: Moderate — prescription drug management initiated and discussion of surgical options."
+                    ],
+                    "complianceAlerts": null
+                },
+                "confidence": {
+                    "score": 90,
+                    "tier": "High",
+                    "score_deductions": [
+                        "- Independent interpretation of imaging not explicitly documented.",
+                        "- Surgical risk discussion exists but not fully tied into current management plan; could strengthen high risk support.",
+                        "- Some medication management detail (past NSAID failure, risk/benefit discussion) could be expanded for audit-proof documentation."
+                    ],
+                    "quick_tip": "Clearly document independent interpretation of each imaging study and explicitly tie surgical discussions to current management to support potential high-risk classification when appropriate."
+                },
+                "performance_metrics": {
+                    "session_id": "opt_auditor_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "total_execution_time": 6.71,
+                    "execution_breakdown": {
+                        "agent_initialization": 0.339,
+                        "prompt_preparation": 0.0,
+                        "ai_model_inference": 6.372,
+                        "response_formatting": 0.0
+                    }
+                }
+            },
+            "timestamp": "2025-08-13T17:49:18.655280",
+            "enhancement_performance": null,
+            "audit_performance": {
+                "activity_execution_time": 6.71,
+                "activity_session_id": "opt_activity_auditor_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                "agent_execution_time": 6.71
+            }
+        }
+    ],
+    "performance": {
+        "orchestration_id": "de902b372df74a77a9d04373b7d9ff00",
+        "enhancement_agent_time": 4.55,
+        "auditor_agent_time": 6.71,
+        "total_flow_execution_time": 11.26
+    }
+}

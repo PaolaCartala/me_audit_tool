@@ -1,0 +1,136 @@
+{
+  "clinicName": "Warren",
+  "address": {
+    "street": "11900 E.Twelve Mile Rd.",
+    "suite": "Suite 110",
+    "city": "Warren",
+    "state": "MI",
+    "zipCode": "48093",
+    "phone": "5862611960",
+    "fax": "5862611961"
+  },
+  "apptDate": "07/27/2023",
+  "provider": "Brian M. Fiani",
+  "insurance": "",
+  "office": "Warren",
+  "patient": {
+    "name": "_Test _2Patient",
+    "id": "206983",
+    "dob": "02/02/1992"
+  },
+  "checkoutProvider": "Brian M. Fiani",
+  "referrer": "",
+  "diagnosis": [
+    {
+      "code": "M51.26",
+      "description": "Other intervertebral disc displacement, lumbar region"
+    },
+    {
+      "code": "M54.59",
+      "description": "Low back pain"
+    },
+    {
+      "code": "M51.36",
+      "description": "Discogenic low back pain"
+    },
+    {
+      "code": "M54.9",
+      "description": "Mechanical back pain"
+    },
+    {
+      "code": "M51.36",
+      "description": "Other intervertebral disc degeneration, lumbar region"
+    }
+  ],
+  "charges": [
+    {
+      "code": "99204     ",
+      "title": "3FFICE/OUTPATIENT VISIT NEW",
+      "date": "07/27/2023"
+    },
+    {
+      "code": "72170     ",
+      "title": "Radiologic examination, pelvis; 1 or 2 views",
+      "date": "07/26/2023"
+    },
+    {
+      "code": "72100     ",
+      "title": "Radiologic examination, spine, lumbosacral; 2 or 3 views",
+      "date": "07/26/2023"
+    }
+  ],
+  "orders": [
+    {
+      "type": "X-Rays",
+      "list": [
+        {
+          "code": "",
+          "name": "NP Lumbar - Lumbar AP/Lat & AP Pelvis",
+          "description": "",
+          "date": "07/27/2023"
+        }
+      ]
+    },
+    {
+      "type": "Operations",
+      "list": [
+        {
+          "code": "",
+          "name": "Room 12  needs to be cleaned",
+          "description": "Clean Room",
+          "date": "07/27/2023"
+        }
+      ]
+    },
+    {
+      "type": "Followup",
+      "list": [
+        {
+          "code": "",
+          "name": "2 weeks",
+          "description": "",
+          "date": "07/27/2023"
+        },
+        {
+          "code": "",
+          "name": "Consult - First Available - Pain Management",
+          "description": "",
+          "date": "07/27/2023"
+        }
+      ]
+    },
+    {
+      "type": "Referrals",
+      "list": [
+        {
+          "code": "",
+          "name": "Consult Dr Hares - Eval - ALIF",
+          "description": "Call to make an appointment (248)371-3199  \n22401 Foster Winter Drive  Southfield, MI 48075",
+          "date": "07/27/2023"
+        }
+      ]
+    },
+    {
+      "type": "Prescriptions",
+      "list": [
+        {
+          "code": "",
+          "name": "Meloxicam 15 mg tablet",
+          "description": "Take one tablet by mouth.  Once a day with food.  Dispense #30 (thirty). No Refill",
+          "date": "07/27/2023"
+        }
+      ]
+    },
+    {
+      "type": "PT",
+      "list": [
+        {
+          "code": "",
+          "name": "PT - Lumbar Spine",
+          "description": "PT Evaluate and treat including ROM and strengthening.",
+          "date": "07/27/2023"
+        }
+      ]
+    }
+  ]
+}

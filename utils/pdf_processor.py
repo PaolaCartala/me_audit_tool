@@ -9,7 +9,7 @@ from typing import Dict, List, Optional, Tuple
 import fitz  # PyMuPDF
 from dotenv import load_dotenv
 
-from models.pydantic_models import EMInput
+from agents.models.pydantic_models import EMInput
 from utils.patient_extractor import get_patient_from_pdf_headers
 from settings import logger
 
@@ -199,7 +199,7 @@ class PDFProcessor:
 
         if not metadata["date_of_service"] or metadata["date_of_service"] == "2024-01-01" or not metadata["provider"] or not metadata["patient_name"] or not metadata["patient_id"]:
             logger.warning(f"Missing metadata in {pdf_path}: {metadata}")
-            logger.info(f"Text preview for debugging: {text[:500]}...")
+            logger.debug(f"Text preview for debugging: {text[:500]}...")
         
         return metadata
     
@@ -243,7 +243,7 @@ class PDFProcessor:
         sample_path = Path(sample_dir)
         pdf_files = list(sample_path.glob("*.pdf"))[:limit]
         
-        logger.info(f"Processing {len(pdf_files)} PDF files from {sample_dir}")
+        logger.debug(f"Processing {len(pdf_files)} PDF files from {sample_dir}")
         
         results = []
         for pdf_file in pdf_files:
@@ -251,7 +251,7 @@ class PDFProcessor:
             if em_input:
                 results.append(em_input)
         
-        logger.info(f"Successfully processed {len(results)} PDFs")
+        logger.debug(f"Successfully processed {len(results)} PDFs")
         return results
 
 

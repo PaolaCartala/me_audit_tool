@@ -1,0 +1,107 @@
+{
+    "name": "em_coding_orchestrator",
+    "instanceId": "ad8dc86e37b04b699c72505a73a25c7e",
+    "runtimeStatus": "Completed",
+    "input": "\"175ac3cb-e718-40c7-805a-5306dcadee8a\"",
+    "customStatus": null,
+    "output": {
+        "processed_documents": 1,
+        "successful_documents": 1,
+        "failed_documents": 0,
+        "processing_timestamp": "2025-08-14T14:16:04.682996",
+        "results": [
+            {
+                "enhancement_agent": {
+                    "document_id": "175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "text": "## HISTORY\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  Patient states that she has been dealing with this pain for the past several weeks to months.  She states that it was excruciating 10 out of 10 low back pain with radiation of bilateral buttocks however no numbness tingling weakness in the bilateral lower extremities.  She even had a seek some injections and medications which provided only minimal relief now it is a 4 or 5 out of 10.  Patient states that her pain occurs a lot while she is sitting or when she is rising from sitting to standing and moving.\n\n## PAST MEDICAL HISTORY\nHep B complicating pregnancy.\n\n## MEDICATIONS\nMotrin and vitamin D\n\n## ALLERGIES\nNo known drug allergies\n\n## PHYSICAL EXAMINATION\nGeneral: Awake alert oriented, no acute distress.\nHEENT: Normocephalic atraumatic extract muscles intact\nPulmonary: No EXTR\nAbdomen: Obese female with a BMI of 45.\nNeurological: 5-5 strength throughout, sensation intact light touch throughout, negative Hoffmann's bilaterally, reflexes 2 out of 4 throughout, negative straight leg raise bilaterally.  Normal gait.\nMSK: Nontender palpation of cervical thoracic or lumbar spine or bilateral PSIS.\n\n## IMAGING\nMRI of the lumbar spine shows disc herniations at L3-L4 L4-L5 and L5-S1.  X-rays of the lumbar spine show no evidence of scoliosis however there is disc collapse particularly at L3-L4 and L4-L5.  There is evidence of spondylolisthesis at L3-L4.\n\n## IMPRESSIONS\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  I believe there is a component of discogenic and mechanical back pain involved with disc herniations at L3-L4 with spondylolisthesis at this level, L4-L5 and L5-S1.\n\n## PLAN\n1.  I discussed with this patient weight loss.\n2.  Physical therapy\n3.  Pain management referral\n4.  Pain medication with meloxicam she was explained it is a stronger version ibuprofen and is to be taken instead of her current ibuprofen.\n5.  Referral to Dr. Hares for abdominal access for anterior lumbar interbody fusion.\n6.  I discussed with the patient that if she feels conservative management she would be a candidate for anterior lumbar interbody fusion with posterior instrumentation and fusion from L3-S1.\n7.  Follow-up in 2 weeks, patient states that she will be in Romania for the next 3 or so weeks and will follow-up in approximately 3 to 4 weeks.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+                    "assigned_code": "99214",
+                    "justification": "The patient presents with a significant acute complicated injury pattern in an orthopedic context — lumbar disc herniations at multiple levels with spondylolisthesis — that may require major surgery if conservative measures fail. Medical decision making is moderate: (1) **Problems Addressed**: One acute complicated injury (lumbar disc herniations with spondylolisthesis); (2) **Data Reviewed/Analyzed**: Multiple imaging modalities reviewed and independently interpreted (MRI and X‑rays); (3) **Risk**: Moderate risk due to prescription drug management (meloxicam) and discussion/referral for possible anterior lumbar interbody fusion with posterior instrumentation and fusion. Meets 2/3 criteria for moderate MDM, supporting 99214.",
+                    "performance_metrics": {
+                        "session_id": "opt_enhancement_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                        "total_execution_time": 4.98,
+                        "execution_breakdown": {
+                            "mcp_server_connection": 0.0,
+                            "progress_note_api_call": 0.64,
+                            "json_parsing": 0.0,
+                            "agent_initialization": 0.053,
+                            "prompt_preparation": 0.0,
+                            "ai_model_inference": 3.605,
+                            "response_formatting": 0.0
+                        }
+                    }
+                },
+                "auditor_agent": {
+                    "document_id": "175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "text": "## HISTORY\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  Patient states that she has been dealing with this pain for the past several weeks to months.  She states that it was excruciating 10 out of 10 low back pain with radiation of bilateral buttocks however no numbness tingling weakness in the bilateral lower extremities.  She even had a seek some injections and medications which provided only minimal relief now it is a 4 or 5 out of 10.  Patient states that her pain occurs a lot while she is sitting or when she is rising from sitting to standing and moving.\n\n## PAST MEDICAL HISTORY\nHep B complicating pregnancy.\n\n## MEDICATIONS\nMotrin and vitamin D\n\n## ALLERGIES\nNo known drug allergies\n\n## PHYSICAL EXAMINATION\nGeneral: Awake alert oriented, no acute distress.\nHEENT: Normocephalic atraumatic extract muscles intact\nPulmonary: No EXTR\nAbdomen: Obese female with a BMI of 45.\nNeurological: 5-5 strength throughout, sensation intact light touch throughout, negative Hoffmann's bilaterally, reflexes 2 out of 4 throughout, negative straight leg raise bilaterally.  Normal gait.\nMSK: Nontender palpation of cervical thoracic or lumbar spine or bilateral PSIS.\n\n## IMAGING\nMRI of the lumbar spine shows disc herniations at L3-L4 L4-L5 and L5-S1.  X-rays of the lumbar spine show no evidence of scoliosis however there is disc collapse particularly at L3-L4 and L4-L5.  There is evidence of spondylolisthesis at L3-L4.\n\n## IMPRESSIONS\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  I believe there is a component of discogenic and mechanical back pain involved with disc herniations at L3-L4 with spondylolisthesis at this level, L4-L5 and L5-S1.\n\n## PLAN\n1.  I discussed with this patient weight loss.\n2.  Physical therapy\n3.  Pain management referral\n4.  Pain medication with meloxicam she was explained it is a stronger version ibuprofen and is to be taken instead of her current ibuprofen.\n5.  Referral to Dr. Hares for abdominal access for anterior lumbar interbody fusion.\n6.  I discussed with the patient that if she feels conservative management she would be a candidate for anterior lumbar interbody fusion with posterior instrumentation and fusion from L3-S1.\n7.  Follow-up in 2 weeks, patient states that she will be in Romania for the next 3 or so weeks and will follow-up in approximately 3 to 4 weeks.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+                    "audit_flags": [
+                        "Risk section in enhancement justification cites 'discussion/referral for possible major surgery' but note only documents referrals to pain management and PT; no explicit neurosurgical or orthopedic surgical consult documented—risk may be overstated.",
+                        "Independent test interpretation claimed (MRI, X-ray) — documentation does not explicitly state 'independently interpreted' by provider as required; currently reads as a report review.",
+                        "MDM may still meet moderate level via acute complicated injury + prescription drug management, but surgical referral language should be clarified to avoid compliance risk.",
+                        "No time-based coding alternative documented; all support is MDM-based."
+                    ],
+                    "final_assigned_code": "99214",
+                    "final_justification": {
+                        "supportedBy": "Supported by Moderate MDM per AMA 2025 E/M guidelines.",
+                        "documentationSummary": [
+                            "Established patient evaluated for lumbar disc herniations at multiple levels with spondylolisthesis, an acute complicated injury pattern per orthopedic context.",
+                            "Multiple imaging results (MRI & X-ray lumbar spine) reviewed.",
+                            "Prescription drug management initiated (meloxicam).",
+                            "Referrals placed for PT and pain management.",
+                            "Medically appropriate examination performed including neurological and musculoskeletal system assessments."
+                        ],
+                        "mdmConsiderations": [
+                            "Problems Addressed: One acute complicated injury (lumbar disc herniations at multiple levels with spondylolisthesis) — meets moderate complexity per guidelines.",
+                            "Data Reviewed/Analyzed: Two imaging modalities reviewed (report review documented) — meets at least Category 1 data elements though independent interpretation not clearly documented.",
+                            "Risk: Prescription drug management (meloxicam) — moderate risk per AMA CPT guidance."
+                        ],
+                        "complianceAlerts": null
+                    },
+                    "confidence": {
+                        "score": 90,
+                        "tier": "High",
+                        "mdmAssignmentReason": [
+                            "Moderate MDM supported by acute complicated injury in orthopedic context.",
+                            "Data criteria met for moderate with ≥3 Category 1 items if independent interpretation clarified; at minimum limited data supports low-to-moderate; risk element elevates to moderate via prescription drug management.",
+                            "No time criteria documented; selection is based entirely on MDM."
+                        ],
+                        "documentationEnhancementOpportunities": [
+                            "Explicitly document independent interpretation of imaging if performed to strengthen data complexity element.",
+                            "Clarify surgical consult/referral discussions to substantiate major surgery risk if claimed.",
+                            "Consider noting rationale for prescription drug choice to further support risk assessment."
+                        ],
+                        "score_deductions": [
+                            "- Score reduced by 5 points: Unclear documentation of independent test interpretation reduces data element certainty.",
+                            "- Score reduced by 5 points: Surgical referral implication not directly supported in note; risk support rests primarily on prescription drug management."
+                        ],
+                        "quick_tip": "When reviewing imaging personally, document your independent interpretation clearly; and if discussing potential surgery, explicitly note the recommendation or referral in your plan."
+                    },
+                    "performance_metrics": {
+                        "session_id": "opt_auditor_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                        "total_execution_time": 6.68,
+                        "execution_breakdown": {
+                            "agent_initialization": 0.007,
+                            "prompt_preparation": 0.0,
+                            "ai_model_inference": 6.669,
+                            "response_formatting": 0.0
+                        }
+                    }
+                },
+                "timestamp": "2025-08-14T14:16:04.628867",
+                "enhancement_performance": null,
+                "audit_performance": {
+                    "activity_execution_time": 6.68,
+                    "activity_session_id": "opt_activity_auditor_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "agent_execution_time": 6.68
+                }
+            }
+        ],
+        "performance": {
+            "orchestration_id": "ad8dc86e37b04b699c72505a73a25c7e",
+            "enhancement_agent_time": 4.98,
+            "auditor_agent_time": 6.68,
+            "total_flow_execution_time": 11.66
+        }
+    },
+    "createdTime": "2025-08-14T14:15:49Z",
+    "lastUpdatedTime": "2025-08-14T14:16:04Z"
+}

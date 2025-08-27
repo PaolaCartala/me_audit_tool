@@ -1,0 +1,198 @@
+{
+    "test_summary": {
+        "total_documents": 1,
+        "successful_documents": 1,
+        "failed_documents": 0,
+        "test_timestamp": "2025-08-12T18:46:48.491925",
+        "test_type": "azure_durable_functions_processing",
+        "instance_id": "cca8d10bbe434effafcfc0043a5ee63d"
+    },
+    "results": [
+        {
+            "enhancement_agent": {
+                "document_id": "175ac3cb-e718-40c7-805a-5306dcadee8a",
+                "text": "## HISTORY\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  Patient states that she has been dealing with this pain for the past several weeks to months.  She states that it was excruciating 10 out of 10 low back pain with radiation of bilateral buttocks however no numbness tingling weakness in the bilateral lower extremities.  She even had a seek some injections and medications which provided only minimal relief now it is a 4 or 5 out of 10.  Patient states that her pain occurs a lot while she is sitting or when she is rising from sitting to standing and moving.\n\n## PAST MEDICAL HISTORY\nHep B complicating pregnancy.\n\n## MEDICATIONS\nMotrin and vitamin D\n\n## ALLERGIES\nNo known drug allergies\n\n## PHYSICAL EXAMINATION\nGeneral: Awake alert oriented, no acute distress.\nHEENT: Normocephalic atraumatic extract muscles intact\nPulmonary: No EXTR\nAbdomen: Obese female with a BMI of 45.\nNeurological: 5-5 strength throughout, sensation intact light touch throughout, negative Hoffmann's bilaterally, reflexes 2 out of 4 throughout, negative straight leg raise bilaterally.  Normal gait.\nMSK: Nontender palpation of cervical thoracic or lumbar spine or bilateral PSIS.\n\n## IMAGING\nMRI of the lumbar spine shows disc herniations at L3-L4 L4-L5 and L5-S1.  X-rays of the lumbar spine show no evidence of scoliosis however there is disc collapse particularly at L3-L4 and L4-L5.  There is evidence of spondylolisthesis at L3-L4.\n\n## IMPRESSIONS\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  I believe there is a component of discogenic and mechanical back pain involved with disc herniations at L3-L4 with spondylolisthesis at this level, L4-L5 and L5-S1.\n\n## PLAN\n1.  I discussed with this patient weight loss.\n2.  Physical therapy\n3.  Pain management referral\n4.  Pain medication with meloxicam she was explained it is a stronger version ibuprofen and is to be taken instead of her current ibuprofen.\n5.  Referral to Dr. Hares for abdominal access for anterior lumbar interbody fusion.\n6.  I discussed with the patient that if she feels conservative management she would be a candidate for anterior lumbar interbody fusion with posterior instrumentation and fusion from L3-S1.\n7.  Follow-up in 2 weeks, patient states that she will be in Romania for the next 3 or so weeks and will follow-up in approximately 3 to 4 weeks.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+                "assigned_code": "99214",
+                "justification": "Established patient with chronic lumbar spine disease with radiographic evidence of degenerative disc disease and pathology (L3-L4 L4-L5 L5-S1 disc herniations; L3-L4 spondylolisthesis) contributing to mechanical back pain. The visit includes extensive discussion of nonoperative management (weight loss, physical therapy, pain management) and a plan for surgical consultation (anterior lumbar interbody fusion with posterior instrumentation from L3-S1) depending on conservative management outcomes. The imaging findings (MRI and X-ray) have been reviewed and incorporated into the treatment plan, and the patient has obesity (BMI 45) which adds complexity and risk to management. These elements meet Moderate Medical Decision Making (MDM) per AMA 2025 guidelines: Problems addressed include a chronic spine condition with progression; Data reviewed/analyzed includes MRI/X-ray results; Risk of complications/morbidity is Moderate given planned consideration of major spine surgery and medical complexity. Time documentation is not explicit in the note, so MDM governs code selection rather than time-based criteria. Therefore, 99214 is appropriate.\n\nThe following information would be needed to justify each level:\n\n- 99212 (Straightforward MDM or 10-19 minutes):\n  - Documentation of a single self-limited or minor problem with minimal data review and minimal risk, and explicit total time 10-19 minutes.\n\n- 99213 (Low MDM or 20-29 minutes):\n  - Documentation of two or more self-limited or minor problems or one stable chronic illness; limited data reviewed (e.g., external notes or test results) and low risk; explicit total time 20-29 minutes.\n\n- 99214 (Moderate MDM or 30-39 minutes):\n  - Documentation of one or more chronic illnesses with progression or two or more stable chronic illnesses; moderate data review (e.g., extensive review of external notes and imaging results, possible independent interpretation) and moderate risk; explicit total time 30-39 minutes.\n\n- 99215 (High MDM or 40-54 minutes):\n  - Documentation of one or more chronic illnesses with severe exacerbation or high-risk management decisions (e.g., major spine surgery planning with potential hospitalization); extensive data review/interpretation and discussion with external providers; explicit total time 40-54 minutes.\n",
+                "code_recommendations": {
+                    "code_99212": "- Documentation showing a single self-limited or minor problem addressed with straightforward MDM and total time 10-19 minutes.\n- Minimal data review and minimal risk, with no imaging studies or major changes in management.\n- Clear record of face-to-face time and any associated non-face-to-face work totaling 10-19 minutes.",
+                    "code_99213": "- Documentation showing two or more self-limited/minor problems or one stable chronic illness; low risk and limited data reviewed (e.g., external notes or test results).\n- Time on date of encounter 20-29 minutes or explicit statement of time spent; plan including nonurgent management but no immediate major surgical decision.\n- Data reviewed could include imaging results or tests, but not extensive external interpretation.\n- No discussion of hospitalization or major surgery in the plan.",
+                    "code_99214": "- Documentation showing one or more chronic illnesses with progression or two or more stable chronic illnesses; moderate data review (e.g., review of MRI/X-ray results with possible independent interpretation or discussion with external provider).\n- Plan includes multiple nonoperative management steps plus surgical planning discussions, with moderate risk of morbidity; time 30-39 minutes if time-based coding were used.",
+                    "code_99215": "- Documentation showing one or more chronic illnesses with severe exacerbation or high-risk management decisions (e.g., major spine surgery planning and potential hospitalization).\n- Extensive data review/interpretation from multiple sources, discussion with external physicians/QHPs, and high-risk treatment decisions; time 40-54 minutes if time-based coding were used."
+                },
+                "performance_metrics": {
+                    "session_id": "enhancement_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "total_execution_time": 44.14,
+                    "breakdown": {
+                        "ai_inference_time": 39.75,
+                        "ai_inference_percentage": "90.06%",
+                        "mcp_operations_time": 1.58,
+                        "mcp_operations_percentage": "3.58%",
+                        "data_processing_time": 0.0,
+                        "agent_init_time": 1.18
+                    },
+                    "bottleneck_analysis": {
+                        "primary_bottleneck": "ai_model_inference"
+                    },
+                    "measured_at": "2025-08-12T18:45:44.677620"
+                }
+            },
+            "auditor_agent": {
+                "document_id": "175ac3cb-e718-40c7-805a-5306dcadee8a",
+                "text": "## HISTORY\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  Patient states that she has been dealing with this pain for the past several weeks to months.  She states that it was excruciating 10 out of 10 low back pain with radiation of bilateral buttocks however no numbness tingling weakness in the bilateral lower extremities.  She even had a seek some injections and medications which provided only minimal relief now it is a 4 or 5 out of 10.  Patient states that her pain occurs a lot while she is sitting or when she is rising from sitting to standing and moving.\n\n## PAST MEDICAL HISTORY\nHep B complicating pregnancy.\n\n## MEDICATIONS\nMotrin and vitamin D\n\n## ALLERGIES\nNo known drug allergies\n\n## PHYSICAL EXAMINATION\nGeneral: Awake alert oriented, no acute distress.\nHEENT: Normocephalic atraumatic extract muscles intact\nPulmonary: No EXTR\nAbdomen: Obese female with a BMI of 45.\nNeurological: 5-5 strength throughout, sensation intact light touch throughout, negative Hoffmann's bilaterally, reflexes 2 out of 4 throughout, negative straight leg raise bilaterally.  Normal gait.\nMSK: Nontender palpation of cervical thoracic or lumbar spine or bilateral PSIS.\n\n## IMAGING\nMRI of the lumbar spine shows disc herniations at L3-L4 L4-L5 and L5-S1.  X-rays of the lumbar spine show no evidence of scoliosis however there is disc collapse particularly at L3-L4 and L4-L5.  There is evidence of spondylolisthesis at L3-L4.\n\n## IMPRESSIONS\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  I believe there is a component of discogenic and mechanical back pain involved with disc herniations at L3-L4 with spondylolisthesis at this level, L4-L5 and L5-S1.\n\n## PLAN\n1.  I discussed with this patient weight loss.\n2.  Physical therapy\n3.  Pain management referral\n4.  Pain medication with meloxicam she was explained it is a stronger version ibuprofen and is to be taken instead of her current ibuprofen.\n5.  Referral to Dr. Hares for abdominal access for anterior lumbar interbody fusion.\n6.  I discussed with the patient that if she feels conservative management she would be a candidate for anterior lumbar interbody fusion with posterior instrumentation and fusion from L3-S1.\n7.  Follow-up in 2 weeks, patient states that she will be in Romania for the next 3 or so weeks and will follow-up in approximately 3 to 4 weeks.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+                "audit_flags": [
+                    "Establishing patient status (established vs new) not explicitly documented in the note; requires confirmation to support 99214 as established patient visit.",
+                    "No explicit total time documented on the encounter; coder has relied on MDM; if time-based coding is pursued, time should be specified.",
+                    "Documentation includes plan for major spine surgery (ALIF) and surgical planning, which raises the potential risk level; ensure clear medical necessity and payer preauthorization for surgical pathway.",
+                    "BMI 45 obesity noted as a comorbidity increasing risk, but documentation should explicitly tie this to risk stratification in MDM.",
+                    "Billing-ready note should confirm established patient status within the same group and time-based activities if used."
+                ],
+                "final_assigned_code": "99214",
+                "final_justification": {
+                    "supportedBy": "Supported by moderate MDM per AMA 2025 E/M guidelines.",
+                    "documentationSummary": [
+                        "Chronic spine pathology with L3-L4, L4-L5, L5-S1 disc herniations and L3-L4 spondylolisthesis documented by MRI/X-ray.",
+                        "Imaging reviewed and integrated into management plan.",
+                        "Nonoperative management discussed (weight loss, physical therapy, pain management); plan for surgical consultation (ALIF with posterior instrumentation) considered based on conservative management outcome.",
+                        "Obesity (BMI 45) acknowledged as contributing to complexity and risk.",
+                        "Neurologic examination largely normal (5/5 strength, intact sensation, negative Hoffmann, SLR negative, normal gait).",
+                        "Establishment status not explicitly documented; time on date of encounter not specified."
+                    ],
+                    "mdmConsiderations": [
+                        "Problems addressed: chronic spine condition with progression and planned major spine surgery consideration.",
+                        "Data reviewed/analyzed: MRI and X-ray results (external tests) incorporated into plan.",
+                        "Risk: Moderate due to planned major spine surgery and comorbidity (obesity); prescription management not required beyond NSAID therapy.",
+                        "Plan includes conservative management options and surgical planning; discussion with surgical team anticipated."
+                    ],
+                    "complianceAlerts": [
+                        "Confirm patient establishment status to justify 99214 for an established patient visit.",
+                        "Explicitly document total time if time-based coding is to be used; current documentation relies on MDM."
+                    ]
+                },
+                "code_evaluations": {
+                    "code_99212_evaluation": {
+                        "mdmAssignmentReason": [
+                            "The encounter centers on chronic spine pain with imaging findings and discussion of management, not a single minor problem.",
+                            "Imaging data (MRI/X-ray) reviewed and referenced, which exceeds straightforward, minimal data review.",
+                            "Nonoperative management options discussed; no immediate risk escalation documented at this visit."
+                        ],
+                        "documentationEnhancementOpportunities": [
+                            "If code 99212 is pursued, document a single self-limited or minor problem with explicit minimal data reviewed and explicit total time 10-19 minutes.",
+                            "Clarify establishment status and provide explicit time spent if using time-based coding.",
+                            "Limit scope to a standalone minor issue or separate care plan without plan for major surgical consultation."
+                        ],
+                        "scoring_impact": "- -10 points: Not aligned with 99212 due to chronic spine disease and imaging review; imaging data and management planning exceed straightforward level.",
+                        "quick_tip": "For 99212, ensure there is a clearly documented single minor problem with 10-19 minutes of total time."
+                    },
+                    "code_99213_evaluation": {
+                        "mdmAssignmentReason": [
+                            "Two or more self-limited/minor problems or one stable chronic illness could be argued, but here the primary focus is a progressive chronic spine condition with extensive imaging data and surgical planning discussed.",
+                            "Data reviewed includes imaging results; risk remains low to moderate depending on plan and comorbidity.",
+                            "Nonoperative management discussed; potential for surgical planning in future decisions."
+                        ],
+                        "documentationEnhancementOpportunities": [
+                            "Explicitly document two or more problems or a stable chronic illness to support 99213.",
+                            "Provide explicit total time if using time-based coding; or document the scope of data reviewed in detail."
+                        ],
+                        "scoring_impact": "- -6 points: Needs clearer articulation of two problems or stable chronic illness and explicit time.",
+                        "quick_tip": "Clarify the number of problems addressed and the data reviewed to align with 99213 thresholds."
+                    },
+                    "code_99214_evaluation": {
+                        "mdmAssignmentReason": [
+                            "One or more chronic illnesses with progression (degenerative disc disease with disc herniations and spondylolisthesis) documented.",
+                            "Data reviewed: MRI and X-ray results incorporated into the plan; imaging is specifically referenced.",
+                            "Risk: Moderate due to planned consultation for a major spine procedure and obesity as a complicating factor.",
+                            "Plan includes multiple nonoperative management steps and surgical planning discussions."
+                        ],
+                        "documentationEnhancementOpportunities": [
+                            "Explicitly state the time spent or confirm time-based criteria if needed.",
+                            "Document establishment status if reporting as an established patient visit."
+                        ],
+                        "scoring_impact": "- -2 points: Time not documented; establishment status partly inferred.",
+                        "quick_tip": "When using 99214, explicitly show the data review and any independent test interpretations if applicable."
+                    },
+                    "code_99215_evaluation": {
+                        "mdmAssignmentReason": [
+                            "No evidence of imminent hospitalization or resuscitation decisions; no explicit objective to perform major surgery at the visit itself.",
+                            "Data reviewed: MRI/X-ray reviewed; no independent interpretation notes provided.",
+                            "Risk: Not high at this encounter as described; major surgical decision planning is contemplated but not executed during this visit."
+                        ],
+                        "documentationEnhancementOpportunities": [
+                            "To support 99215, demonstrate high-risk management decisions or discussion with external providers beyond planning (e.g., surgical consent processes, anticipated hospitalization).",
+                            "Document extensive diagnostic data review or independent interpretation if applicable; include multidisciplinary discussion where relevant."
+                        ],
+                        "scoring_impact": "- -7 points: Not meeting high MDM criteria given plan is surgical consideration not execution; limited data interpretation details.",
+                        "quick_tip": "Avoid over-claiming high-risk decisions; ensure documentation shows explicit high-risk management or hospitalization decisions."
+                    }
+                },
+                "billing_ready_note": "Subjective: 53-year-old female with several weeks to months of mechanical and discogenic low back pain. Hx of disc herniations at L3-L4, L4-L5, L5-S1 with L3-L4 spondylolisthesis on MRI/X-ray. Pain worsens with sitting and rising from sitting; current pain 4-5/10. No numbness/tingling/weakness in legs. Examination: awake, alert; neuro exam largely nonfocal; strength 5/5 in all major muscle groups; sensation intact; reflexes 2/4; negative straight leg raise bilaterally; gait normal. BMI 45. Impressions: chronic degenerative spine disease with multilevel disc herniations and spondylolisthesis contributing to mechanical back pain.",
+                "confidence": {
+                    "score": 78,
+                    "tier": "High",
+                    "score_deductions": [
+                        "- Score reduced by 2 points: Establishment status not explicitly documented.",
+                        "- Score reduced by 2 points: No explicit total time documented; time-based coding not demonstrated.",
+                        "- Score reduced by 1 point: Some elements rely on implied data review without explicit independent interpretation notes."
+                    ],
+                    "quick_tip": "For future notes, explicitly confirm established patient status and record total time spent to support time-based coding if chosen."
+                },
+                "performance_metrics": {
+                    "session_id": "auditor_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "total_execution_time": 24.33,
+                    "breakdown": {
+                        "ai_inference_time": 24.32,
+                        "ai_inference_percentage": "99.95%",
+                        "data_processing_time": 0.0,
+                        "data_processing_percentage": "0.0%",
+                        "agent_init_time": 0.01,
+                        "agent_init_percentage": "0.05%"
+                    },
+                    "bottleneck_analysis": {
+                        "primary_bottleneck": "ai_model_inference"
+                    },
+                    "measured_at": "2025-08-12T18:46:09.154369"
+                }
+            },
+            "timestamp": "2025-08-12T18:46:09.154392",
+            "processing_metadata": {
+                "enhancement_agent_model": "Azure OpenAI GPT-5",
+                "auditor_agent_model": "Azure OpenAI GPT-5",
+                "processing_time": "2025-08-12T18:46:09.154393"
+            },
+            "consolidated_performance": {
+                "total_execution_time": 68.47,
+                "activity_wrapper_time": 24.33,
+                "activity_session_id": "activity_auditor_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                "performance_breakdown": {
+                    "ai_processing": {
+                        "total_ai_time": 64.07,
+                        "ai_percentage": "93.57%",
+                        "enhancement_ai_time": 39.75,
+                        "auditor_ai_time": 24.32
+                    },
+                    "data_processing": {
+                        "total_data_time": 0.0,
+                        "data_percentage": "0.0%",
+                        "enhancement_data_time": 0.0,
+                        "auditor_data_time": 0.0
+                    },
+                    "phase_breakdown": {
+                        "enhancement_phase": {
+                            "duration": 44.14,
+                            "percentage": "64.47%"
+                        },
+                        "audit_phase": {
+                            "duration": 24.33,
+                            "percentage": "35.53%"
+                        }
+                    }
+                },
+                "bottleneck_analysis": {
+                    "primary_bottleneck": "ai_processing",
+                    "phase_bottleneck": "enhancement_phase"
+                },
+                "measured_at": "2025-08-12T18:46:09.154407"
+            }
+        }
+    ]
+}

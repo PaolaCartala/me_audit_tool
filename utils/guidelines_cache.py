@@ -42,11 +42,11 @@ class GuidelinesCache:
             
         self._cache_warming = True
         try:
-            logger.info("Starting asynchronous guidelines cache warming...")
+            logger.debug("Starting asynchronous guidelines cache warming...")
             # Run cache warming in thread pool to avoid blocking
             loop = asyncio.get_event_loop()
             await loop.run_in_executor(None, self.get_em_guidelines)
-            logger.info("Asynchronous guidelines cache warming completed")
+            logger.debug("Asynchronous guidelines cache warming completed")
         except Exception as e:
             logger.error(f"Error during asynchronous cache warming: {str(e)}")
         finally:
@@ -78,7 +78,7 @@ class GuidelinesCache:
         """Get cached E/M coding guidelines"""
         with self._cache_lock:
             if self._em_guidelines_cache is None:
-                logger.info("Loading E/M guidelines into cache...")
+                logger.debug("Loading E/M guidelines into cache...")
                 md_content = self._load_markdown_guidelines()
                 pdf_content = self._load_pdf_guidelines()
                 
@@ -90,7 +90,7 @@ class GuidelinesCache:
                     guidelines_content = "Guidelines not found. Please ensure guidelines files are available in the guidelines/ directory."
                 
                 self._em_guidelines_cache = guidelines_content
-                logger.info(f"E/M guidelines cached successfully ({len(guidelines_content)} characters)")
+                logger.debug(f"E/M guidelines cached successfully ({len(guidelines_content)} characters)")
             
             return self._em_guidelines_cache
     
@@ -172,7 +172,7 @@ class GuidelinesCache:
             self._pdf_guidelines_cache = None
             self._extract_code_requirements.cache_clear()
             self._extract_mdm_content.cache_clear()
-            logger.info("Guidelines cache cleared")
+            logger.debug("Guidelines cache cleared")
     
     def get_cache_stats(self) -> dict:
         """Get cache statistics"""

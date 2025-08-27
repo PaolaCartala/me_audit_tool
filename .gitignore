@@ -25,6 +25,7 @@ run_tests/
 .secrets
 appsettings.json
 local.settings.json
+.github/instructions/
 
 node_modules
 dist

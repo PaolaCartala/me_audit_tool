@@ -1,0 +1,132 @@
+{
+    "name": "em_coding_orchestrator",
+    "instanceId": "2bb11c0430c746c4a11ff31b4dced0b9",
+    "runtimeStatus": "Completed",
+    "input": "\"175ac3cb-e718-40c7-805a-5306dcadee8a\"",
+    "customStatus": null,
+    "output": {
+        "processed_documents": 1,
+        "successful_documents": 1,
+        "failed_documents": 0,
+        "processing_timestamp": "2025-08-08T15:23:42.661039",
+        "results": [
+            {
+                "enhancement_agent": {
+                    "document_id": "175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "text": "## HISTORY\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  Patient states that she has been dealing with this pain for the past several weeks to months.  She states that it was excruciating 10 out of 10 low back pain with radiation of bilateral buttocks however no numbness tingling weakness in the bilateral lower extremities.  She even had a seek some injections and medications which provided only minimal relief now it is a 4 or 5 out of 10.  Patient states that her pain occurs a lot while she is sitting or when she is rising from sitting to standing and moving.\n\n## PAST MEDICAL HISTORY\nHep B complicating pregnancy.\n\n## MEDICATIONS\nMotrin and vitamin D\n\n## ALLERGIES\nNo known drug allergies\n\n## PHYSICAL EXAMINATION\nGeneral: Awake alert oriented, no acute distress.\nHEENT: Normocephalic atraumatic extract muscles intact\nPulmonary: No EXTR\nAbdomen: Obese female with a BMI of 45.\nNeurological: 5-5 strength throughout, sensation intact light touch throughout, negative Hoffmann's bilaterally, reflexes 2 out of 4 throughout, negative straight leg raise bilaterally.  Normal gait.\nMSK: Nontender palpation of cervical thoracic or lumbar spine or bilateral PSIS.\n\n## IMAGING\nMRI of the lumbar spine shows disc herniations at L3-L4 L4-L5 and L5-S1.  X-rays of the lumbar spine show no evidence of scoliosis however there is disc collapse particularly at L3-L4 and L4-L5.  There is evidence of spondylolisthesis at L3-L4.\n\n## IMPRESSIONS\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  I believe there is a component of discogenic and mechanical back pain involved with disc herniations at L3-L4 with spondylolisthesis at this level, L4-L5 and L5-S1.\n\n## PLAN\n1.  I discussed with this patient weight loss.\n2.  Physical therapy\n3.  Pain management referral\n4.  Pain medication with meloxicam she was explained it is a stronger version ibuprofen and is to be taken instead of her current ibuprofen.\n5.  Referral to Dr. Hares for abdominal access for anterior lumbar interbody fusion.\n6.  I discussed with the patient that if she feels conservative management she would be a candidate for anterior lumbar interbody fusion with posterior instrumentation and fusion from L3-S1.\n7.  Follow-up in 2 weeks, patient states that she will be in Romania for the next 3 or so weeks and will follow-up in approximately 3 to 4 weeks.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+                    "assigned_code": "99214",
+                    "justification": "**Medical Decision Making (MDM) Analysis (per AMA 2025 guidelines)**:\\n\\n- **Problems Addressed:** The patient has multiple disc herniations (L3-L4, L4-L5, L5-S1), L3-L4 spondylolisthesis, and discogenic/mechanical back pain that has persisted for weeks to months despite prior conservative measures (injections, NSAIDs). There is consideration for future **major surgery** (anterior lumbar interbody fusion with posterior instrumentation from L3-S1) if conservative measures fail. This represents at least **one acute complicated injury** or possibly chronic illness with exacerbation.\\n- **Data Reviewed/Analyzed:** Review and discussion of **MRI and X-ray reports** with specific findings documented; integration of prior pain management interventions; planning further referrals (pain management, surgical consultation), which meets moderate data category per AMA guidelines.\\n- **Risk of Complications/Morbidity/Mortality:** Prescription drug management (meloxicam), surgical discussion involving elective major surgery without urgent risk factors, and moderate procedural risks. These place the visit at **moderate risk**.\\n\\nAccording to AMA 2025 guidelines, to bill **99214** using MDM, at least one of the conditions must be met: moderate problems, moderate data, and/or moderate risk. This case meets all three elements at the moderate level, supporting **99214**.\\n\\nNo explicit total time was recorded; therefore, the decision is based on MDM.",
+                    "code_recommendations": {
+                        "code_99212": "- Document that the patient only has a single self-limited or minor problem, e.g., muscle strain, that is resolving with conservative care.\\n- Show minimal or no data review (no imaging interpretation, no labs).\\n- Risk assessment showing minimal risk (e.g., OTC meds only, no prescriptions, no invasive procedures discussed).\\n- No surgical discussions or complex management planning documented.",
+                        "code_99213": "- Clearly define the problem as either one stable chronic illness or acute uncomplicated injury (not involving neurological or surgical concerns).\\n- Limit data review to 1-2 unique tests or external notes.\\n- Risk limited to low level (e.g., continuation of existing NSAIDs without change, no surgical discussion).\\n- No decision-making involving potentially high-risk procedures or complex referrals.",
+                        "code_99214": "- Include explicit documentation of any neurologic deficits or functional impairments to reinforce acuity of the spinal condition.\\n- Specify number and type of imaging reviewed (with your interpretation) and any prior notes reviewed.\\n- Document risk-benefit discussion in detail regarding potential surgery.\\n- Record prescription drug management rationale in connection with imaging/pathophysiologic findings.\\n- Note social determinants of health if they impact treatment planning.",
+                        "code_99215": "- Document severe exacerbation or progression with objective findings of neurological compromise, or an injury threatening bodily function.\\n- Show extensive data review: multiple outside records, multi-modality imaging with independent interpretation, multiple specialist discussions.\\n- Document high-risk decisions such as urgent or emergent major surgery planning, hospital admission, or drug therapy requiring intensive monitoring.\\n- Record comprehensive counseling and shared decision-making over 40+ minutes on encounter date."
+                    },
+                    "performance_metrics": {
+                        "session_id": "enhancement_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                        "total_execution_time": 11.39,
+                        "breakdown": {
+                            "ai_inference_time": 9.38,
+                            "ai_inference_percentage": "82.41%",
+                            "mcp_operations_time": 0.55,
+                            "mcp_operations_percentage": "4.83%",
+                            "data_processing_time": 0.0,
+                            "agent_init_time": 1.12
+                        },
+                        "bottleneck_analysis": {
+                            "primary_bottleneck": "ai_model_inference"
+                        },
+                        "measured_at": "2025-08-08T15:23:33.136255"
+                    }
+                },
+                "auditor_agent": {
+                    "document_id": "175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "text": "## HISTORY\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  Patient states that she has been dealing with this pain for the past several weeks to months.  She states that it was excruciating 10 out of 10 low back pain with radiation of bilateral buttocks however no numbness tingling weakness in the bilateral lower extremities.  She even had a seek some injections and medications which provided only minimal relief now it is a 4 or 5 out of 10.  Patient states that her pain occurs a lot while she is sitting or when she is rising from sitting to standing and moving.\n\n## PAST MEDICAL HISTORY\nHep B complicating pregnancy.\n\n## MEDICATIONS\nMotrin and vitamin D\n\n## ALLERGIES\nNo known drug allergies\n\n## PHYSICAL EXAMINATION\nGeneral: Awake alert oriented, no acute distress.\nHEENT: Normocephalic atraumatic extract muscles intact\nPulmonary: No EXTR\nAbdomen: Obese female with a BMI of 45.\nNeurological: 5-5 strength throughout, sensation intact light touch throughout, negative Hoffmann's bilaterally, reflexes 2 out of 4 throughout, negative straight leg raise bilaterally.  Normal gait.\nMSK: Nontender palpation of cervical thoracic or lumbar spine or bilateral PSIS.\n\n## IMAGING\nMRI of the lumbar spine shows disc herniations at L3-L4 L4-L5 and L5-S1.  X-rays of the lumbar spine show no evidence of scoliosis however there is disc collapse particularly at L3-L4 and L4-L5.  There is evidence of spondylolisthesis at L3-L4.\n\n## IMPRESSIONS\n53-year-old Caucasian female presents to the Warren clinic with chief complaint of low back pain.  I believe there is a component of discogenic and mechanical back pain involved with disc herniations at L3-L4 with spondylolisthesis at this level, L4-L5 and L5-S1.\n\n## PLAN\n1.  I discussed with this patient weight loss.\n2.  Physical therapy\n3.  Pain management referral\n4.  Pain medication with meloxicam she was explained it is a stronger version ibuprofen and is to be taken instead of her current ibuprofen.\n5.  Referral to Dr. Hares for abdominal access for anterior lumbar interbody fusion.\n6.  I discussed with the patient that if she feels conservative management she would be a candidate for anterior lumbar interbody fusion with posterior instrumentation and fusion from L3-S1.\n7.  Follow-up in 2 weeks, patient states that she will be in Romania for the next 3 or so weeks and will follow-up in approximately 3 to 4 weeks.\nThis dictation was prepared using Dragon Medical voice recognition software.  As a result, errors may occur.  When identified, these errors have been corrected.  While every attempt is made to correct errors during dictation, errors may still exist.",
+                    "audit_flags": [
+                        "No documented total time – prevents time-based coding verification",
+                        "Neurological exam normal; risk assessment should emphasize that surgical discussion is conditional upon conservative therapy failure",
+                        "BMI noted but no link to SDOH impact documented; could strengthen MDM risk by detailing functional limitations",
+                        "Past medical history recorded but not integrated into risk assessment"
+                    ],
+                    "final_assigned_code": "99214",
+                    "final_justification": "Based on AMA 2025 guidelines, the encounter supports CPT 99214 for an established patient using MDM.\\n- **Number/Complexity of Problems:** The patient presents with multi-level lumbar disc herniations (L3-S1), L3-L4 spondylolisthesis, and persistent low back pain refractory to prior injections and NSAIDs. This qualifies as at least one acute complicated injury and/or chronic illness with exacerbation.\\n- **Data Reviewed/Analyzed:** MRI and X-rays reviewed with specific level findings, correlated to clinical presentation; plan includes pain management referral, surgical referral, and integration of prior pain interventions. This satisfies the moderate data category (Category 1 – ≥3 unique items: MRI review, X-ray review, and specialist referral).\\n- **Risk:** Prescription drug management initiated (meloxicam instead of ibuprofen), plus discussion of potential elective major spine surgery if conservative treatment fails, places risk at moderate per guidelines.\\nMDM meets all three elements at the moderate level, supporting 99214.",
+                    "code_evaluations": {
+                        "code_99212_evaluation": "Enhancement agent correctly notes that 99212 would require minimal problems (e.g., single self-limited issue), minimal/no data, and minimal risk. This matches AMA criteria. Correct recommendation.",
+                        "code_99213_evaluation": "Recommendation appropriately captures the low MDM requirements — single stable chronic illness or minor acute problem, limited data (1–2 tests), and low risk (no prescription change, no surgical discussion). Correct per AMA guidelines.",
+                        "code_99214_evaluation": "Enhancement agent’s recommendation aligns with AMA criteria for moderate MDM — details on chronic illness with exacerbation/acute complicated injury, moderate data review, prescription drug management, and potential surgery discussion — and suggests enhancing documentation with neurologic deficits, specific imaging details, and risk–benefit conversations, which is appropriate.",
+                        "code_99215_evaluation": "Agent’s recommendation for 99215 appropriately describes necessary documentation for high MDM (severe exacerbation, neurological compromise, high-risk surgical decisions, extensive data review). Matches AMA guidelines. No inaccuracies noted."
+                    },
+                    "billing_ready_note": "## HISTORY\n53-year-old Caucasian female presents with low back pain ongoing for several weeks to months. Initially severe (10/10) with bilateral buttock radiation, no numbness, tingling, or weakness in lower extremities. Minimal relief from prior injections and NSAIDs; currently 4–5/10. Pain worsens with sitting and rising from sitting.\n\n## PAST MEDICAL HISTORY\nHepatitis B complicating pregnancy.\n\n## MEDICATIONS\nMotrin, vitamin D.\n\n## ALLERGIES\nNo known drug allergies.\n\n## PHYSICAL EXAMINATION\nGeneral: Awake, alert, oriented, in no acute distress.\nHEENT: Normocephalic, atraumatic, extraocular movements intact.\nPulmonary: No respiratory distress.\nAbdomen: Obese (BMI 45).\nNeurological: Strength 5/5, sensation intact to light touch, negative Hoffmann’s bilaterally, reflexes 2+, negative straight leg raise bilaterally, normal gait.\nMusculoskeletal: No tenderness over cervical, thoracic, lumbar spine, or bilateral PSIS.\n\n## IMAGING\nLumbar spine MRI: Disc herniations at L3-L4, L4-L5, L5-S1.\nLumbar spine X-ray: Disc collapse at L3-L4 and L4-L5, L3-L4 spondylolisthesis; no scoliosis.\n\n## IMPRESSION\nChronic low back pain with discogenic and mechanical components, multi-level lumbar disc herniations, and L3-L4 spondylolisthesis.\n\n## PLAN\n1. Weight loss counseling.\n2. Physical therapy referral.\n3. Pain management referral.\n4. Initiate meloxicam instead of ibuprofen; discussed rationale and dosing.\n5. Referral to vascular surgeon for abdominal access in potential anterior lumbar interbody fusion (ALIF).\n6. Discussed conditional candidacy for ALIF with posterior instrumentation and fusion from L3–S1 if conservative measures fail; reviewed benefits, risks, and alternatives.\n7. Follow-up in 3–4 weeks after patient’s return from travel.\n\n**MDM Summary:** Moderate complexity — persistent multi-level disc disease with spondylolisthesis, moderate amount of data reviewed (MRI, X-ray, prior procedural history, multiple referrals), and moderate risk (prescription drug management, elective major surgery consideration).",
+                    "confidence": {
+                        "score": 88,
+                        "tier": "High",
+                        "reasoning": "FACTORS INCREASING CONFIDENCE:\n- Multiple moderate-level MDM elements clearly documented (problems, data, risk)\n- Imaging review with level-specific findings supports complexity\n- Surgical discussion and prescription change documented\nFACTORS DECREASING CONFIDENCE:\n- No total time documented; limits alternative coding pathway\n- Neurological exam normal, surgical consideration conditional, which may incline some auditors toward lower MDM if risk emphasis is underplayed\n- No explicit integration of comorbidities or SDOH impact to strengthen MDM",
+                        "score_deductions": [
+                            "- Score reduced by 5 points: Lack of total time documentation prevents confirming time-based coding",
+                            "- Score reduced by 4 points: Conditional surgical plan and normal neuro exam slightly weaken moderate risk argument",
+                            "- Score reduced by 3 points: No explicit documentation linking obesity or comorbidities to complexity of management"
+                        ]
+                    },
+                    "performance_metrics": {
+                        "session_id": "auditor_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                        "total_execution_time": 9.38,
+                        "breakdown": {
+                            "ai_inference_time": 9.37,
+                            "ai_inference_percentage": "99.9%",
+                            "data_processing_time": 0.0,
+                            "data_processing_percentage": "0.0%",
+                            "agent_init_time": 0.01,
+                            "agent_init_percentage": "0.1%"
+                        },
+                        "bottleneck_analysis": {
+                            "primary_bottleneck": "ai_model_inference"
+                        },
+                        "measured_at": "2025-08-08T15:23:42.619374"
+                    }
+                },
+                "timestamp": "2025-08-08T15:23:42.619394",
+                "processing_metadata": {
+                    "enhancement_agent_model": "Azure OpenAI GPT-5",
+                    "auditor_agent_model": "Azure OpenAI GPT-5",
+                    "processing_time": "2025-08-08T15:23:42.619396"
+                },
+                "consolidated_performance": {
+                    "total_execution_time": 20.77,
+                    "activity_wrapper_time": 9.38,
+                    "activity_session_id": "activity_auditor_175ac3cb-e718-40c7-805a-5306dcadee8a",
+                    "performance_breakdown": {
+                        "ai_processing": {
+                            "total_ai_time": 18.75,
+                            "ai_percentage": "90.27%",
+                            "enhancement_ai_time": 9.38,
+                            "auditor_ai_time": 9.37
+                        },
+                        "data_processing": {
+                            "total_data_time": 0.0,
+                            "data_percentage": "0.0%",
+                            "enhancement_data_time": 0.0,
+                            "auditor_data_time": 0.0
+                        },
+                        "phase_breakdown": {
+                            "enhancement_phase": {
+                                "duration": 11.39,
+                                "percentage": "54.84%"
+                            },
+                            "audit_phase": {
+                                "duration": 9.38,
+                                "percentage": "45.16%"
+                            }
+                        }
+                    },
+                    "bottleneck_analysis": {
+                        "primary_bottleneck": "ai_processing",
+                        "phase_bottleneck": "enhancement_phase"
+                    },
+                    "measured_at": "2025-08-08T15:23:42.619410"
+                }
+            }
+        ]
+    },
+    "createdTime": "2025-08-08T15:23:21Z",
+    "lastUpdatedTime": "2025-08-08T15:23:42Z"
+}

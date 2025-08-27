@@ -11,7 +11,7 @@ from azure.ai.formrecognizer import DocumentAnalysisClient
 from azure.core.credentials import AzureKeyCredential
 from dotenv import load_dotenv
 
-from models.pydantic_models import EMInput
+from agents.models.pydantic_models import EMInput
 from settings import logger
 
 # Load environment variables
@@ -178,7 +178,7 @@ class PDFProcessor:
         sample_path = Path(sample_dir)
         pdf_files = list(sample_path.glob("*.pdf"))[:limit]
         
-        logger.info(f"Processing {len(pdf_files)} PDF files from {sample_dir}")
+        logger.debug(f"Processing {len(pdf_files)} PDF files from {sample_dir}")
         
         results = []
         for pdf_file in pdf_files:
@@ -186,7 +186,7 @@ class PDFProcessor:
             if em_input:
                 results.append(em_input)
         
-        logger.info(f"Successfully processed {len(results)} PDFs")
+        logger.debug(f"Successfully processed {len(results)} PDFs")
         return results
 
 
