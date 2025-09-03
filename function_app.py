@@ -10,7 +10,7 @@ from durable_functions.em_coding_orchestrator import main as em_coding_orchestra
 from durable_functions.enhancement_agent_activity import main as enhancement_agent_activity_main
 from durable_functions.auditor_agent_activity import main as auditor_agent_activity_main
 # Progress Note
-from durable_functions.progress_note_from_id import main as progress_note_from_id_main
+from durable_functions.start_progress_note_from_id import main as progress_note_from_id_main
 from durable_functions.em_progress_note_orchestrator import main as em_progress_note_orchestrator_main
 from durable_functions.progress_note_agent_activity import main as progress_note_agent_activity_main
 # Feedback endpoints

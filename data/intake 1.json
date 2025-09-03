@@ -1,0 +1,271 @@
+{
+  "patientName": "Stroud, Katrina",
+  "patientId": "146688",
+  "primaryCareProvider": "Hussain, Asima",
+  "provider": "Mendelson, Stephen",
+  "appointment": {
+    "scheduleDate": "08/25/2025 09:20 AM",
+    "provider": "Stephen Mendelson",
+    "office": "Sterling Heights",
+    "appointmentType": "FU"
+  },
+  "presentIllness": {
+    "bodyPartLat": [
+      {
+        "bodyPart": "Hip",
+        "laterality": "Bi-Lateral",
+        "painSymptoms": {
+          [cite_start]"ChiefComplaint": "Pt states she's here for B hips [cite: 3] Scheduled for surgery L hip on 8/20 but canceled because she was having issues with the R hip; [cite_start]R hip replacement 12/11/24 [cite: 3] [cite_start]Auto accident 6/4/25 [cite: 3] [cite_start]R hip worse than L hip [cite: 3] [cite_start]Stiffness comes and goes [cite: 3] [cite_start]Worse with cold and not moving [cite: 3] [cite_start]Better with moving around and oxycodone [cite: 3] [cite_start]Pain wakes pt up sometimes [cite: 3] [cite_start]States she thinks she's having issues with R hip because she only went to PT 3 times [cite: 3]",
+          "hasPainSymptoms": "Yes",
+          "Intensity": "7",
+          "Type": [
+            {
+              "Value": "Shooting"
+            },
+            {
+              "Value": "Stiffness"
+            }
+          ],
+          "typeOther": null,
+          "WorsenedBy": [
+            {
+              "Value": "Sitting"
+            },
+            {
+              "Value": "Other"
+            }
+          ],
+          "WorsenedByOther": "Cold",
+          "ImprovedBy": [
+            {
+              "Value": "Moving Around"
+            },
+            {
+              "Value": "Medications"
+            }
+          ],
+          "ImprovedByOther": null,
+          "PainWakesPatient": "Yes"
+        }
+      }
+    ],
+    "visitReason": null,
+    "injuryStatus": {
+      "isInjured": "No",
+      "description": null,
+      "injuries": []
+    },
+    "specialTests": []
+  },
+  "pregnancyStatus": {
+    "isPregnant": "No",
+    "lastVerified": "08/25/2025"
+  },
+  "surgicalHistory": {
+    "orthopedicSurgeries": "Yes",
+    "otherSurgeries": "Yes",
+    "procedures": [
+      {
+        "procedure": "Total Hip Replacement",
+        "laterality": "Right",
+        "date": "2024",
+        "surgeon": "Mendelson, Stephen"
+      },
+      {
+        "procedure": "Knee RFA",
+        "laterality": "Bi-lateral",
+        "date": "2022",
+        "surgeon": "Mendelson, Stephen"
+      },
+      {
+        "procedure": "Arthroscopy Knee",
+        "laterality": "Left",
+        "date": "2016",
+        "surgeon": "Stephen Mendelson"
+      },
+      {
+        "procedure": "Surgery to the meniscus",
+        "laterality": "Right",
+        "date": "2012",
+        "surgeon": "I dont remember"
+      },
+      {
+        "procedure": "geniculate nerve blockade",
+        "laterality": "Left",
+        "date": "Unspecified",
+        "surgeon": "Unspecified"
+      }
+    ],
+    "lastVerified": "10/14/2024"
+  },
+  "allergies": {
+    "knownDrugAllergies": "No",
+    "activeAllergies": [],
+    "lastVerified": "08/25/2025"
+  },
+  "medications": {
+    "prescriptionMedications": "Yes",
+    "nonPrescriptionMedications": "No",
+    "supplementsVitaminsHerbs": "No",
+    "thcCannabinoidMarijuanaProducts": "No",
+    "activeMedications": [
+      {
+        "code": null,
+        "medication": "CELEBREX 400MG CAP",
+        "instructions": "Take one capsule by mouth once daily with food as need for pain.",
+        "qty": 60,
+        "refills": 0,
+        "added": "08/25/2025"
+      },
+      {
+        "code": "1543069",
+        "medication": "Lidocaine Ointment 5%",
+        "instructions": "Every month apply small amount 4 times daily",
+        "qty": 30,
+        "refills": 1,
+        "added": "07/10/2025"
+      },
+      {
+        "code": "308191",
+        "medication": "Amoxicillin Oral Capsule 500 MG",
+        "instructions": "take 4 pills 1 hour prior to dental procedure. following Rx procedure, take 1 pill BID for 3 days.",
+        "qty": 14,
+        "refills": 1,
+        "added": "01/24/2025"
+      },
+      {
+        "code": "1049625",
+        "medication": "Percocet 10 mg- 325 mg tablet",
+        "instructions": "Take one tablet by mouth every 4 hours as needed for acute post op pain, dispense #42 (forty two), No refill.",
+        "qty": 42,
+        "refills": 0,
+        "added": "12/11/2024"
+      },
+      {
+        "code": "998740",
+        "medication": "Senna S 50 mg- 8.6 mg tablet",
+        "instructions": "Take one tablet by mouth once to twice a day PRN constipation dispense #60(sixty) No refill",
+        "qty": 60,
+        "refills": 0,
+        "added": "12/06/2024"
+      },
+      {
+        "code": "312832",
+        "medication": "risperiDONE Oral Tablet 3 MG",
+        "instructions": "1 Once a day",
+        "qty": null,
+        "refills": null,
+        "added": "12/06/2024"
+      },
+      {
+        "code": "861226",
+        "medication": "Adderall XR Oral Capsule Extended Release 24 Hour 20 MG",
+        "instructions": "1 3 times a day",
+        "qty": null,
+        "refills": null,
+        "added": "12/06/2024"
+      },
+      {
+        "code": "885219",
+        "medication": "Benztropine Mesylate Oral Tablet 0.5 MG",
+        "instructions": "1 Once a day",
+        "qty": null,
+        "refills": null,
+        "added": "12/06/2024"
+      },
+      {
+        "code": null,
+        "medication": "LOFENA/ diclofenac potassium 25MG TAB",
+        "instructions": "TAKE ONCE EVERY 12 HOURS FOR PAIN.",
+        "qty": 60,
+        "refills": 0,
+        "added": "10/14/2024"
+      },
+      {
+        "code": "828350",
+        "medication": "Tegretol tablet",
+        "instructions": null,
+        "qty": null,
+        "refills": null,
+        "added": "10/19/2017"
+      },
+      {
+        "code": "1049683",
+        "medication": "Lamital tablet",
+        "instructions": null,
+        "qty": null,
+        "refills": null,
+        "added": "10/19/2017"
+      }
+    ]
+  },
+  "medicalHistory": {
+    "bloodProducts": "No",
+    "medicalConditions": "Yes",
+    "conditions": [
+      {
+        "description": "Anxiety/Depression",
+        "status": "Stable",
+        "updated": "06/20/2022"
+      }
+    ],
+    "lastVerified": "08/25/2025"
+  },
+  "socialHistory": {
+    "isEmployed": "No",
+    "dominantHand": "Right",
+    "maritalStatus": "Married",
+    "onDisability": "Yes",
+    "ssDisability": "Yes",
+    "veteransDisability": "No",
+    "shortTermDisability": "Yes",
+    "longTermDisability": "No",
+    "tobaccoProducts": "Yes",
+    "smoking": "Yes",
+    "howMuch": "light smoker",
+    "howLong": "10-25 years",
+    "alcoholConsumption": "No",
+    "recreationalDrugs": "No"
+  },
+  "familyHistory": {
+    "hasHistory": "Yes",
+    "history": [
+      {
+        "relationship": "Father",
+        "disease": "Cancer",
+        "ageAtDiagnosis": "50-59 years",
+        "living": "No"
+      }
+    ],
+    "lastVerified": "10/14/2024"
+  },
+  "pharmacies": {
+    "pharmacyList": [
+      {
+        "storeName": "DOLLAR MART PHARMACY",
+        "address": "13465 12 MILE RD",
+        "city": "WARREN, MI, 48088",
+        "phone": "(586) 576-0334",
+        "linkedToDosepot": "Yes"
+      }
+    ],
+    "lastVerified": "08/25/2025"
+  },
+  "vitals": {
+    "vitalList": [
+      {
+        "date": "05/12/2025",
+        "height": "5 ft 9 in",
+        "weight": "205 lb",
+        "bmi": "30.3"
+      },
+      {
+        "date": "09/15/2022",
+        "height": "5 ft 9 in",
+        "weight": "268 lb",
+        "bmi": "39.6"
+      }
+    ],
+    "lastVerified": "08/25/2025"
+  }
+}

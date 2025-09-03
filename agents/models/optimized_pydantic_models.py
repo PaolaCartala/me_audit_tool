@@ -52,6 +52,60 @@ class OptimizedEMInput(BaseModel):
     is_new_patient: Optional[bool] = None
 
 
+class OptimizedEMProgressNoteInput(BaseModel):
+    """Input schema for optimized progress note generation"""
+    transcription: str
+    patient_name: str
+    patient_id: str
+    patient_date_of_birth: str
+    date_of_service: str
+    provider: str
+    progress_note_type: str = "Progress Note"
+    created_by: Optional[str] = None
+    creation_date: Optional[str] = None
+    is_new_patient: Optional[bool] = None
+
+
+class PatientInfo(BaseModel):
+    """Patient information section"""
+    patient_name: str
+    date_of_birth: str
+    date_of_service: str
+    patient_id: str
+    provider: str
+
+
+class PhysicalExaminationFindings(BaseModel):
+    """Individual physical examination finding"""
+    system: str = Field(description="Body system or area examined (e.g., 'General', 'Cardiovascular', 'Respiratory', 'Neurological')")
+    findings: str = Field(description="Clinical findings for this system")
+
+
+class PhysicalExamination(BaseModel):
+    """Physical examination findings organized by findings list"""
+    findings: List[PhysicalExaminationFindings] = Field(description="List of physical examination findings by system", default_factory=list)
+
+
+class ImagingStudy(BaseModel):
+    """Individual imaging study result"""
+    type: str = Field(description="Type of study (e.g., 'Chest X-ray', 'MRI lumbar spine')")
+    findings: str = Field(description="Key findings from the study")
+
+
+class StructuredProgressNote(BaseModel):
+    """Structured progress note with organized sections"""
+    patient_info: PatientInfo
+    history: str
+    past_medical_history: Optional[str] = None
+    medications: Optional[str] = None
+    allergies: Optional[str] = None
+    physical_examination: Optional[PhysicalExamination] = None
+    imaging_studies: Optional[List[ImagingStudy]] = None
+    assessment: List[str]
+    plan: List[str]
+    dictation_notes: Optional[str] = None
+
+
 class OptimizedEMCodeAssignment(BaseModel):
     """Minimal response for enhancement agent - only assigned_code and justification"""
     assigned_code: str = Field(description="The most appropriate E/M code assigned (99212, 99213, 99214, or 99215)")
@@ -107,6 +161,7 @@ class OptimizedEMAuditOutput(BaseModel):
 
 _optimized_em_enhancement_agent = None
 _optimized_em_auditor_agent = None
+_optimized_progress_note_agent = None
 
 @lru_cache(maxsize=None)
 def get_optimized_em_enhancement_agent() -> Agent:
@@ -230,6 +285,75 @@ Always reference the embedded AMA 2025 guidelines in your audit findings."""
         )
         logger.debug("Optimized EM auditor agent created successfully")
     return _optimized_em_auditor_agent
+
+
+@lru_cache(maxsize=None)
+def get_optimized_progress_note_agent() -> Agent:
+    """Get or create the optimized progress note generator agent with enhanced context handling"""
+    global _optimized_progress_note_agent
+    if _optimized_progress_note_agent is None:
+        logger.debug("Creating optimized progress note agent instance")
+        
+        progress_note_prompt = """Medical progress note specialist. Generate structured medical progress notes from transcriptions with enhanced patient context.
+
+TASK: Generate a STRUCTURED medical progress note that organizes clinical information into clear, accessible sections, leveraging historical context and intake data.
+
+CONTEXT INTEGRATION STRATEGY:
+1. **Historical Progress Notes**: Use previous notes to understand:
+   - Disease progression and stability
+   - Medication changes and responses  
+   - Recurring symptoms or concerns
+   - Provider continuity patterns
+
+2. **Patient Intake Data**: Prioritize current visit context:
+   - Chief complaint and present illness
+   - Current medications and allergies
+   - Recent surgical/medical history
+   - Relevant social factors
+
+3. **Clinical Continuity**: Connect current visit to historical patterns while focusing on new developments
+
+OUTPUT REQUIREMENTS:
+Return a structured progress note with the following components:
+- patient_info: Patient demographics and visit information
+- history: Comprehensive history integrating current transcription with relevant historical context
+- past_medical_history: Chronic conditions, prior surgeries (synthesized from all sources)
+- medications: Current medications (prioritize intake data, cross-reference with historical changes)  
+- allergies: Known allergies (from intake data primarily)
+- physical_examination: List of examination findings by body system (from current transcription)
+- imaging_studies: List of imaging studies with findings (if mentioned in current visit)
+- assessment: List of diagnostic impressions (contextualized with historical progression)
+- plan: List of treatment plan items (building on previous care plans when appropriate)
+- dictation_notes: Voice recognition disclaimer (if applicable)
+
+PHYSICAL EXAMINATION FORMAT:
+Structure as: [{"system": "General", "findings": "Alert and oriented, no acute distress"}, ...]
+
+CLINICAL INTEGRATION GUIDELINES:
+- Emphasize NEW findings and changes from baseline
+- Reference historical stability/instability when relevant
+- Highlight medication compliance and effectiveness patterns
+- Note any deviations from established care plans
+- Maintain medical accuracy with proper clinical terminology
+- Focus on current visit while providing appropriate historical context
+- Avoid redundancy - synthesize rather than repeat historical information
+
+CONTEXT OPTIMIZATION:
+- Extract key trends from historical notes (stable vs. worsening conditions)
+- Identify medication patterns and changes
+- Note provider continuity and care coordination
+- Highlight relevant intake findings that inform current assessment
+
+Generate structured output integrating current transcription with provided historical and intake context."""
+        
+        _optimized_progress_note_agent = Agent(
+            model=get_optimized_azure_openai_model(),
+            result_type=StructuredProgressNote, 
+            output_retries=1, 
+            system_prompt=progress_note_prompt
+        )
+        logger.debug("Optimized progress note agent created successfully")
+    return _optimized_progress_note_agent
 
 
 

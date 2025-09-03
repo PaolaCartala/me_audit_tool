@@ -1,0 +1,458 @@
+import os
+import json
+import time
+from datetime import datetime
+from dotenv import load_dotenv
+# from pydantic_ai.mcp import MCPServerSSE
+
+from agents.models.optimized_pydantic_models import (
+    OptimizedEMProgressNoteInput,
+    StructuredProgressNote,
+    get_optimized_progress_note_agent
+)
+# TODO: [DELETE] Mock data imports - replaced with direct data input
+# from data.dictation_samples import dictation
+# from data.patient_intake import patient_intake
+from settings import logger
+
+# Load environment variables
+load_dotenv()
+
+
+async def main(input_payload) -> dict:
+    """
+    E/M Progress Note Generator Agent
+    Generates a compliant medical progress note based on physician transcription and structured patient information.
+    """
+    start_time = time.perf_counter()
+    
+    # Handle both legacy appointment_id and new data structure
+    if isinstance(input_payload, dict) and "dictations" in input_payload:
+        # New data structure - use direct data
+        dictations = input_payload.get("dictations", [])
+        intake_data = input_payload.get("patient_intake", {})
+        data_identifier = f"data_with_{len(dictations)}_dictations"
+        session_id = f"progress_note_{data_identifier}"
+        
+        logger.debug("🚀 Progress Note Agent: Starting execution with direct data", 
+                    session_id=session_id,
+                    data_identifier=data_identifier,
+                    dictations_count=len(dictations),
+                    has_patient_intake=bool(intake_data))
+    else:
+        # TODO: [DELETE] Legacy appointment_id processing
+        # appointment_id = str(input_payload)
+        # session_id = f"progress_note_{appointment_id}"
+        # logger.debug("🚀 Progress Note Agent: Starting execution", 
+        #             session_id=session_id,
+        #             appointment_id=appointment_id)
+        # # Use directly imported data instead of loading JSON files
+        # dictations = dictation
+        # # Use directly imported patient intake data for enhanced context
+        # intake_data = patient_intake
+        
+        # Convert legacy to new format with empty data
+        dictations = []
+        intake_data = {}
+        data_identifier = "legacy_empty_data"
+        session_id = f"progress_note_{data_identifier}"
+        logger.debug("🚀 Progress Note Agent: Converting legacy input to new format", 
+                    session_id=session_id,
+                    data_identifier=data_identifier)
+    
+    try:
+        if not dictations:
+            return {"error": "No dictation data available"}
+        
+        # TODO: [DELETE] Legacy dictation selection logic based on appointment_id
+        # # Find the correct dictation based on the appointment_id (patient_id)
+        # current_dictation = None
+        # for dict_item in dictations:
+        #     dict_data = dict_item.get("dictation", {})
+        #     if dict_data.get("patientId") == appointment_id:
+        #         current_dictation = dict_item
+        #         break
+        # 
+        # # If no specific dictation found, use the first one as fallback
+        # if not current_dictation and dictations:
+        #     logger.debug("No dictation found for appointment_id, using first available", 
+        #                 appointment_id=appointment_id)
+        
+        # Use the first dictation from the provided data
+        current_dictation = dictations[0]
+            
+        if not current_dictation:
+            return {"error": "No dictation data available"}
+        
+        # Handle different dictation data structures
+        if isinstance(current_dictation, dict) and "dictation" in current_dictation:
+            # Expected structure: {"dictation": {...}}
+            dictation_data = current_dictation.get("dictation", {})
+        else:
+            # TODO: [DELETE] Direct structure fallback: {...}
+            dictation_data = current_dictation
+        
+        patient_id = dictation_data.get('patientId', 'unknown')
+        session_id = f"progress_note_{patient_id}"
+        
+        logger.debug("🚀 Progress Note Agent: Starting execution for current visit", 
+                    session_id=session_id,
+                    patient_id=patient_id)
+        
+        try:
+            # Extract and parse data from current dictation
+            parsing_start = time.perf_counter()
+            file_content = dictation_data.get("fileContent", {})
+            
+            # Create optimized input model
+            data = OptimizedEMProgressNoteInput(
+                transcription=file_content.get("data", "") if isinstance(file_content, dict) else str(file_content),
+                patient_name=dictation_data.get("patientName", "Unknown Patient"),
+                patient_id=dictation_data.get("patientId", ""),
+                patient_date_of_birth=dictation_data.get("patientDateOfBirth", ""),
+                date_of_service=dictation_data.get("dateOfService", ""),
+                provider=dictation_data.get("provider", ""),
+                progress_note_type=dictation_data.get("dictationTypeName", "Progress Note"),
+                created_by=dictation_data.get("createdBy", ""),
+                creation_date=dictation_data.get("creationDate", ""),
+                is_new_patient=dictation_data.get("isNewPatient")
+            )
+            parsing_time = time.perf_counter() - parsing_start
+            
+            logger.debug("⏱️ Data Extraction & Parsing", 
+                        session_id=session_id,
+                        duration_seconds=parsing_time,
+                        process="data_extraction_parsing",
+                        transcription_length=len(data.transcription),
+                        patient_id=data.patient_id)
+
+            # Extract relevant context efficiently - Only HIGH & MEDIUM priority data
+            context_start = time.perf_counter()
+            
+            # Chief complaint and current symptoms
+            chief_complaint = ""
+            pain_details = ""
+            if intake_data and (present_illness := intake_data.get("presentIllness")):
+                if visit_reason := present_illness.get("visitReason"):
+                    chief_complaint = visit_reason
+                
+                # Extract detailed pain information
+                if body_parts := present_illness.get("bodyPartLat", []):
+                    for body_part in body_parts:
+                        if pain_symptoms := body_part.get("painSymptoms", {}):
+                            if cc := pain_symptoms.get("ChiefComplaint"):
+                                chief_complaint = f"{chief_complaint} - {cc}" if chief_complaint else cc
+                            
+                            # Pain characteristics
+                            pain_chars = []
+                            if intensity := pain_symptoms.get("Intensity"):
+                                pain_chars.append(f"Intensity {intensity}/10")
+                            if pain_types := pain_symptoms.get("Type", []):
+                                types = [t.get("Value", "") for t in pain_types if t.get("Value")]
+                                if types:
+                                    pain_chars.append(f"Type: {', '.join(types)}")
+                            if worsened_by := pain_symptoms.get("WorsenedBy", []):
+                                factors = [w.get("Value", "") for w in worsened_by if w.get("Value")]
+                                if factors:
+                                    pain_chars.append(f"Worsened by: {', '.join(factors)}")
+                            if improved_by := pain_symptoms.get("ImprovedBy", []):
+                                factors = [i.get("Value", "") for i in improved_by if i.get("Value")]
+                                if factors:
+                                    pain_chars.append(f"Improved by: {', '.join(factors)}")
+                            
+                            if pain_chars:
+                                pain_details = "; ".join(pain_chars)
+            
+            # Current medications (limit to most recent 8)
+            current_medications = []
+            if intake_data and (medications := intake_data.get("medications", {}).get("activeMedications", [])):
+                for med in medications[-8:]:  # Only most recent 8
+                    if med_name := med.get("medication", ""):
+                        if instructions := med.get("instructions", ""):
+                            current_medications.append(f"{med_name}: {instructions}")
+                        else:
+                            current_medications.append(med_name)
+            
+            # Known allergies
+            allergies = []
+            if intake_data and (allergies_data := intake_data.get("allergies", {}).get("activeAllergies", [])):
+                for allergy in allergies_data:
+                    if allergy_name := allergy.get("allergy", ""):
+                        symptom = allergy.get("symptom", "")
+                        severity = allergy.get("severity", "")
+                        allergy_info = allergy_name
+                        if symptom:
+                            allergy_info += f" (symptoms: {symptom})"
+                        if severity:
+                            allergy_info += f" - {severity}"
+                        allergies.append(allergy_info)
+            
+            # Active medical conditions
+            medical_conditions = []
+            if intake_data and (conditions := intake_data.get("medicalHistory", {}).get("conditions", [])):
+                for condition in conditions:
+                    if desc := condition.get("description", ""):
+                        status = condition.get("status", "")
+                        condition_info = desc
+                        if status:
+                            condition_info += f" ({status})"
+                        medical_conditions.append(condition_info)
+            
+            # Recent surgical history (limit to most recent 5)
+            surgical_history = []
+            if intake_data and (surgeries := intake_data.get("surgicalHistory", {}).get("procedures", [])):
+                for surgery in surgeries[:5]:  # Only most recent 5
+                    if procedure := surgery.get("procedure", ""):
+                        time_since = surgery.get("timeSinceSurgery", "")
+                        surgery_info = procedure
+                        if time_since:
+                            surgery_info += f" ({time_since} ago)"
+                        surgical_history.append(surgery_info)
+            
+            # Relevant social history (smoking, alcohol for drug interactions)
+            social_factors = []
+            if intake_data and (social_history := intake_data.get("socialHistory", {})):
+                # Smoking status
+                if social_history.get("smoking") == "Yes":
+                    if smoking_data := social_history.get("smokingData", {}):
+                        smoking_info = "Current smoker"
+                        if how_much := smoking_data.get("howMuch"):
+                            smoking_info += f" ({how_much})"
+                        social_factors.append(smoking_info)
+                
+                # Alcohol consumption
+                if social_history.get("alcoholConsumption") == "yes":
+                    if alcohol_data := social_history.get("alcohol", {}):
+                        if drinks_per_week := alcohol_data.get("drinksPerWeek"):
+                            social_factors.append(f"Alcohol: {drinks_per_week} drinks/week")
+            
+            # Historical context from previous visits
+            # TODO: [DELETE] Legacy patient_dictations logic based on patientId matching
+            # patient_dictations = [item.get("dictation", {}) for item in dictations 
+            #                     if item.get("dictation", {}).get("patientId") == data.patient_id]
+            
+            # Use all provided dictations for historical context
+            patient_dictations = []
+            for item in dictations:
+                if isinstance(item, dict) and "dictation" in item:
+                    # Expected structure: {"dictation": {...}}
+                    patient_dictations.append(item.get("dictation", {}))
+                else:
+                    # TODO: [DELETE] Direct structure fallback: {...}
+                    patient_dictations.append(item)
+            
+            visit_count = len(patient_dictations)
+            clinical_trends = []
+            if patient_dictations:
+                # Analyze recent visits for stability trends
+                for visit in patient_dictations[:3]:  # Last 3 visits
+                    file_content_data = visit.get("fileContent", {})
+                    if isinstance(file_content_data, dict):
+                        file_content = file_content_data.get("data", "")
+                    else:
+                        file_content = str(file_content_data)
+                    
+                    if file_content:
+                        content_lower = file_content.lower()
+                        visit_date = visit.get("dateOfService", "Unknown date")
+                        
+                        if "stable" in content_lower:
+                            clinical_trends.append(f"{visit_date}: Stable condition")
+                        elif "well-controlled" in content_lower:
+                            clinical_trends.append(f"{visit_date}: Well-controlled")
+                        elif any(word in content_lower for word in ["worsening", "deteriorating", "concerning"]):
+                            clinical_trends.append(f"{visit_date}: Concerning changes")
+            
+            context_time = time.perf_counter() - context_start
+            
+            logger.debug("⏱️ Context Extraction - Priority Data Only", 
+                        session_id=session_id,
+                        duration_seconds=context_time,
+                        chief_complaint_extracted=bool(chief_complaint),
+                        medications_count=len(current_medications),
+                        allergies_count=len(allergies),
+                        conditions_count=len(medical_conditions),
+                        surgical_history_count=len(surgical_history),
+                        historical_visits=visit_count)
+
+            # Prepare optimized prompt with extracted priority data
+            prompt_start = time.perf_counter()
+            
+            # Build context-enhanced prompt with only relevant data
+            context_sections = []
+            
+            # Patient info
+            context_sections.append(f"""PATIENT INFORMATION:
+Name: {data.patient_name}
+ID: {data.patient_id}
+Date of Birth: {data.patient_date_of_birth}
+Date of Service: {data.date_of_service}
+Provider: {data.provider}""")
+            
+            # Current visit context
+            if chief_complaint or pain_details or current_medications or allergies:
+                intake_section = ["CURRENT VISIT CONTEXT:"]
+                
+                if chief_complaint:
+                    intake_section.append(f"Chief Complaint: {chief_complaint}")
+                
+                if pain_details:
+                    intake_section.append(f"Pain Details: {pain_details}")
+                
+                if allergies:
+                    intake_section.append(f"Known Allergies: {'; '.join(allergies)}")
+                
+                if current_medications:
+                    intake_section.append(f"Current Medications: {'; '.join(current_medications)}")
+                
+                context_sections.append("\n".join(intake_section))
+            
+            # Medical and surgical history
+            if medical_conditions or surgical_history or social_factors:
+                medical_section = ["RELEVANT MEDICAL HISTORY:"]
+                
+                if medical_conditions:
+                    medical_section.append(f"Active Conditions: {'; '.join(medical_conditions)}")
+                
+                if surgical_history:
+                    medical_section.append(f"Recent Surgeries: {'; '.join(surgical_history)}")
+                
+                if social_factors:
+                    medical_section.append(f"Social History: {'; '.join(social_factors)}")
+                
+                context_sections.append("\n".join(medical_section))
+            
+            # Historical context
+            if visit_count > 1:
+                historical_section = [f"HISTORICAL CONTEXT: {visit_count} previous visits on record"]
+                
+                if clinical_trends:
+                    historical_section.append(f"Recent Clinical Trends: {'; '.join(clinical_trends[-3:])}")  # Last 3 trends
+                
+                context_sections.append("\n".join(historical_section))
+            
+            # Current transcription
+            context_sections.append(f"""CURRENT TRANSCRIPTION:
+{data.transcription}""")
+            
+            user_prompt = "\n\n".join(context_sections)
+            
+            prompt_time = time.perf_counter() - prompt_start
+            
+            logger.debug("⏱️ Prompt Preparation", 
+                        session_id=session_id,
+                        duration_seconds=prompt_time,
+                        process="prompt_preparation",
+                        prompt_length=len(user_prompt),
+                        transcription_length=len(data.transcription))
+            
+            logger.debug(f"🧠 Progress Note Agent: Sending enhanced prompt to AI model...")
+            
+            # Track agent initialization time
+            agent_init_start = time.perf_counter()
+            agent = get_optimized_progress_note_agent()
+            agent_init_time = time.perf_counter() - agent_init_start
+            
+            logger.debug("⏱️ Agent Initialization", 
+                        session_id=session_id,
+                        duration_seconds=agent_init_time,
+                        process="agent_initialization",
+                        agent_type="optimized_progress_note_generator")
+            
+            # Track AI model inference time
+            ai_inference_start = time.perf_counter()
+            ai_result = await agent.run(user_prompt)
+            ai_inference_time = time.perf_counter() - ai_inference_start
+            
+            logger.debug("⏱️ AI Model Inference", 
+                        session_id=session_id,
+                        duration_seconds=ai_inference_time,
+                        process="ai_model_inference")
+            
+            logger.debug(f"✅ Progress Note Agent: Received structured note from optimized AI model")
+            
+            # Track response formatting time
+            formatting_start = time.perf_counter()
+            
+            # Extract structured data from agent result
+            structured_data = ai_result.output
+            response = structured_data.model_dump()
+            formatting_time = time.perf_counter() - formatting_start
+            
+            logger.debug("⏱️ Response Formatting", 
+                        session_id=session_id,
+                        duration_seconds=formatting_time,
+                        process="response_formatting",
+                        is_structured=True)
+            
+            total_time = time.perf_counter() - start_time
+            
+            # Add metadata to response
+            response.update({
+                "meta": {
+                    "session_id": session_id,
+                    "agent_type": "optimized_progress_note_generator",
+                    "model_used": "optimized_structured_agent",
+                    "structured_output_enabled": True,
+                    "context_enhanced": bool(chief_complaint or current_medications or allergies or medical_conditions),
+                    "performance_metrics": {
+                        "total_execution_time": round(total_time, 2),
+                        "context_extraction_time": round(context_time, 2) if 'context_time' in locals() else 0,
+                        "ai_inference_time": round(ai_inference_time, 2),
+                        "measured_at": datetime.now().isoformat()
+                    }
+                }
+            })
+            
+            logger.debug(f"🎉 Progress Note Agent: Successfully generated enhanced note for patient {data.patient_name}")
+            return response
+            
+        except Exception as e:
+            total_time = time.perf_counter() - start_time
+            logger.error("❌ Progress Note Agent: Execution failed", 
+                        session_id=session_id,
+                        error=str(e),
+                        total_time_before_error=total_time,
+                        exc_info=True)
+            
+            # Return error response
+            return {
+                "patient_id": dictation_data.get("patientId", "unknown"),
+                "status": "error",
+                "error": str(e),
+                "error_type": type(e).__name__,
+                "performance_metrics": {
+                    "session_id": session_id,
+                    "total_execution_time": round(total_time, 2),
+                    "measured_at": datetime.now().isoformat(),
+                    "error_occurred": True
+                },
+                "timestamp": datetime.now().isoformat()
+            }
+
+    except Exception as e:
+        total_time = time.perf_counter() - start_time
+        logger.error("❌ Progress Note Agent: Critical execution failure", 
+                    session_id=session_id,
+                    error=str(e),
+                    total_time_before_error=total_time,
+                    exc_info=True)
+        
+        # Fallback response
+        return {
+            # TODO: [DELETE] Legacy appointment_id field
+            # "appointment_id": str(input_payload),
+            "data_identifier": data_identifier if 'data_identifier' in locals() else "unknown",
+            "status": "error",
+            "error": str(e),
+            "error_type": type(e).__name__,
+            "patient_name": "Error - Unable to retrieve",
+            "patient_id": "unknown",
+            "performance_metrics": {
+                "session_id": session_id,
+                "total_execution_time": round(total_time, 2),
+                "measured_at": datetime.now().isoformat(),
+                "error_occurred": True
+            },
+            "timestamp": datetime.now().isoformat()
+        }

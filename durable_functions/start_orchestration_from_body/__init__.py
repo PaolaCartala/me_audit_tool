@@ -10,7 +10,6 @@ async def main(req: func.HttpRequest, client: df.DurableOrchestrationClient) -> 
     logging.debug("Orchestration start from request body received.")
     try:
         document_id = req.params.get("document_id")
-
         instance_id = await client.start_new("em_coding_orchestrator", client_input=document_id)
         logging.debug(f"Orchestration started with ID: {instance_id}")
         return client.create_check_status_response(req, instance_id)

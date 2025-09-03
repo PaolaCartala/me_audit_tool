@@ -1,5 +1,4 @@
 import azure.durable_functions as df
-import time
 from datetime import datetime
 
 from settings import logger
@@ -8,16 +7,18 @@ from settings import logger
 def orchestrator_function(context: df.DurableOrchestrationContext):
     # Use durable context for orchestration
     orchestration_id = context.instance_id
-    orchestration_start_time = context.current_utc_datetime
+    # orchestration_start_time = context.current_utc_datetime
     
     document = context.get_input()
     
+    context.set_custom_status("Starting document processing")
     logger.debug("🚀 OPTIMIZED EM Coding Pipeline: Request Ingested", 
                 orchestration_id=orchestration_id,
                 document_id=str(document)[:50],
                 pipeline_tracking="enabled")
 
     # Process documents through OPTIMIZED enhancement agent
+    context.set_custom_status("Starting enhancement agent")
     enhancement_tasks = [context.call_activity("enhancement_agent_activity", document)]
     
     # Track actual enhancement execution time
@@ -27,8 +28,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
                 orchestration_id=orchestration_id,
                 process="optimized_enhancement_phase",
                 results_count=len(enhancement_results))
+    context.set_custom_status("Enhancement agent completed")
     
     # Process through OPTIMIZED auditor agent
+    context.set_custom_status("Starting auditor agent")
     audit_tasks = [context.call_activity("auditor_agent_activity", result) for result in enhancement_results]
     
     # Track actual auditor execution time
@@ -38,6 +41,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
                 orchestration_id=orchestration_id,
                 process="optimized_audit_phase",
                 results_count=len(final_results))
+    context.set_custom_status("Auditor agent completed")
     
     # Generate Excel report
     # excel_start = time.perf_counter()
@@ -50,8 +54,8 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     #             process="excel_export_phase")
     
     # Calculate comprehensive performance metrics using agent data
-    enhancement_agent_metrics = enhancement_results[0].get('enhancement_performance', {}) if enhancement_results else {}
-    audit_agent_metrics = final_results[0].get('audit_performance', {}) if final_results else {}
+    # enhancement_agent_metrics = enhancement_results[0].get('enhancement_performance', {}) if enhancement_results else {}
+    # audit_agent_metrics = final_results[0].get('audit_performance', {}) if final_results else {}
     
     # Extract actual execution times from agents
     enhancement_agent_time = enhancement_results[0].get('enhancement_agent', {}).get('performance_metrics', {}).get('total_execution_time', 0) if enhancement_results else 0
@@ -98,7 +102,8 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
                     }
                 })
     
-    # Return consolidated results with simple performance metrics - just execution times
+    # Return consolidated results with simple performance metrics
+    context.set_custom_status("E/M Coding pipeline completed")
     return {
         "processed_documents": len(final_results),
         "successful_documents": successful_docs,

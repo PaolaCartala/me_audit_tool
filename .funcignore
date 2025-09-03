@@ -7,4 +7,8 @@ __pycache__/
 *.pyc
 local.settings.json
 .github/instructions/
-data/
+/data/35_test/
+/data/500_run_0707/
+/data/completed/
+/data/samples/
+/data/500_data/
